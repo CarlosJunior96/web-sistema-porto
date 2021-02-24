@@ -24,9 +24,15 @@
               "src/assets"
             ],
             "styles": [
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "node_modules/ngx-bootstrap/datepicker/bs-datepicker.scss",
               "src/styles.css"
             ],
-            "scripts": []
+            "scripts": [
+              "node_modules/jquery/dist/jquery.min.js",
+              "node_modules/bootstrap/dist/js/bootstrap.min.js",
+              "node_modules/popper.js/dist/umd/popper.min.js"
+            ]
           },
           "configurations": {
             "production": {
@@ -88,6 +94,8 @@
               "src/assets"
             ],
             "styles": [
+              "./node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "./node_modules/ngx-bootstrap/datepicker/bs-datepicker.css",
               "src/styles.css"
             ],
             "scripts": []
@@ -119,6 +127,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "web-sistema-porto"
+    }
+  },
+  "defaultProject": "web-sistema-porto",
+  "cli": {
+    "analytics": false
+  }
 }

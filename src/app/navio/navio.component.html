@@ -1,0 +1,93 @@
+<div>
+  <div class="container bg-transparent p-4 font-weight-bold">
+    <div class="mb-4 pt-2">
+      <h3 class="text-center">Cadastrar Navio</h3>
+    </div>
+    <div class="col-md-8 offset-md-2">
+
+      <form (ngSubmit)="criarNavio()" [formGroup]="navioReceberForm">
+          <div class="form-group row">
+            <label class="col-sm-2 col-form-label">Nome: </label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" placeholder="Nome do Navio" formControlName="nomeNavio" required="required">
+            </div>
+          </div>
+        <div class="form-group row">
+          <label class="col-sm-2 col-form-label">Tonelagem: </label>
+          <div class="col-sm-10">
+            <input type="text" class="form-control" placeholder="Tonelagem do Navio" formControlName="tonelagemNavio" required="required">
+          </div>
+        </div>
+        <div class="form-group row">
+          <label class="col-sm-2 col-form-label">Classe DP: </label>
+          <div class="col-sm-10">
+            <input type="text" class="form-control" placeholder="Classe DP do navio" formControlName="classeDp" required="required">
+          </div>
+        </div>
+        <div class="form-group row">
+          <label class="col-sm-2 col-form-label">Propulsão: </label>
+          <div class="col-sm-10">
+            <input type="text" class="form-control" placeholder="Propulsão do navio" formControlName="propulsaoNavio" required="required">
+          </div>
+        </div>
+        <div class="form-group row">
+          <label class="col-sm-2 col-form-label">Comprimento: </label>
+          <div class="col-sm-10">
+            <input type="text" class="form-control" placeholder="Comprimento do Navio" formControlName="comprimentoNavio" required="required">
+          </div>
+        </div>
+        <div class="form-group row">
+          <label class="col-sm-2 col-form-label">Boca: </label>
+          <div class="col-sm-10">
+            <input type="text" class="form-control" placeholder="Boca do navio" formControlName="bocaNavio" required="required">
+          </div>
+        </div>
+        <div class="form-group row">
+          <label class="col-sm-2 col-form-label">Calado: </label>
+          <div class="col-sm-10">
+            <input type="text" class="form-control" placeholder="Calado do navio" formControlName="caladoNavio" required="required">
+          </div>
+        </div>
+        <div class="form-group row">
+          <label class="col-sm-2 col-form-label">Call sign: </label>
+          <div class="col-sm-10">
+            <input type="text" class="form-control" placeholder="Call sign do navio" formControlName="callSign" required="required">
+          </div>
+        </div>
+        <div class="form-group row">
+          <label class="col-sm-2 col-form-label">Bollard Pull: </label>
+          <div class="col-sm-10">
+            <input type="text" class="form-control" placeholder="Bollard pull" formControlName="bollardPull" required="required">
+          </div>
+        </div>
+        <div class="form-group row">
+          <label class="col-sm-4 col-form-label">Área Livre do Convés: </label>
+          <div class="col-sm-8">
+            <input type="text" class="form-control" placeholder="Área livre do convés" formControlName="areaLivreConves" required="required">
+          </div>
+        </div>
+        <div class="form-group row">
+          <label class="col-sm-4 col-form-label">IMO do navio: </label>
+          <div class="col-sm-8">
+            <input type="text" class="form-control" placeholder="IMO do navio" formControlName="imoNavio" required="required">
+          </div>
+        </div>
+        <div class="form-group row">
+          <label class="col-sm-4 col-form-label">Ano de construção: </label>
+          <div class="col-sm-8">
+            <input type="text" class="form-control" placeholder="Ano de construção do navio" formControlName="anoConstrucao" required="required">
+          </div>
+        </div>
+        <div class="form-group row">
+          <label class="col-sm-4 col-form-label">Ano próxima docagem: </label>
+          <div class="col-sm-8">
+            <input type="text" class="form-control" placeholder="Ano da próxima docagem do navio." formControlName="docagemNavio" required="required">
+          </div>
+        </div>
+        <button type="submit" class="btn btn-dark btn-block">Cadastrar</button>
+      </form>
+    </div>
+
+  </div>
+
+</div>
