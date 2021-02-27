@@ -38,4 +38,13 @@ export class UrlsApiPorto {
   public static get urlConsumoOleoLubriricanteCadastrar(): string{
     return this.urlBaseConsumoOleoLubrificanteNavio + "/";
   }
+
+  /** urls do descarte de residuo-organico-ao-mar **/
+  public static get urlBaseResiduoOrganicoMar(): string{
+    return this.urlBaseServidor + "/residuo-organico";
+  }
+
+  public static get urlResiduoOrganicoCadastrar(): string{
+    return this.urlBaseResiduoOrganicoMar + "/";
+  }
 }
