@@ -13,18 +13,8 @@ export class AguaNavioService {
 
   constructor(private http: HttpClient) { }
 
-
-  listarNavios(): Observable<any>{
-    return this.http.get("http://localhost:8080/sistema-porto/navios/")
-  }
-
-
-  cadastrarNavio(navio: Navio): Observable<any>{
-    return this.http.post(UrlsApiPorto.urlCadastrarNavio, navio)
-  }
-
   criarAguaNavio(aguaNavio: AguaNavio) : Observable<any>{
-    return this.http.post("http://localhost:8080/sistema-porto/consumo-agua/", aguaNavio)
+    return this.http.post("http://localhost:8080/sistema-porto/consumo-agua/", aguaNavio);
   }
 
 }

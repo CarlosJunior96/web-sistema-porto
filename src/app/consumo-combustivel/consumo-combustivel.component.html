@@ -18,7 +18,7 @@
         <mat-form-field>
           <label>Tipo de Combustível: </label>
         <div>
-          <mat-select [(value)]="combustivel">
+          <mat-select [(value)]="combustivelTipo">
             <mat-option *ngFor="let combustiveisListaTipo of combustiveisLista" [value]="combustiveisListaTipo.valor">
               {{combustiveisListaTipo.valor}}
             </mat-option>

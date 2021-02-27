@@ -27,9 +27,6 @@ export class ConsumoAguaComponent implements OnInit {
     private rotas: Router
   ) { }
 
-
-
-
   ngOnInit() {
     this.navio = new Navio();
     this.aguaNavio = new AguaNavio();
@@ -48,30 +45,17 @@ export class ConsumoAguaComponent implements OnInit {
     }
   }
 
-  cadastrarNavio(){
-    //this.navio = new Navio("NAVIO A", "5000 GT", 2, "AZIMUTAL", 9000.0, 2000.0,
-      //600.0, 100.0, "50T", 7777777, "ABW3D", new Date("01/02/2021"), new Date("01/01/2030"));
-
-    this.aguaNavioService.cadastrarNavio(this.navio).subscribe(dadosNavio =>{
-      var n1 = dadosNavio;
-      console.log(n1);
-    }, error => {
-      console.log("Erro ao cadastrar navio!", error);
-    })
-  }
-
   criarConsumoAgua(){
     let valores = this.aguaReceberFomulario.value
     this.aguaNavio.diaDoConsumo = new Date(valores.dataInformar)
     this.aguaNavio.consumoNoDia = valores.consumoAgua
     this.aguaNavio.aguaFornecidaNoDia = valores.qtdAguaFornecida
     this.aguaNavio.aguaRecebidaNoDia = valores.qtdAguaRecebida
-    //this.aguaNavio.navioAgua = this.navio
 
     this.inicioService.procurarNavioImo(this.imo).subscribe( navioImo => {
       this.aguaNavio.navioAgua = navioImo;
 
-      this.aguaNavioService.criarAguaNavio(this.aguaNavio).subscribe(aguaNavioDados =>{
+      this.aguaNavioService.criarAguaNavio(this.aguaNavio).subscribe(aguaNavioDados => {
         var aguaConsumo = aguaNavioDados;
         console.log(aguaConsumo);
       }, error => {
@@ -81,19 +65,7 @@ export class ConsumoAguaComponent implements OnInit {
     }, error => {
       alert("Navio não informado!")
     })
-
-
   }
 
-  listarNavios(){
-    this.aguaNavioService.listarNavios().subscribe(navios =>{
-      var navios = navios;
-      console.log(navios);
-
-      }, error => {
-      console.log("Erro ao listar Navios!", error);
-      }
-    )
-  }
 
 }
