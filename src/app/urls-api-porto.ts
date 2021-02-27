@@ -29,4 +29,13 @@ export class UrlsApiPorto {
   public static get urlConsumoCombustivelNavioCadastrar(): string{
     return this.urlBaseConsumoCombustivelNavio + "/";
   }
+
+  /** urls do consumo-oleo-lubrificante-navio **/
+  public static get urlBaseConsumoOleoLubrificanteNavio(): string{
+    return this.urlBaseServidor + "/consumo-oleo";
+  }
+
+  public static get urlConsumoOleoLubriricanteCadastrar(): string{
+    return this.urlBaseConsumoOleoLubrificanteNavio + "/";
+  }
 }

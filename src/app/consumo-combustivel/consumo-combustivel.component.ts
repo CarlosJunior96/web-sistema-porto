@@ -13,7 +13,6 @@ import {ConsumoCombustivelService} from '../services/consumo-combustivel.service
 })
 export class ConsumoCombustivelComponent implements OnInit {
 
-  navio: Navio;
   consumoCombustivelNavio: CombustivelNavio;
   combustivelTipo: string;
   combustivelForm: FormGroup;
@@ -35,7 +34,6 @@ export class ConsumoCombustivelComponent implements OnInit {
 
   ngOnInit(): void {
     this.imo = sessionStorage.getItem("imo");
-    this.navio = new Navio();
     this.consumoCombustivelNavio = new CombustivelNavio();
     this.combustivelTipo;
     this.combustiveisLista;
@@ -55,11 +53,8 @@ export class ConsumoCombustivelComponent implements OnInit {
 
   criarConsumoCombustivel(){
     let dadosCombustivel = this.combustivelForm.value
-
-    this.consumoCombustivelNavio.navioCombustivel = this.navio;
-
     this.consumoCombustivelNavio.consumoNoDia = dadosCombustivel.consumoCombustivel;
-    this.consumoCombustivelNavio.diaDoConsumo = dadosCombustivel.data;
+    this.consumoCombustivelNavio.diaDoConsumo = new Date(dadosCombustivel.data);
     this.consumoCombustivelNavio.combustivelFornecidoDia = dadosCombustivel.qtdCombustivelFornecido;
     this.consumoCombustivelNavio.combustivelRecebidoDia = dadosCombustivel.qtdAguaRecebida;
     this.consumoCombustivelNavio.tipo = this.combustivelTipo

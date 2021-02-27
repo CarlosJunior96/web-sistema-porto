@@ -17,7 +17,6 @@ export class ConsumoAguaComponent implements OnInit {
 
   aguaReceberFomulario: FormGroup;
   aguaNavio: AguaNavio;
-  navio: Navio;
   inicio: InicioService;
   imo: string;
 
@@ -28,7 +27,6 @@ export class ConsumoAguaComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.navio = new Navio();
     this.aguaNavio = new AguaNavio();
     this.imo = sessionStorage.getItem("imo")
 
@@ -56,7 +54,7 @@ export class ConsumoAguaComponent implements OnInit {
       this.aguaNavio.navioAgua = navioImo;
 
       this.aguaNavioService.criarAguaNavio(this.aguaNavio).subscribe(aguaNavioDados => {
-        var aguaConsumo = aguaNavioDados;
+        let aguaConsumo = aguaNavioDados;
         console.log(aguaConsumo);
       }, error => {
         console.log("Erro ao cadastrar consumo de agua.", error);
