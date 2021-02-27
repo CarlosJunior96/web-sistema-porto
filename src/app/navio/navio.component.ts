@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Navio} from '../models/navio';
-import {FormControl, FormGroup} from '@angular/forms';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {Router} from '@angular/router';
 import {NavioService} from '../services/navio.service';
 

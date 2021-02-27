@@ -7,4 +7,5 @@ export class AguaNavio {
   aguaRecebidaNoDia: number;
   aguaFornecidaNoDia: number;
   navioAgua: Navio;
+  imoNavio: number;
 }
