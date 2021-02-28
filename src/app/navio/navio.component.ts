@@ -45,7 +45,8 @@ export class NavioComponent implements OnInit {
     let formNavio = this.navioReceberForm.value;
     this.atribuirFormModelNavio(formNavio);
     this.navioService.cadastrarNavio(this.navio).subscribe(dados =>{
-      let navio = dados;
+      let navioImo = dados.imo;
+      sessionStorage.setItem("navioImo", navioImo)
       alert("Navio Criado com Sucesso!")
     }, error => {
       alert("Error ao cadastrar Navio." + error)

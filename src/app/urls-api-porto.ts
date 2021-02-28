@@ -47,4 +47,18 @@ export class UrlsApiPorto {
   public static get urlResiduoOrganicoCadastrar(): string{
     return this.urlBaseResiduoOrganicoMar + "/";
   }
+
+  /** urls para cadastrar estoques do navio **/
+
+  public static get urlCadastrarEstoqueAguaNavio(): string{
+    return this.urlBaseNavios + "/estoque-agua";
+  }
+
+  public static get urlCadastrarEstoqueCombustivelNavio(): string{
+    return this.urlBaseNavios + "/estoque-combustivel";
+  }
+
+  public static get urlCadastrarEstoqueOleoNavio(): string{
+    return this.urlBaseNavios + "/estoque-oleo";
+  }
 }
