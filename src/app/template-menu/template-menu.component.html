@@ -5,15 +5,20 @@
     </a>
   </div>
   <a href="#" class="nav-item nav-link"></a>
-  <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+  <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse, #navbarCollapse2">
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="navbarCollapse">
     <div class="navbar-nav">
-      <a routerLink="/agua-navio" routerLinkActive="active" class="text-light nav-item nav-link">Água</a>
-      <a routerLink="/combustivel-navio" routerLinkActive="active" class="text-light nav-item nav-link">Combustível</a>
-      <a routerLink="/oleo-lubrificante-navio" routerLinkActive="active" class="text-light nav-item nav-link">Oléo Lubrificante</a>
-      <a routerLink="/residuo-organico-navio" routerLinkActive="active" class="text-light nav-item nav-link">Resíduo Orgânico ao Mar</a>
+      <a routerLink="/agua-navio" routerLinkActive="active-link" class="text-light nav-item nav-link active">Água</a>
+      <a routerLink="/combustivel-navio" routerLinkActive="active-link" class="text-light nav-item nav-link">Combustível</a>
+      <a routerLink="/oleo-lubrificante-navio" routerLinkActive="active-link" class="text-light nav-item nav-link">Oléo Lubrificante</a>
+      <a routerLink="/residuo-organico-navio" routerLinkActive="active-link" class="text-light nav-item nav-link">Resíduo Orgânico ao Mar</a>
     </div>
   </div>
+  <ul class="nav justify-content-end collapse navbar-collapse" id="navbarCollapse2">
+    <li class="nav-item">
+      <a routerLink="/home" routerLinkActive="active-link" class="text-light nav-item nav-link">Sair</a>
+    </li>
+  </ul>
 </nav>

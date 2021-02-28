@@ -1,11 +1,11 @@
 <app-template-menu></app-template-menu>
-<div class="container p-4 font-weight-bold">
-  <div class="mb-5 pt-2">
-    <h3 class="text-center">Cadastrar Informações do Combustível</h3>
+<div class="container p-2 font-weight-bold">
+  <div class="col-md-8 mt-2 p-5 offset-md-2 border rounded bg-white shadow">
+  <div class="mb-5">
+    <h2 class="text-center font-weight-bold font-italic text bg-transparent border-bottom border-dark pb-2">Cadastrar Informações do Combustível</h2>
   </div>
   <form (ngSubmit)="criarConsumoCombustivel()" [formGroup]="combustivelForm">
-  <div class="col-md-6 mt-2 p-4 offset-md-3 bg-transparent">
-    <div class="form-group row">
+    <div class="form-group row pt-2">
       <label class="col-sm-7 col-form-label">Dia: </label>
       <mat-form-field class="col-sm-5" style="top: -15px">
         <mat-label>Data</mat-label>
@@ -23,31 +23,39 @@
           </mat-option>
         </mat-select>
       </div>
-
     </div>
       <div class="form-group row">
         <label class="col-sm-6 col-form-label">Consumo de Combustível: </label>
-        <div class="col-sm-6">
+        <div class="col-sm-6 input-group">
           <input type="text" class="form-control" placeholder="Qtd. consumo de combustível." formControlName="consumoCombustivel">
+          <div class="input-group-append">
+            <span class="input-group-text bg">m3</span>
+          </div>
         </div>
       </div>
       <div class="form-group row">
         <label class="col-sm-6 col-form-label">Combustivel Recebido: </label>
-        <div class="col-sm-6">
+        <div class="col-sm-6 input-group">
           <input type="text" class="form-control" placeholder="Qtd. combustível recebido." formControlName="qtdCombustivelRecebido">
+          <div class="input-group-append">
+            <span class="input-group-text bg">m3</span>
+          </div>
         </div>
       </div>
       <div class="form-group row">
         <label class="col-sm-6 col-form-label">Combustível Fornecido:</label>
-        <div class="col-sm-6">
+        <div class="col-sm-6 input-group">
           <input type="text" class="form-control" placeholder="Qtd. combustível fornecido." formControlName="qtdCombustivelFornecido">
+          <div class="input-group-append">
+            <span class="input-group-text bg">m3</span>
+          </div>
         </div>
       </div>
-      <button type="submit" class="btn btn-block btn-secondary mt-4">
+      <button type="submit" class="btn btn-block btn-dark mt-4">
         Salvar
       </button>
-  </div>
   </form>
+  </div>
 </div>
 
 
