@@ -37,18 +37,18 @@ export class ConsumoCombustivelComponent implements OnInit {
     this.consumoCombustivelNavio = new CombustivelNavio();
     this.combustivelTipo;
     this.combustiveisLista;
-
+/**
     if (this.imo === null){
       this.rotas.navigate([("home")])
     }
-    else {
+    else {**/
       this.combustivelForm = new FormGroup({
         data: new FormControl(""),
         consumoCombustivel: new FormControl(""),
         qtdCombustivelRecebido: new FormControl(""),
         qtdCombustivelFornecido: new FormControl("")
       });
-    }
+    //}
   }
 
   criarConsumoCombustivel(){

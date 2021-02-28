@@ -27,17 +27,17 @@ export class ConsumoOleoComponent implements OnInit {
     this.oleoLubrificanteNavio = new OleoLubrificanteNavio();
     this.imo = sessionStorage.getItem("imo");
 
-    if (this.imo === null){
-      this.rotas.navigate([("home")])
-    }
-    else{
+    //if (this.imo === null){
+      //this.rotas.navigate([("home")])
+    //}
+    //else{
       this.oleoForm = new FormGroup({
         data: new FormControl(""),
         consumoOleo: new FormControl(""),
         qtdOleoRecebido: new FormControl(""),
         qtdOleoFornecido: new FormControl("")
       })
-    }
+    //}
 
 
 

@@ -1,14 +1,19 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="#">Navbar</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+<nav class="navbar navbar-expand-md navbar-dark bg-dark">
+  <div>
+    <a href="">
+      <img src="/assets/img/porto.png" alt="Web Porto" title="Inicio">
+    </a>
+  </div>
+  <a href="#" class="nav-item nav-link"></a>
+  <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
     <span class="navbar-toggler-icon"></span>
   </button>
-  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+  <div class="collapse navbar-collapse" id="navbarCollapse">
     <div class="navbar-nav">
-      <a class="nav-item nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
-      <a class="nav-item nav-link" href="#">Features</a>
-      <a class="nav-item nav-link" href="#">Pricing</a>
-      <a class="nav-item nav-link disabled" href="#">Disabled</a>
+      <a routerLink="/agua-navio" routerLinkActive="active" class="text-light nav-item nav-link">Água</a>
+      <a routerLink="/combustivel-navio" routerLinkActive="active" class="text-light nav-item nav-link">Combustível</a>
+      <a routerLink="/oleo-lubrificante-navio" routerLinkActive="active" class="text-light nav-item nav-link">Oléo Lubrificante</a>
+      <a routerLink="/residuo-organico-navio" routerLinkActive="active" class="text-light nav-item nav-link">Resíduo Orgânico ao Mar</a>
     </div>
   </div>
 </nav>

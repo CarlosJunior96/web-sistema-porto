@@ -30,17 +30,17 @@ export class ConsumoAguaComponent implements OnInit {
     this.aguaNavio = new AguaNavio();
     this.imo = sessionStorage.getItem("imo")
 
-    if (this.imo === null){
+   /** if (this.imo === null){
       this.rotas.navigate([("home")])
     }
-    else {
+    else {**/
       this.aguaReceberFomulario = new FormGroup({
         dataInformar: new FormControl(""),
         consumoAgua: new FormControl(""),
         qtdAguaRecebida: new FormControl(""),
         qtdAguaFornecida: new FormControl("")
       });
-    }
+  //  }
   }
 
   criarConsumoAgua(){

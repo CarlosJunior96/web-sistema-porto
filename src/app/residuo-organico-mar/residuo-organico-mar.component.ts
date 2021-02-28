@@ -26,17 +26,17 @@ export class ResiduoOrganicoMarComponent implements OnInit {
     this.residuoOrganicoNavio = new ResiduoOrganicoNavio();
     this.imo = sessionStorage.getItem("imo");
 
-    if (this.imo === null){
+   /** if (this.imo === null){
       this.rotas.navigate([("home")])
     }
-    else{
+    else{**/
       this.residuoOrganicoForm = new FormGroup({
         data: new FormControl(""),
         residuoOrganico: new FormControl(""),
         latitude: new FormControl(""),
         longitude: new FormControl(""),
       })
-    }
+    //}
   }
 
   criarResiduoOrganico(){
