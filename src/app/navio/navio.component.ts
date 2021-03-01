@@ -21,7 +21,6 @@ export class NavioComponent implements OnInit {
 
   ngOnInit(): void {
     this.navio= new Navio();
-
     this.navioReceberForm = new FormGroup({
       nomeNavio: new FormControl(""),
       tonelagemNavio: new FormControl(""),
@@ -47,9 +46,9 @@ export class NavioComponent implements OnInit {
     this.navioService.cadastrarNavio(this.navio).subscribe(dados =>{
       let navioImo = dados.imo;
       sessionStorage.setItem("navioImo", navioImo)
-      alert("Navio Criado com Sucesso!")
+      this.rotas.navigate([("estoque-navio-cadastrar")])
     }, error => {
-      alert("Error ao cadastrar Navio." + error)
+      alert("Error ao cadastrar Navio." + error.info)
     })
 
   }

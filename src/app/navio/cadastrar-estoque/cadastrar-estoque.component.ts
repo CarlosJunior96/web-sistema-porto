@@ -70,25 +70,25 @@ export class CadastrarEstoqueComponent implements OnInit {
       this.estoqueNavioService.cadastrarEstoqueAguaNavio(this.estoqueAgua).subscribe( dadosAgua => {
         let estoqueAguaSalvo = dadosAgua;
       }, error => {
-        alert("Erro ao salvar estoque de agua do navio " + error);
+        alert("Erro ao salvar estoque de agua do navio " + error.info);
       })
 
       this.estoqueNavioService.cadastrarEstoqueCombustivelNavio(this.estoqueCombustivel).subscribe( dadosCombustivel => {
         let combustivelSalvo = dadosCombustivel;
       }, error => {
-        alert("Erro ao salvar estoque de combustível" + error);
+        alert("Erro ao salvar estoque de combustível" + error.info);
       })
 
       this.estoqueNavioService.cadastrarEstoqueOleoNavio(this.estoqueOleo).subscribe( dadosOleo => {
         let oleoSalvo = dadosOleo;
       }, error => {
-        alert("Erro ao salvar estoque de óleo" + error);
+        alert("Erro ao salvar estoque de óleo" + error.info);
       })
 
       alert("Salvo com Sucesso!")
 
     }, error => {
-      alert("Erro ao salvar estoque" + error)
+      alert("Erro ao salvar estoque" + error.info)
     })
 
   }
