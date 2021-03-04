@@ -30,6 +30,7 @@ import {MatSelectModule} from '@angular/material/select';
 import {MAT_DATE_LOCALE} from '@angular/material/core';
 import {HammerModule} from '@angular/platform-browser';
 import { CadastrarEstoqueComponent } from './navio/cadastrar-estoque/cadastrar-estoque.component';
+import { RanchoNavioComponent } from './rancho-navio/rancho-navio.component';
 
 /** VETOR QUE RECEBE AS ROTAS QUE O SISTEMA TERÁ **/
 export const rotasApp: Routes = [
@@ -39,6 +40,7 @@ export const rotasApp: Routes = [
   {path: "residuo-organico-navio", component: ResiduoOrganicoMarComponent},
   {path: "estoque-navio-cadastrar", component: CadastrarEstoqueComponent},
   {path: "cadastrar-navio", component: NavioComponent},
+  {path: "cadastrar-rancho", component: RanchoNavioComponent},
   {path: "home", component: InicioComponent},
   {path: "", component: InicioComponent}, /** se tiver apenas o url geral será redirecionado para o inicio **/
   {path: "**", component: PaginaNaoEncontradaComponent} /** se não existir nenhum dos endereços informados vai pra essa pagina**/
@@ -55,7 +57,8 @@ export const rotasApp: Routes = [
     PaginaNaoEncontradaComponent,
     NavioComponent,
     TemplateMenuComponent,
-    CadastrarEstoqueComponent
+    CadastrarEstoqueComponent,
+    RanchoNavioComponent
   ],
   imports: [
     HammerModule,
