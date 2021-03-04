@@ -1,0 +1,62 @@
+<app-template-menu></app-template-menu>
+<div class="container p-2 font-weight-bold">
+  <div class="col-md-8 mt-2 p-5 offset-md-2 border rounded bg-white shadow">
+    <div class="mb-5">
+      <h2 class="text-center font-weight-bold font-italic text bg-transparent border-bottom border-dark pb-2">Cadastrar Descarte de Lixo</h2>
+    </div>
+    <form>
+      <div>
+        <div class="form-group row pt-2">
+          <label class="col-sm-7 col-form-label">Dia do Recebimento: </label>
+          <mat-form-field class="col-sm-5" style="top: -15px">
+            <mat-label>Data</mat-label>
+            <input matInput [matDatepicker]="diaDescarte" readonly>
+            <mat-datepicker-toggle matSuffix [for]="diaDescarte"></mat-datepicker-toggle>
+            <mat-datepicker #diaDescarte></mat-datepicker>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="form-group row div-datepicker-mt">
+        <label class="col-sm-4 col-form-label">Categoria: </label>
+        <div class="col-sm-8">
+          <mat-select class="form-control" placeholder="Selecione.">
+            <mat-option *ngFor="let categoria of categorias" [value]="categoria.categoria">
+              {{categoria.categoria}}
+            </mat-option>
+          </mat-select>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label class="col-sm-4 col-form-label">Volume: </label>
+        <div class="col-sm-8 ">
+          <div class="input-group">
+            <input type="text" class="form-control" placeholder="0,00">
+            <div class="input-group-append">
+              <span class="input-group-text bg">m3</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="form-group row ">
+        <label class="col-sm-4 col-form-label">Cidade: </label>
+        <div class="col-sm-8">
+          <mat-select class="form-control" placeholder="Selecione.">
+            <mat-option *ngFor="let cidade of vetorCidades" [value]="cidade.cidade">
+              {{cidade.cidade}}
+            </mat-option>
+          </mat-select>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label class="col-sm-4 col-form-label">Empresa Coletora: </label>
+        <div class="col-sm-8 input-group">
+          <input type="text" class="form-control" placeholder="Informe a Empresa Coletora.">
+        </div>
+      </div>
+      <div class="custom-file">
+        <input type="file" class="custom-file-input" id="customFile">
+        <label class="custom-file-label" for="customFile">Choose file</label>
+      </div>
+    </form>
+  </div>
+</div>
