@@ -8,9 +8,8 @@
       <div>
         <div class="form-group row pt-2">
           <label class="col-sm-7 col-form-label">Dia do Recebimento: </label>
-          <mat-form-field class="col-sm-5" style="top: -15px">
-            <mat-label>Data</mat-label>
-            <input matInput [matDatepicker]="diaDescarte" readonly>
+          <mat-form-field class="col-sm-5" >
+            <input matInput [matDatepicker]="diaDescarte" readonly placeholder="Dia">
             <mat-datepicker-toggle matSuffix [for]="diaDescarte"></mat-datepicker-toggle>
             <mat-datepicker #diaDescarte></mat-datepicker>
           </mat-form-field>
@@ -57,6 +56,9 @@
         <input type="file" class="custom-file-input" id="customFile">
         <label class="custom-file-label" for="customFile">Choose file</label>
       </div>
+      <button type="submit" class="btn btn-block btn-dark mt-4">
+        Salvar
+      </button>
     </form>
   </div>
 </div>
