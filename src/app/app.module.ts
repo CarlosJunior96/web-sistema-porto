@@ -33,6 +33,8 @@ import { CadastrarEstoqueComponent } from './navio/cadastrar-estoque/cadastrar-e
 import { RanchoNavioComponent } from './rancho-navio/rancho-navio.component';
 import { DescarteLixoNavioComponent } from './descarte-lixo-navio/descarte-lixo-navio.component';
 import { DespesaPortuariaNavioComponent } from './despesa-portuaria-navio/despesa-portuaria-navio.component';
+import { AcidenteNavioComponent } from './acidente-navio/acidente-navio.component';
+import { TripulacaoNavioComponent } from './tripulacao-navio/tripulacao-navio.component';
 
 /** VETOR QUE RECEBE AS ROTAS QUE O SISTEMA TERÁ **/
 export const rotasApp: Routes = [
@@ -45,6 +47,8 @@ export const rotasApp: Routes = [
   {path: "cadastrar-rancho", component: RanchoNavioComponent},
   {path: "cadastrar-descarte-lixo", component: DescarteLixoNavioComponent},
   {path: "despesa-portuaria-navio", component: DespesaPortuariaNavioComponent},
+  {path: "cadastrar-acidentes", component: AcidenteNavioComponent},
+  {path: "cadastrar-tripulacao", component: TripulacaoNavioComponent},
   {path: "home", component: InicioComponent},
   {path: "", component: InicioComponent}, /** se tiver apenas o url geral será redirecionado para o inicio **/
   {path: "**", component: PaginaNaoEncontradaComponent} /** se não existir nenhum dos endereços informados vai pra essa pagina**/
@@ -64,7 +68,9 @@ export const rotasApp: Routes = [
     CadastrarEstoqueComponent,
     RanchoNavioComponent,
     DescarteLixoNavioComponent,
-    DespesaPortuariaNavioComponent
+    DespesaPortuariaNavioComponent,
+    AcidenteNavioComponent,
+    TripulacaoNavioComponent
   ],
   imports: [
     HammerModule,
