@@ -4,12 +4,12 @@
     <div class="mb-5">
       <h2 class="text-center font-weight-bold text bg-transparent border-bottom border-dark pb-2 font-italic">Cadastrar Informações de Água</h2>
     </div>
-      <form (ngSubmit)="criarConsumoAgua()" [formGroup]="aguaReceberFomulario">
+      <form method="post" #consumoAgua="ngForm" (ngSubmit)="criarConsumoAgua(consumoAgua)">
         <div class="form-group row pt-2">
           <label class="col-sm-7 col-form-label">Dia: </label>
           <mat-form-field class="col-sm-5">
             <mat-label>Data</mat-label>
-            <input matInput [matDatepicker]="picker" formControlName="dataInformar" readonly>
+            <input matInput [matDatepicker]="picker" name="dia-consumo" [(ngModel)]="aguaNavio.diaDoConsumo" readonly required>
             <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
             <mat-datepicker #picker></mat-datepicker>
           </mat-form-field>
@@ -18,7 +18,7 @@
           <label class="col-sm-4 col-form-label">Consumo de Água: </label>
           <div class="col-sm-8">
             <div class="input-group">
-              <input type="text" class="form-control" placeholder="Informe o consumo de água." formControlName="consumoAgua">
+              <input type="text" class="form-control" placeholder="Informe o consumo de água." name="consumo-dia" [(ngModel)]="aguaNavio.consumoNoDia" required>
               <div class="input-group-append">
                 <span class="input-group-text bg">m3</span>
               </div>
@@ -29,7 +29,7 @@
           <label class="col-sm-4 col-form-label">Água Recebida: </label>
           <div class="col-sm-8">
             <div class="input-group">
-              <input type="text" class="form-control" placeholder="Quantidade de água recebida." formControlName="qtdAguaRecebida">
+              <input type="text" class="form-control" placeholder="Quantidade de água recebida." name="agua-recbida" [(ngModel)]="aguaNavio.aguaRecebidaNoDia">
               <div class="input-group-append">
                 <span class="input-group-text bg">m3</span>
               </div>
@@ -40,14 +40,14 @@
           <label class="col-sm-4 col-form-label">Água Fornecida:</label>
           <div class="col-sm-8">
             <div class="input-group">
-              <input type="text" class="form-control" placeholder="Quantidade de água fornecida." formControlName="qtdAguaFornecida">
+              <input type="text" class="form-control" placeholder="Quantidade de água fornecida." name="agua-fornecida" [(ngModel)]="aguaNavio.aguaFornecidaNoDia">
               <div class="input-group-append">
                 <span class="input-group-text bg">m3</span>
               </div>
             </div>
           </div>
         </div>
-        <button type="submit" class="btn btn-block btn-dark mt-4">
+        <button type="submit" class="btn btn-block btn-dark mt-4" [disabled]="consumoAgua.invalid">
           Salvar
         </button>
       </form>

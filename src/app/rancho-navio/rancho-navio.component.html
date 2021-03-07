@@ -4,13 +4,13 @@
     <div class="mb-5">
       <h2 class="text-center font-weight-bold font-italic text bg-transparent border-bottom border-dark pb-2">Cadastrar Informações Rancho</h2>
     </div>
-    <form (ngSubmit)="criarRanchoNavio()" [formGroup]="ranchoForm" >
+    <form method="post" #rancho="ngForm" (ngSubmit)="criarRanchoNavio(rancho)">
       <div>
         <div class="form-group row pt-2">
           <label class="col-sm-7 col-form-label">Dia do Recebimento: </label>
           <mat-form-field class="col-sm-5">
             <mat-label>Data</mat-label>
-            <input matInput [matDatepicker]="diaRecebimento" formControlName="diaRecebimento" readonly>
+            <input matInput [matDatepicker]="diaRecebimento" name="dia-recebimento" [(ngModel)]="objetoRancho.diaRecebimento" required readonly>
             <mat-datepicker-toggle matSuffix [for]="diaRecebimento"></mat-datepicker-toggle>
             <mat-datepicker #diaRecebimento></mat-datepicker>
           </mat-form-field>
@@ -18,7 +18,7 @@
         <div class="form-group row div-datepicker-mt">
           <label class="col-sm-6 col-form-label">Tipo do Pedido: </label>
           <div class="col-sm-6">
-            <mat-select class="form-control" [(value)]="pedidoTipo" placeholder="Selecione.">
+            <mat-select class="form-control" name="tipo-pedido" [(ngModel)]="objetoRancho.tipoPedido" placeholder="Selecione" required>
               <mat-option *ngFor="let tipo of tipoPedido" [value]="tipo.tipo">
                 {{tipo.tipo}}
               </mat-option>
@@ -32,7 +32,7 @@
               <div class="input-group-prepend">
                 <span class="input-group-text bg">R$</span>
               </div>
-              <input type="text" class="form-control" placeholder="0,00" formControlName="nfAlimentos">
+              <input type="text" class="form-control" placeholder="0,00" name="nf-alimentos" [(ngModel)]="objetoRancho.nfAlimentos">
             </div>
           </div>
         </div>
@@ -43,7 +43,7 @@
               <div class="input-group-prepend">
                 <span class="input-group-text bg">R$</span>
               </div>
-              <input type="text" class="form-control" placeholder="0,00" formControlName="nfOutros" (keyup)="somar($event)">
+              <input type="text" class="form-control" placeholder="0,00" name="nf-outros" [(ngModel)]="objetoRancho.nfOutros">
             </div>
           </div>
         </div>
@@ -54,12 +54,12 @@
               <div class="input-group-prepend">
                 <span class="input-group-text bg">R$</span>
               </div>
-              <input type="text" class="form-control" placeholder="0,00" formControlName="valorTotal">
+              <input type="text" class="form-control" placeholder="0,00" name="valor-total" [(ngModel)]="objetoRancho.valorTotal" readonly>
             </div>
           </div>
         </div>
       </div>
-      <button type="submit" class="btn btn-block btn-dark mt-4">
+      <button type="submit" class="btn btn-block btn-dark mt-4" [disabled]="rancho.invalid">
         Salvar
       </button>
     </form>

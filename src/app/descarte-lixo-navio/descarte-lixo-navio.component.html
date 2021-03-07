@@ -4,12 +4,12 @@
     <div class="mb-5">
       <h2 class="text-center font-weight-bold font-italic text bg-transparent border-bottom border-dark pb-2">Cadastrar Descarte de Lixo</h2>
     </div>
-    <form (ngSubmit)="criarDescarteLixo()" [formGroup]="descarteLixoForm">
+    <form method="post" #descarteLixoForm="ngForm" (ngSubmit)="criarDescarteLixo(descarteLixoForm)">
       <div>
         <div class="form-group row pt-2">
           <label class="col-sm-7 col-form-label">Dia do Descarte: </label>
           <mat-form-field class="col-sm-5" >
-            <input matInput [matDatepicker]="diaDescarte" readonly placeholder="Informe o dia" formControlName="diaDescarte">
+            <input matInput [matDatepicker]="diaDescarte" placeholder="Informe o dia" name="dia-descarte" [(ngModel)]="objetoDescarteLixo.diaDescarte" required readonly>
             <mat-datepicker-toggle matSuffix [for]="diaDescarte"></mat-datepicker-toggle>
             <mat-datepicker #diaDescarte></mat-datepicker>
           </mat-form-field>
@@ -18,7 +18,7 @@
       <div class="form-group row div-datepicker-mt">
         <label class="col-sm-4 col-form-label">Categoria: </label>
         <div class="col-sm-8">
-          <mat-select class="form-control" placeholder="Selecione." [(value)]="categoriaEscolhida">
+          <mat-select class="form-control" placeholder="Selecione" name="categoria" [(ngModel)]="objetoDescarteLixo.categoria" required>
             <mat-option *ngFor="let categoria of categorias" [value]="categoria.categoria">
               {{categoria.categoria}}
             </mat-option>
@@ -29,7 +29,7 @@
         <label class="col-sm-4 col-form-label">Volume: </label>
         <div class="col-sm-8 ">
           <div class="input-group">
-            <input type="text" class="form-control" placeholder="Informe o Volume." formControlName="volume">
+            <input type="text" class="form-control" placeholder="Informe o Volume." name="volume" [(ngModel)]="objetoDescarteLixo.volume" required>
             <div class="input-group-append">
               <span class="input-group-text bg">m3</span>
             </div>
@@ -39,7 +39,7 @@
       <div class="form-group row ">
         <label class="col-sm-4 col-form-label">Cidade: </label>
         <div class="col-sm-8">
-          <mat-select class="form-control" placeholder="Selecione." [(value)]="cidade">
+          <mat-select class="form-control" placeholder="Selecione" name="cidade" [(ngModel)]="objetoDescarteLixo.local" required>
             <mat-option *ngFor="let cidade of vetorCidades" [value]="cidade.cidade">
               {{cidade.cidade}}
             </mat-option>
@@ -49,10 +49,10 @@
       <div class="form-group row">
         <label class="col-sm-4 col-form-label">Empresa Coletora: </label>
         <div class="col-sm-8 input-group">
-          <input type="text" class="form-control" placeholder="Informe a Empresa Coletora." formControlName="empresaColetora">
+          <input type="text" class="form-control" placeholder="Informe a Empresa Coletora." name="empresa-coletora"  [(ngModel)]="objetoDescarteLixo.empresaColetora" required>
         </div>
       </div>
-      <button type="submit" class="btn btn-block btn-dark mt-4">
+      <button type="submit" class="btn btn-block btn-dark mt-4" [disabled]="descarteLixoForm.invalid">
         Salvar
       </button>
     </form>

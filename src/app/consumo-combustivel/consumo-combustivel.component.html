@@ -4,12 +4,12 @@
   <div class="mb-5">
     <h2 class="text-center font-weight-bold font-italic text bg-transparent border-bottom border-dark pb-2">Cadastrar Informações do Combustível</h2>
   </div>
-  <form (ngSubmit)="criarConsumoCombustivel()" [formGroup]="combustivelForm">
+  <form method="post" #combustivelForm="ngForm" (ngSubmit)="criarConsumoCombustivel(combustivelForm)">
     <div class="form-group row pt-2">
       <label class="col-sm-7 col-form-label">Dia: </label>
       <mat-form-field class="col-sm-5">
         <mat-label>Data</mat-label>
-        <input matInput [matDatepicker]="picker" formControlName="data" readonly>
+        <input matInput [matDatepicker]="picker" name="dia" [(ngModel)]="consumoCombustivelNavio.diaDoConsumo" readonly>
         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
         <mat-datepicker #picker></mat-datepicker>
       </mat-form-field>
@@ -17,7 +17,7 @@
     <div class="form-group row div-datepicker-mt">
       <label class="col-sm-6 col-form-label">Tipo Combustível: </label>
       <div class="col-sm-6 ">
-        <mat-select class="form-control" [(value)]="combustivelTipo" placeholder="Selecione.">
+        <mat-select class="form-control" name="tipo-combustivel" [(ngModel)]="consumoCombustivelNavio.tipo" placeholder="Selecione">
           <mat-option *ngFor="let combustiveisListaTipo of combustiveisLista" [value]="combustiveisListaTipo.valor">
             {{combustiveisListaTipo.valor}}
           </mat-option>
@@ -27,7 +27,7 @@
       <div class="form-group row">
         <label class="col-sm-6 col-form-label">Consumo de Combustível: </label>
         <div class="col-sm-6 input-group">
-          <input type="text" class="form-control" placeholder="Qtd. consumo de combustível." formControlName="consumoCombustivel">
+          <input type="text" class="form-control" placeholder="Qtd. consumo de combustível." name="consumo-combustivel" [(ngModel)]="consumoCombustivelNavio.consumoNoDia" required>
           <div class="input-group-append">
             <span class="input-group-text bg">m3</span>
           </div>
@@ -36,7 +36,7 @@
       <div class="form-group row">
         <label class="col-sm-6 col-form-label">Combustivel Recebido: </label>
         <div class="col-sm-6 input-group">
-          <input type="text" class="form-control" placeholder="Qtd. combustível recebido." formControlName="qtdCombustivelRecebido">
+          <input type="text" class="form-control" placeholder="Qtd. combustível recebido." name="qtd-recebido" [(ngModel)]="consumoCombustivelNavio.combustivelRecebidoDia">
           <div class="input-group-append">
             <span class="input-group-text bg">m3</span>
           </div>
@@ -45,13 +45,13 @@
       <div class="form-group row">
         <label class="col-sm-6 col-form-label">Combustível Fornecido:</label>
         <div class="col-sm-6 input-group">
-          <input type="text" class="form-control" placeholder="Qtd. combustível fornecido." formControlName="qtdCombustivelFornecido">
+          <input type="text" class="form-control" placeholder="Qtd. combustível fornecido." name="qtd-fornecido" [(ngModel)]="consumoCombustivelNavio.combustivelFornecidoDia">
           <div class="input-group-append">
             <span class="input-group-text bg">m3</span>
           </div>
         </div>
       </div>
-      <button type="submit" class="btn btn-block btn-dark mt-4">
+      <button type="submit" class="btn btn-block btn-dark mt-4" [disabled]="combustivelForm.invalid">
         Salvar
       </button>
   </form>

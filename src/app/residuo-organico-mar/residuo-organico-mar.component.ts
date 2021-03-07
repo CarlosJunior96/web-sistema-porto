@@ -13,8 +13,6 @@ import {InicioService} from '../services/inicio.service';
 export class ResiduoOrganicoMarComponent implements OnInit {
 
   residuoOrganicoNavio: ResiduoOrganicoNavio
-  residuoOrganicoForm: FormGroup;
-  imo: string;
 
   constructor(
     private rotas: Router,
@@ -24,28 +22,20 @@ export class ResiduoOrganicoMarComponent implements OnInit {
 
   ngOnInit(): void {
     this.residuoOrganicoNavio = new ResiduoOrganicoNavio();
-    this.imo = sessionStorage.getItem("imo");
 
-   /** if (this.imo === null){
+    /**
+     *
+     this.imo = sessionStorage.getItem("imo");
+
+     if (this.imo === null){
       this.rotas.navigate([("home")])
     }
-    else{**/
-      this.residuoOrganicoForm = new FormGroup({
-        data: new FormControl(""),
-        residuoOrganico: new FormControl(""),
-        latitude: new FormControl(""),
-        longitude: new FormControl(""),
-      })
-    //}
+     */
   }
 
-  criarResiduoOrganico(){
-    let dadosResiduoOrganico = this.residuoOrganicoForm.value
-    this.residuoOrganicoNavio.diaDescarteResiduo = new Date(dadosResiduoOrganico.data);
-    this.residuoOrganicoNavio.latitude = dadosResiduoOrganico.latitude;
-    this.residuoOrganicoNavio.longitude = dadosResiduoOrganico.longitude;
-    this.residuoOrganicoNavio.quantidadeDescarte = dadosResiduoOrganico.quantidadeDescarte;
+  criarResiduoOrganico(dadosResiduo: any){
 
+    /**
     this.inicioService.procurarNavioImo(this.imo).subscribe( navioImo => {
       this.residuoOrganicoNavio.navioResiduo = navioImo;
 
@@ -61,5 +51,6 @@ export class ResiduoOrganicoMarComponent implements OnInit {
       console.log("Erro ao cadastrar resíduo orgânico.");
     })
   }
-
+**/
+  }
 }

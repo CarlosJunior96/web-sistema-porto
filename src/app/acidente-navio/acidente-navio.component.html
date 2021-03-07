@@ -4,12 +4,12 @@
     <div class="mb-5">
       <h2 class="text-center font-weight-bold font-italic text bg-transparent border-bottom border-dark pb-2">Cadastrar Acidentes</h2>
     </div>
-    <form (ngSubmit)="cadastrarAcidente()" [formGroup]="acidenteForm">
+    <form method="post" #acidentesForm="ngForm" (ngSubmit)="cadastrarAcidente(acidentesForm)">
       <div class="form-group row pt-2">
         <label class="col-sm-7 col-form-label">Dia do Acidente:</label>
         <mat-form-field class="col-sm-5">
           <mat-label>Data</mat-label>
-          <input matInput [matDatepicker]="dataAcidente" readonly formControlName="diaAcidente">
+          <input matInput [matDatepicker]="dataAcidente" name="data-acidente" [(ngModel)]="objetoAcidente.diaAcidente" required readonly>
           <mat-datepicker-toggle matSuffix [for]="dataAcidente"></mat-datepicker-toggle>
           <mat-datepicker #dataAcidente></mat-datepicker>
         </mat-form-field>
@@ -17,7 +17,7 @@
       <div class="form-group row div-datepicker-mt">
         <label class="col-sm-6 col-form-label">Tipo de Evento: </label>
         <div class="col-sm-6 ">
-          <mat-select class="form-control" [(value)]="evento" placeholder="Selecione">
+          <mat-select class="form-control" name="tipo-evento" [(ngModel)]="objetoAcidente.tipoEvento" required placeholder="Selecione">
             <mat-option *ngFor="let htEvento of listaEvento" [value]="htEvento.tipo">
               {{htEvento.tipo}}
             </mat-option>
@@ -27,7 +27,7 @@
       <div class="form-group row">
         <label class="col-sm-6 col-form-label">Afastamento: </label>
         <div class="col-sm-6 ">
-          <mat-select class="form-control" [(value)]="afastamento" placeholder="Selecione">
+          <mat-select class="form-control" name="afastamento" [(ngModel)]="objetoAcidente.afastamento" required placeholder="Selecione">
             <mat-option *ngFor="let htAfastamento of listaAfastamento" [value]="htAfastamento.situacao">
               {{htAfastamento.situacao}}
             </mat-option>
@@ -37,14 +37,14 @@
       <div class="form-group row">
         <label class="col-sm-6 col-form-label">Com Downtime: </label>
         <div class="col-sm-6 ">
-          <mat-select class="form-control" [(value)]="downtime" placeholder="Selecione">
+          <mat-select class="form-control" name="downtime" [(ngModel)]="objetoAcidente.downtime" required placeholder="Selecione">
             <mat-option *ngFor="let htDowntime of listaDowntime" [value]="htDowntime.situacao">
               {{htDowntime.situacao}}
             </mat-option>
           </mat-select>
         </div>
       </div>
-      <button type="submit" class="btn btn-block btn-dark mt-4">
+      <button type="submit" class="btn btn-block btn-dark mt-4" [disabled]="acidentesForm.invalid">
         Salvar
       </button>
     </form>

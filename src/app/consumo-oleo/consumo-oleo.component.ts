@@ -14,8 +14,6 @@ import {InicioService} from '../services/inicio.service';
 export class ConsumoOleoComponent implements OnInit {
 
   oleoLubrificanteNavio: OleoLubrificanteNavio;
-  imo: string;
-  oleoForm: FormGroup;
 
   constructor(
     private rotas: Router,
@@ -25,30 +23,19 @@ export class ConsumoOleoComponent implements OnInit {
 
   ngOnInit(): void {
     this.oleoLubrificanteNavio = new OleoLubrificanteNavio();
-    this.imo = sessionStorage.getItem("imo");
 
     //if (this.imo === null){
       //this.rotas.navigate([("home")])
     //}
-    //else{
-      this.oleoForm = new FormGroup({
-        data: new FormControl(""),
-        consumoOleo: new FormControl(""),
-        qtdOleoRecebido: new FormControl(""),
-        qtdOleoFornecido: new FormControl("")
-      })
     //}
 
 
 
   }
 
-  criarConsumoOleo(){
-    let valores = this.oleoForm.value
-    this.oleoLubrificanteNavio.diaDoConsumo = new Date(valores.data);
-    this.oleoLubrificanteNavio.consumoNoDia = valores.consumoOleo;
-    this.oleoLubrificanteNavio.oleoFornecidoDia = valores.qtdOleoFornecido;
-    this.oleoLubrificanteNavio.oleoRecebidoDia = valores.qtdAguaRecebida;
+  criarConsumoOleo(dadosOleo: any){
+
+    /**
 
     this.inicioService.procurarNavioImo(this.imo).subscribe( navioImo =>{
       this.oleoLubrificanteNavio.navioOleo = navioImo;
@@ -63,6 +50,7 @@ export class ConsumoOleoComponent implements OnInit {
     }, error => {
       console.log("Erro ao cadastrar óleo lubrificante.", error);
     })
+     **/
   }
 
 }

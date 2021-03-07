@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {FormControl, FormGroup} from '@angular/forms';
+import {FormControl, FormControlName, FormGroup, Validators} from '@angular/forms';
+import {Rancho} from '../models/rancho';
 
 @Component({
   selector: 'app-rancho-navio',
@@ -8,8 +9,7 @@ import {FormControl, FormGroup} from '@angular/forms';
 })
 export class RanchoNavioComponent implements OnInit {
 
-  pedidoTipo: string;
-  ranchoForm: FormGroup;
+  objetoRancho: Rancho;
 
   tipoPedido: any = [
     {tipo: "Completo"},
@@ -19,23 +19,10 @@ export class RanchoNavioComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    this.ranchoForm = new FormGroup( {
-      diaRecebimento: new FormControl(""),
-      nfAlimentos: new FormControl(""),
-      nfOutros: new FormControl(""),
-      valorTotal: new FormControl("")
-    })
+    this.objetoRancho = new Rancho();
   }
 
-  criarRanchoNavio(){
-
-  }
-
-  somar(evento: any){
-    let dados = evento.value
-    this.ranchoForm = new FormGroup( {
-      valorTotal: new FormControl(dados)
-    })
+  criarRanchoNavio(dadosRancho: any){
 
   }
 

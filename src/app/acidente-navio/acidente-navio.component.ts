@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {FormControl, FormGroup} from '@angular/forms';
+import {AcidenteNavio} from '../models/acidente-navio';
 
 @Component({
   selector: 'app-acidente-navio',
@@ -8,10 +9,7 @@ import {FormControl, FormGroup} from '@angular/forms';
 })
 export class AcidenteNavioComponent implements OnInit {
 
-  evento: string
-  afastamento: string
-  downtime: string
-  acidenteForm: FormGroup;
+  objetoAcidente: AcidenteNavio;
 
   listaEvento: any = [
     {tipo: "Abalroamento"},
@@ -35,13 +33,11 @@ export class AcidenteNavioComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    this.acidenteForm = new FormGroup( {
-      diaAcidente: new FormControl("")
-    })
+    this.objetoAcidente = new AcidenteNavio();
   }
 
 
-  cadastrarAcidente(){
+  cadastrarAcidente(dadosAcidente: any){
 
   }
 

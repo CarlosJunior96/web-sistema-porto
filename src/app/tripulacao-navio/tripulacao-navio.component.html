@@ -4,20 +4,19 @@
     <div class="mb-5">
       <h2 class="text-center font-weight-bold font-italic text bg-transparent border-bottom border-dark pb-2">Cadastrar Tripulação</h2>
     </div>
-    <form (ngSubmit)="cadastrarTripulacao()" [formGroup]="tripulacaoForm">
+    <form method="post" #tripulacaoForm="ngForm" (ngSubmit)="cadastrarTripulacao(tripulacaoForm)">
       <div class="form-group row">
         <label class="col-sm-4 col-form-label">Função: </label>
         <div class="col-sm-8 input-group">
-          <input type="text" class="form-control" placeholder="Informe a função." formControlName="funcao">
+          <input type="text" class="form-control" placeholder="Informe a função." name="funcao" [(ngModel)]="objetoTripulacaoNavio.funcao" required>
         </div>
       </div>
       <div class="form-group row">
         <label class="col-sm-4 col-form-label">Turma: </label>
         <div class="col-sm-8 input-group">
-          <input type="text" class="form-control" placeholder="Informe a turma." formControlName="turma">
+          <input type="text" class="form-control" placeholder="Informe a turma." name="turma" [(ngModel)]="objetoTripulacaoNavio.turma" required>
         </div>
       </div>
-
       <div class="form-group row">
         <label class="col-sm-4 col-form-label">Salário: </label>
         <div class="col-sm-8">
@@ -25,7 +24,7 @@
             <div class="input-group-prepend">
               <span class="input-group-text bg">R$</span>
             </div>
-            <input type="text" class="form-control" placeholder="0,00" formControlName="salario">
+            <input type="text" class="form-control" placeholder="0,00" name="salario" [(ngModel)]="objetoTripulacaoNavio.salario" required>
           </div>
         </div>
       </div>
@@ -36,7 +35,7 @@
             <div class="input-group-prepend">
               <span class="input-group-text bg">R$</span>
             </div>
-            <input type="text" class="form-control" placeholder="0,00" formControlName="encargos">
+            <input type="text" class="form-control" placeholder="0,00" name="encargos" [(ngModel)]="objetoTripulacaoNavio.encargos">
           </div>
         </div>
       </div>
@@ -47,11 +46,11 @@
             <div class="input-group-prepend">
               <span class="input-group-text bg">R$</span>
             </div>
-            <input type="text" class="form-control" placeholder="0,00" formControlName="custoMensal">
+            <input type="text" class="form-control" placeholder="0,00" name="custo-mensal" [(ngModel)]="objetoTripulacaoNavio.custoMensal" required>
           </div>
         </div>
       </div>
-      <button type="submit" class="btn btn-block btn-dark mt-4">
+      <button type="submit" class="btn btn-block btn-dark mt-4" [disabled]="tripulacaoForm.invalid">
         Salvar
       </button>
     </form>

@@ -6,12 +6,12 @@
     <div class="mb-5">
       <h2 class="text-center font-weight-bold font-italic text bg-transparent border-bottom border-dark pb-2">Cadastrar Informações de Oléo Lubrificante</h2>
     </div>
-    <form (ngSubmit)="criarConsumoOleo()" [formGroup]="oleoForm">
+    <form method="post" #oleoForm="ngForm" (ngSubmit)="criarConsumoOleo(oleoForm)">
         <div class="form-group row pt-2">
           <label class="col-sm-7 col-form-label">Dia: </label>
           <mat-form-field class="col-sm-5">
             <mat-label>Data</mat-label>
-            <input matInput [matDatepicker]="picker" formControlName="data" readonly>
+            <input matInput [matDatepicker]="picker" name="data" [(ngModel)]="oleoLubrificanteNavio.diaDoConsumo" required readonly>
             <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
             <mat-datepicker #picker></mat-datepicker>
           </mat-form-field>
@@ -20,7 +20,7 @@
           <label class="col-sm-4 col-form-label">Consumo de óleo: </label>
           <div class="col-sm-8">
             <div class="input-group">
-              <input type="text" class="form-control" placeholder="Informe o consumo de óleo." formControlName="consumoOleo">
+              <input type="text" class="form-control" placeholder="Informe o consumo de óleo." name="qtd-consumo" [(ngModel)]="oleoLubrificanteNavio.consumoNoDia" required>
               <div class="input-group-append">
                 <span class="input-group-text bg">Lts</span>
               </div>
@@ -31,7 +31,7 @@
           <label class="col-sm-4 col-form-label">Óleo Recebido: </label>
           <div class="col-sm-8">
             <div class="input-group">
-              <input type="text" class="form-control" placeholder="Quantidade de óleo recebido." formControlName="qtdOleoRecebido">
+              <input type="text" class="form-control" placeholder="Quantidade de óleo recebido." name="qtd-recebida" [(ngModel)]="oleoLubrificanteNavio.oleoRecebidoDia">
               <div class="input-group-append">
                 <span class="input-group-text bg">Lts</span>
               </div>
@@ -42,14 +42,14 @@
           <label class="col-sm-4 col-form-label">Óleo Fornecido:</label>
           <div class="col-sm-8 ">
             <div class="input-group">
-              <input type="text" class="form-control" placeholder="Quantidade de óleo fornecido." formControlName="qtdOleoFornecido">
+              <input type="text" class="form-control" placeholder="Quantidade de óleo fornecido." name="oleo-fornecido" [(ngModel)]="oleoLubrificanteNavio.oleoFornecidoDia">
               <div class="input-group-append">
                 <span class="input-group-text bg">Lts</span>
               </div>
             </div>
           </div>
         </div>
-        <button type="submit" class="btn btn-block btn-dark mt-4">
+        <button type="submit" class="btn btn-block btn-dark mt-4" [disabled]="oleoForm.invalid">
           Salvar
         </button>
     </form>

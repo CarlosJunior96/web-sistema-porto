@@ -14,11 +14,8 @@ import {ConsumoCombustivelService} from '../services/consumo-combustivel.service
 export class ConsumoCombustivelComponent implements OnInit {
 
   consumoCombustivelNavio: CombustivelNavio;
-  combustivelTipo: string;
-  combustivelForm: FormGroup;
-  imo: string;
 
-   combustiveisLista: any = [
+  combustiveisLista: any = [
     {valor: "MGO"},
     {valor: "MDO"},
     {valor: "IFO"},
@@ -33,32 +30,17 @@ export class ConsumoCombustivelComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.imo = sessionStorage.getItem("imo");
     this.consumoCombustivelNavio = new CombustivelNavio();
-    this.combustivelTipo;
-    this.combustiveisLista;
-/**
-    if (this.imo === null){
-      this.rotas.navigate([("home")])
-    }
-    else {**/
-      this.combustivelForm = new FormGroup({
-        data: new FormControl(""),
-        consumoCombustivel: new FormControl(""),
-        qtdCombustivelRecebido: new FormControl(""),
-        qtdCombustivelFornecido: new FormControl("")
-      });
-    //}
+   /**
+      if (this.imo === null){
+        this.rotas.navigate([("home")])
+      }
+   **/
   }
 
-  criarConsumoCombustivel(){
-    let dadosCombustivel = this.combustivelForm.value
-    this.consumoCombustivelNavio.consumoNoDia = dadosCombustivel.consumoCombustivel;
-    this.consumoCombustivelNavio.diaDoConsumo = new Date(dadosCombustivel.data);
-    this.consumoCombustivelNavio.combustivelFornecidoDia = dadosCombustivel.qtdCombustivelFornecido;
-    this.consumoCombustivelNavio.combustivelRecebidoDia = dadosCombustivel.qtdAguaRecebida;
-    this.consumoCombustivelNavio.tipo = this.combustivelTipo
+  criarConsumoCombustivel(dadosCombustivel: any){
 
+    /**
     this.inicioService.procurarNavioImo(this.imo).subscribe( navioImo => {
       this.consumoCombustivelNavio.navioCombustivel = navioImo;
 
@@ -72,7 +54,7 @@ export class ConsumoCombustivelComponent implements OnInit {
     }, error => {
       console.log("Erro ao cadastrar consumo de combustível.", error);
     })
-
+    **/
   }
 
 }

@@ -15,7 +15,6 @@ import {InicioService} from '../services/inicio.service';
 })
 export class ConsumoAguaComponent implements OnInit {
 
-  aguaReceberFomulario: FormGroup;
   aguaNavio: AguaNavio;
   inicio: InicioService;
   imo: string;
@@ -28,30 +27,19 @@ export class ConsumoAguaComponent implements OnInit {
 
   ngOnInit() {
     this.aguaNavio = new AguaNavio();
+   /**
+    *
     this.imo = sessionStorage.getItem("imo")
-
-   /** if (this.imo === null){
+    * if (this.imo === null){
       this.rotas.navigate([("home")])
-    }
-    else {**/
-      this.aguaReceberFomulario = new FormGroup({
-        dataInformar: new FormControl(""),
-        consumoAgua: new FormControl(""),
-        qtdAguaRecebida: new FormControl(""),
-        qtdAguaFornecida: new FormControl("")
-      });
-  //  }
+    } **/
   }
 
-  criarConsumoAgua(){
-    let valores = this.aguaReceberFomulario.value
-    this.aguaNavio.diaDoConsumo = new Date(valores.dataInformar)
-    this.aguaNavio.consumoNoDia = valores.consumoAgua
-    this.aguaNavio.aguaFornecidaNoDia = valores.qtdAguaFornecida
-    this.aguaNavio.aguaRecebidaNoDia = valores.qtdAguaRecebida
-
-    this.inicioService.procurarNavioImo(this.imo).subscribe( navioImo => {
-      this.aguaNavio.navioAgua = navioImo;
+  criarConsumoAgua(dadosConsumoAgua: any){
+    //console.info(dadosConsumoAgua);
+    let dados = this.aguaNavio;
+     this.inicioService.procurarNavioImo("123456").subscribe( navioImo => {
+     this.aguaNavio.navioAgua = navioImo;
 
       this.aguaNavioService.criarAguaNavio(this.aguaNavio).subscribe(aguaNavioDados => {
         let aguaConsumo = aguaNavioDados;
@@ -63,6 +51,8 @@ export class ConsumoAguaComponent implements OnInit {
     }, error => {
       alert("Navio não informado!")
     })
+    alert(this.aguaNavio.consumoNoDia)
+    console.info(dados);
   }
 
 
