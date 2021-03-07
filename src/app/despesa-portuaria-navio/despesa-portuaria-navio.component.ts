@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {FormControl, FormGroup} from '@angular/forms';
 
 @Component({
   selector: 'app-despesa-portuaria-navio',
@@ -8,6 +9,7 @@ import { Component, OnInit } from '@angular/core';
 export class DespesaPortuariaNavioComponent implements OnInit {
 
   tipoServico: string;
+  despesaPortuariaForm: FormGroup;
 
   listaServicos: any = [
     {tipo: "Praticagem"},
@@ -20,5 +22,13 @@ export class DespesaPortuariaNavioComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    this.despesaPortuariaForm = new FormGroup( {
+      diaDespesa: new FormControl(""),
+      valor: new FormControl("")
+    })
+  }
+
+  criarDespesaNavio(){
+
   }
 }

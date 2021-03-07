@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {FormControl, FormGroup} from '@angular/forms';
 
 @Component({
   selector: 'app-acidente-navio',
@@ -10,6 +11,7 @@ export class AcidenteNavioComponent implements OnInit {
   evento: string
   afastamento: string
   downtime: string
+  acidenteForm: FormGroup;
 
   listaEvento: any = [
     {tipo: "Abalroamento"},
@@ -33,6 +35,14 @@ export class AcidenteNavioComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    this.acidenteForm = new FormGroup( {
+      diaAcidente: new FormControl("")
+    })
+  }
+
+
+  cadastrarAcidente(){
+
   }
 
 }

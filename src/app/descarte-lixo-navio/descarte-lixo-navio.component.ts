@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {FormControl, FormGroup} from '@angular/forms';
 
 @Component({
   selector: 'app-descarte-lixo-navio',
@@ -20,7 +21,6 @@ export class DescarteLixoNavioComponent implements OnInit {
     {categoria: "J"},
     {categoria: "K"},
   ];
-
   vetorCidades: any = [
     {cidade: "Arraial do Cabo"},
     {cidade: "Açu"},
@@ -30,11 +30,24 @@ export class DescarteLixoNavioComponent implements OnInit {
     {cidade: "Niterói"},
     {cidade: "Vitória"},
     {cidade: "Itajaí"}
-  ]
+  ];
+  descarteLixoForm: FormGroup;
+
+  categoriaEscolhida: string;
+  cidade: string;
 
   constructor() { }
 
   ngOnInit(): void {
+    this.descarteLixoForm = new FormGroup( {
+      diaDescarte: new FormControl(""),
+      volume: new FormControl(""),
+      empresaColetora: new FormControl("")
+    })
+  }
+
+  criarDescarteLixo(){
+
   }
 
 }

@@ -7,3 +7,7 @@
 .link-ativo{
   font-weight: bold;
 }
+
+.placeholder{
+  color: transparent;
+}

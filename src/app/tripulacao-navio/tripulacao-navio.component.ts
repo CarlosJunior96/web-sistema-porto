@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {FormControl, FormGroup} from '@angular/forms';
 
 @Component({
   selector: 'app-tripulacao-navio',
@@ -7,9 +8,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TripulacaoNavioComponent implements OnInit {
 
+  tripulacaoForm: FormGroup;
+
   constructor() { }
 
   ngOnInit(): void {
+    this.tripulacaoForm = new FormGroup( {
+      funcao: new FormControl(""),
+      turma: new FormControl(""),
+      salario: new FormControl(""),
+      encargos: new FormControl(""),
+      custoMensal: new FormControl("")
+    })
   }
 
+  cadastrarTripulacao(){
+
+  }
 }
