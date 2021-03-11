@@ -11,6 +11,10 @@ export class  InicioService {
 
   constructor(private http: HttpClient) { }
 
+  listarNavios(): Observable<any>{
+    return this.http.get(UrlsApiPorto.urlFindAllNavios)
+  }
+
   procurarNavioImo(imo: string): Observable<any>{
     return this.http.get(UrlsApiPorto.urlFindNavioIMO + imo);
   }

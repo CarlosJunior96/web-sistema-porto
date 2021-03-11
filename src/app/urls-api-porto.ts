@@ -8,6 +8,10 @@ export class UrlsApiPorto {
     return this.urlBaseServidor + "/navios";
   }
 
+  public static get urlFindAllNavios(): string{
+    return this.urlBaseNavios + "/";
+  }
+
   public static get urlCadastrarNavio(): string{
     return this.urlBaseNavios + "/";
   }

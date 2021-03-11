@@ -1,17 +1,19 @@
-<div class="bg-div-home">
-  <div class="vh-100  bg-dark">
-    <form (ngSubmit)="procurarNavio()" [formGroup]="navioReceber">
-      <div class="col-md-6 offset-md-3 p-5  padding-form-div">
-        <label class="col-sm-8 offset-sm-2 text-center text-white label-form s">
-          <h1 class="">Informe IMO do Navio</h1>
-        </label>
-        <div class="col-sm-12 offset-sm-0">
-          <input type="text" class="form-control text-center" placeholder="0000000" formControlName="imoNavio">
-        </div>
-        <div class="col-sm-12 offset-sm-0 mt-1">
-          <button type="submit" class="btn-lg btn-secondary btn-block text-dark font-weight-bold">Avançar</button>
-        </div>
+<div class="bg-dark" style="height: 1000px">
+  <div class="w-100">
+    <div class="row">
+      <div class="col-md-10 container">
+        <h2 class="shadow-lg text-center border font-weight-bolder font-italic border-white rounded text bg-transparent p-2 mt-5 mb-5" style="font-size: 32px; color: #F5FFFA">Escolha o seu Navio</h2>
       </div>
-    </form>
+    </div>
+    <div class="row col-md-8 offset-md-2 mt-5">
+      <div class="col-md-2 mb-4 p-4" *ngFor="let htNavio of listaNavios">
+        <button class="btn btn-light btn-outline-secondary rounded shadow-lg" (click)="selecionarNavio(htNavio.imo)">
+          <div>
+            <p class="text-dark font-weight-bolder">{{htNavio.nome}}</p>
+            <p class="text-dark font-weight-bolder">IMO: {{htNavio.imo}}</p>
+          </div>
+        </button>
+      </div>
+    </div>
   </div>
 </div>

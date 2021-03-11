@@ -11,7 +11,16 @@ import {Navio} from '../models/navio';
 })
 export class InicioComponent implements OnInit {
 
-  navioReceber: FormGroup;
+  /**listaNavios: any = [
+    {nome: "Navio A", imo: "123456"},
+    {nome: "Navio B", imo: "567897"},
+    {nome: "Navio C", imo: "121547"},
+    {nome: "Navio D", imo: "154789"},
+    {nome: "Navio D", imo: "154789"},
+    {nome: "Navio D", imo: "154789"}
+  ]**/
+  listaNavios: Array<Navio>
+  imoNavio: string;
   navio: Navio;
   constructor(
     private inicioService: InicioService,
@@ -19,23 +28,29 @@ export class InicioComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.imoNavio = "0";
     this.navio = new Navio();
-    this.navioReceber = new FormGroup({
-      imoNavio: new FormControl("")
+    this.receberListaNavios();
+  }
+
+  receberListaNavios(){
+    this.inicioService.listarNavios().subscribe( lista => {
+      this.listaNavios = lista
+      console.info(this.listaNavios);
     })
   }
 
-  procurarNavio(){
-    let imo = this.navioReceber.value
-    this.inicioService.procurarNavioImo(imo.imoNavio).subscribe(navioImo => {
+  selecionarNavio(imo: any){
+    this.imoNavio = String(imo)
+    this.inicioService.procurarNavioImo(this.imoNavio).subscribe(navioImo => {
       this.navio = navioImo;
-      sessionStorage.setItem("imo", imo.imoNavio)
-
-      var b = sessionStorage.getItem("imo")
+      sessionStorage.setItem("imo", this.imoNavio)
       this.rotas.navigate([("agua-navio")])
     }, error => {
-      alert("Navio Nao encontrado!")
+      alert("Erro ao Logar!")
+      this.rotas.navigate([("home")])
     })
   }
+
 
 }
