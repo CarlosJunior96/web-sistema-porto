@@ -14,6 +14,7 @@ import {InicioService} from '../services/inicio.service';
 export class ConsumoOleoComponent implements OnInit {
 
   oleoLubrificanteNavio: OleoLubrificanteNavio;
+  navio: Navio;
 
   constructor(
     private rotas: Router,
@@ -23,14 +24,15 @@ export class ConsumoOleoComponent implements OnInit {
 
   ngOnInit(): void {
     this.oleoLubrificanteNavio = new OleoLubrificanteNavio();
+    if (sessionStorage.getItem("imo")){
+      this.inicioService.procurarNavioImo(sessionStorage.getItem("imo")).subscribe( navioBanco => {
+        this.navio = navioBanco;
+      })
+    }
 
-    //if (this.imo === null){
-      //this.rotas.navigate([("home")])
-    //}
-    //}
-
-
-
+    else {
+      this.rotas.navigate([('home')])
+    }
   }
 
   criarConsumoOleo(dadosOleo: any){

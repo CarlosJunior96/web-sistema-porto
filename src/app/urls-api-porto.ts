@@ -65,4 +65,17 @@ export class UrlsApiPorto {
   public static get urlCadastrarEstoqueOleoNavio(): string{
     return this.urlBaseNavios + "/estoque-oleo";
   }
+
+  /** RANCHO NAVIO **/
+  public static get urlBaseRanchoNavio(): string{
+    return this.urlBaseServidor + "/rancho-navio";
+  }
+
+  public static get urlCadastrarRanchoNavio(): string{
+    return this.urlBaseRanchoNavio + "/";
+  }
+
+  public static get urlUploadReciboRancho(): string{
+    return this.urlBaseRanchoNavio + "/salvar-recibo";
+  }
 }

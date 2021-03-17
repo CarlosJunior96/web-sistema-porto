@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {FormControl, FormGroup} from '@angular/forms';
 import {DescarteLixo} from '../models/descarte-lixo';
+import {Navio} from '../models/navio';
+import {InicioService} from '../services/inicio.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-descarte-lixo-navio',
@@ -32,13 +35,27 @@ export class DescarteLixoNavioComponent implements OnInit {
     {cidade: "Vitória"},
     {cidade: "Itajaí"}
   ];
+  navio: Navio;
 
   objetoDescarteLixo: DescarteLixo;
 
-  constructor() { }
+  constructor(
+    private inicioService: InicioService,
+    private rotas: Router
+  ) { }
 
   ngOnInit(): void {
     this.objetoDescarteLixo = new DescarteLixo();
+
+    if (sessionStorage.getItem("imo")){
+      this.inicioService.procurarNavioImo(sessionStorage.getItem("imo")).subscribe( navioBanco => {
+        this.navio = navioBanco;
+      })
+    }
+
+    else {
+      this.rotas.navigate([('home')])
+    }
   }
 
   criarDescarteLixo(dadosDescarte: any){

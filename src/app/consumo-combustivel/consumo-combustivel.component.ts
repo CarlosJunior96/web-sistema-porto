@@ -14,6 +14,7 @@ import {ConsumoCombustivelService} from '../services/consumo-combustivel.service
 export class ConsumoCombustivelComponent implements OnInit {
 
   consumoCombustivelNavio: CombustivelNavio;
+  navio: Navio;
 
   combustiveisLista: any = [
     {valor: "MGO"},
@@ -31,11 +32,16 @@ export class ConsumoCombustivelComponent implements OnInit {
 
   ngOnInit(): void {
     this.consumoCombustivelNavio = new CombustivelNavio();
-   /**
-      if (this.imo === null){
-        this.rotas.navigate([("home")])
-      }
-   **/
+
+    if (sessionStorage.getItem("imo")){
+      this.inicioService.procurarNavioImo(sessionStorage.getItem("imo")).subscribe( navioBanco => {
+        this.navio = navioBanco;
+      })
+    }
+
+    else {
+      this.rotas.navigate([('home')])
+    }
   }
 
   criarConsumoCombustivel(dadosCombustivel: any){

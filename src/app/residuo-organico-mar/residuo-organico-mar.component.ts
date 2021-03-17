@@ -4,6 +4,7 @@ import {ResiduoOrganicoNavio} from '../models/residuo-organico-navio';
 import {Router} from '@angular/router';
 import {ResiduoOrganicoService} from '../services/residuo-organico.service';
 import {InicioService} from '../services/inicio.service';
+import {Navio} from '../models/navio';
 
 @Component({
   selector: 'app-residuo-organico-mar',
@@ -13,6 +14,7 @@ import {InicioService} from '../services/inicio.service';
 export class ResiduoOrganicoMarComponent implements OnInit {
 
   residuoOrganicoNavio: ResiduoOrganicoNavio
+  navio: Navio
 
   constructor(
     private rotas: Router,
@@ -23,14 +25,15 @@ export class ResiduoOrganicoMarComponent implements OnInit {
   ngOnInit(): void {
     this.residuoOrganicoNavio = new ResiduoOrganicoNavio();
 
-    /**
-     *
-     this.imo = sessionStorage.getItem("imo");
-
-     if (this.imo === null){
-      this.rotas.navigate([("home")])
+    if (sessionStorage.getItem("imo")){
+      this.inicioService.procurarNavioImo(sessionStorage.getItem("imo")).subscribe( navioBanco => {
+        this.navio = navioBanco;
+      })
     }
-     */
+
+    else {
+      this.rotas.navigate([('home')])
+    }
   }
 
   criarResiduoOrganico(dadosResiduo: any){

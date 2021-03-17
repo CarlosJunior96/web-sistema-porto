@@ -15,6 +15,7 @@ import {InicioService} from '../services/inicio.service';
 })
 export class ConsumoAguaComponent implements OnInit {
 
+  navio: Navio;
   aguaNavio: AguaNavio;
   inicio: InicioService;
   imo: string;
@@ -27,32 +28,26 @@ export class ConsumoAguaComponent implements OnInit {
 
   ngOnInit() {
     this.aguaNavio = new AguaNavio();
-   /**
-    *
-    this.imo = sessionStorage.getItem("imo")
-    * if (this.imo === null){
-      this.rotas.navigate([("home")])
-    } **/
+
+    if (sessionStorage.getItem("imo")){
+      this.inicioService.procurarNavioImo(sessionStorage.getItem("imo")).subscribe( navioBanco => {
+        this.navio = navioBanco;
+      })
+    }
+
+    else {
+      this.rotas.navigate([('home')])
+    }
   }
 
   criarConsumoAgua(dadosConsumoAgua: any){
-    //console.info(dadosConsumoAgua);
-    let dados = this.aguaNavio;
-     this.inicioService.procurarNavioImo("123456").subscribe( navioImo => {
-     this.aguaNavio.navioAgua = navioImo;
-
-      this.aguaNavioService.criarAguaNavio(this.aguaNavio).subscribe(aguaNavioDados => {
-        let aguaConsumo = aguaNavioDados;
-        console.log(aguaConsumo);
-      }, error => {
-        console.log("Erro ao cadastrar consumo de agua.", error);
-      })
-
+    this.aguaNavio.navioAgua = this.navio
+    this.aguaNavioService.criarAguaNavio(this.aguaNavio).subscribe(aguaNavioDados => {
+      alert("Salvo com Sucesso!")
     }, error => {
-      alert("Navio não informado!")
+      alert("Erro ao cadastrar consumo de agua.");
     })
-    alert(this.aguaNavio.consumoNoDia)
-    console.info(dados);
+
   }
 
 

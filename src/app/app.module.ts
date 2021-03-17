@@ -29,6 +29,8 @@ import {MatInputModule} from '@angular/material/input';
 import {MatSelectModule} from '@angular/material/select';
 import {MAT_DATE_LOCALE} from '@angular/material/core';
 import {HammerModule} from '@angular/platform-browser';
+import {MaterialFileInputModule} from 'ngx-material-file-input';
+
 import { CadastrarEstoqueComponent } from './navio/cadastrar-estoque/cadastrar-estoque.component';
 import { RanchoNavioComponent } from './rancho-navio/rancho-navio.component';
 import { DescarteLixoNavioComponent } from './descarte-lixo-navio/descarte-lixo-navio.component';
@@ -86,6 +88,7 @@ export const rotasApp: Routes = [
     MatSelectModule,
     HttpClientModule,
     ReactiveFormsModule,
+    MaterialFileInputModule,
     RouterModule.forRoot(rotasApp, {enableTracing: true})  /** importando o modulo de rotas, passando o vetor de rotas como parametro e ativando o registro de eventos **/
   ],
   providers: [
