@@ -32,7 +32,7 @@
               <div class="input-group-prepend">
                 <span class="input-group-text bg">R$</span>
               </div>
-              <input type="text" class="form-control" placeholder="0,00" name="nf-alimentos" [(ngModel)]="objetoRancho.nfAlimentos">
+              <input type="text" class="form-control" placeholder="0,00" name="nf-alimentos" [(ngModel)]="objetoRancho.nfAlimentos" (change)="eventoNFAlimentos($event); total()">
             </div>
           </div>
         </div>
@@ -43,7 +43,7 @@
               <div class="input-group-prepend">
                 <span class="input-group-text bg">R$</span>
               </div>
-              <input type="text" class="form-control" placeholder="0,00" name="nf-outros" [(ngModel)]="objetoRancho.nfOutros">
+              <input type="text" class="form-control" placeholder="0,00" name="nf-outros" [(ngModel)]="objetoRancho.nfOutros" (change)="eventoNFOutros($event); total()">
             </div>
           </div>
         </div>
@@ -54,16 +54,13 @@
               <div class="input-group-prepend">
                 <span class="input-group-text bg">R$</span>
               </div>
-              <input type="text" class="form-control" placeholder="0,00" name="valor-total" [(ngModel)]="objetoRancho.valorTotal" readonly>
+              <input type="text" id="totalnf" class="form-control" placeholder="0,00" name="valor-total" [(ngModel)]="objetoRancho.valorTotal" readonly>
             </div>
           </div>
         </div>
         <div class="form-group row">
           <div class="col-sm-12">
-            <mat-form-field style="width: 100%">
-              <ngx-mat-file-input name="file-recibo" (change)="uploadRecibo($event)" placeholder="Enviar Recibo" multiple></ngx-mat-file-input>
-              <mat-icon type="button" matSuffix>folder</mat-icon>
-            </mat-form-field>
+            <input class="form-control" type="file" #inputfile name="file-recibo" (change)="uploadRecibo($event)" placeholder="Enviar Recibo" multiple >
           </div>
         </div>
       </div>
@@ -73,4 +70,5 @@
     </form>
   </div>
 </div>
+
 

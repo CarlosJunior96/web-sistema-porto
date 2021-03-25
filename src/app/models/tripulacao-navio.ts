@@ -1,3 +1,5 @@
+import {Navio} from './navio';
+
 export class TripulacaoNavio {
   id: number;
   funcao: string;
@@ -5,4 +7,5 @@ export class TripulacaoNavio {
   salario: number;
   encargos: number;
   custoMensal: number;
+  navioTripulacao: Navio;
 }

@@ -44,8 +44,9 @@ export class ConsumoAguaComponent implements OnInit {
     this.aguaNavio.navioAgua = this.navio
     this.aguaNavioService.criarAguaNavio(this.aguaNavio).subscribe(aguaNavioDados => {
       alert("Salvo com Sucesso!")
+      dadosConsumoAgua.reset();
     }, error => {
-      alert("Erro ao cadastrar consumo de agua.");
+      alert("Erro ao cadastrar consumo de água!");
     })
 
   }

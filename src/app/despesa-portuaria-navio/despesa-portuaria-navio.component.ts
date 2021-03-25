@@ -4,6 +4,7 @@ import {DespesaNavio} from '../models/despesa-navio';
 import {Navio} from '../models/navio';
 import {InicioService} from '../services/inicio.service';
 import {Router} from '@angular/router';
+import {DespesaPortuariaService} from '../services/despesa-portuaria.service';
 
 @Component({
   selector: 'app-despesa-portuaria-navio',
@@ -25,6 +26,7 @@ export class DespesaPortuariaNavioComponent implements OnInit {
 
   constructor(
     private inicioService: InicioService,
+    private despesaPortuariaService: DespesaPortuariaService,
     private rotas: Router
   ) { }
 
@@ -36,7 +38,6 @@ export class DespesaPortuariaNavioComponent implements OnInit {
         this.navio = navioBanco;
       })
     }
-
     else {
       this.rotas.navigate([('home')])
     }
@@ -44,7 +45,11 @@ export class DespesaPortuariaNavioComponent implements OnInit {
   }
 
   criarDespesaNavio(dadosDespesa: any){
-
+    this.objetoDespesa.navioDespesas = this.navio;
+    this.despesaPortuariaService.criarDespesasPortuariaNavio(this.objetoDespesa).subscribe( despesasDados => {
+      alert("Salvo com Sucesso!");
+      dadosDespesa.reset();
+    })
     dadosDespesa.reset()
   }
 }

@@ -78,4 +78,44 @@ export class UrlsApiPorto {
   public static get urlUploadReciboRancho(): string{
     return this.urlBaseRanchoNavio + "/salvar-recibo";
   }
+
+  /** DESCARTE LIXO NAVIO **/
+  public static get urlBaseDescarteLixoNavio(): string{
+    return this.urlBaseServidor + "/descarte-lixo-navio";
+  }
+
+  public static get urlCadastrarDescarteLixo(): string{
+    return this.urlBaseDescarteLixoNavio + "/"
+  }
+
+  /** DESPESAS PORTUÁRIAS NAVIO **/
+  public static get urlBaseDespesaPortuariasNavio(): string{
+    return this.urlBaseServidor + "/despesas-portuarias-navio"
+  }
+
+  public static get urlCadastrarDespesaPortuaria(): string{
+    return this.urlBaseDespesaPortuariasNavio + "/"
+  }
+
+  /** NAVIO ACIDENTES **/
+  public static get urlBaseAcidentesNavio(): string{
+    return this.urlBaseServidor + "/acidentes-navio";
+  }
+
+  public static get urlCadastrarAcidentesNavio(): string{
+    return this.urlBaseAcidentesNavio + "/"
+  }
+
+  public static get urlUploadArquivoAcidente(): string{
+    return this.urlBaseAcidentesNavio + "/salvar-arquivo"
+  }
+
+  /** TRIPULACAO NAVIO **/
+  public static get urlBaseTripulacaoNavio(): string{
+    return this.urlBaseServidor + "/tripulacao-navio"
+  }
+
+  public static get urlCadastrarTripulacao(): string{
+    return this.urlCadastrarTripulacao + "/"
+  }
 }

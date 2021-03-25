@@ -4,6 +4,7 @@ import {TripulacaoNavio} from '../models/tripulacao-navio';
 import {Navio} from '../models/navio';
 import {InicioService} from '../services/inicio.service';
 import {Router} from '@angular/router';
+import {TripulacaoNavioService} from '../services/tripulacao-navio.service';
 
 @Component({
   selector: 'app-tripulacao-navio',
@@ -17,6 +18,7 @@ export class TripulacaoNavioComponent implements OnInit {
 
   constructor(
     private inicioService: InicioService,
+    private tripulacaoNavioService: TripulacaoNavioService,
     private rotas: Router
   ) { }
 
@@ -35,6 +37,12 @@ export class TripulacaoNavioComponent implements OnInit {
   }
 
   cadastrarTripulacao(dadosTripulacao: any){
-
+    this.objetoTripulacaoNavio.navioTripulacao = this.navio;
+    this.tripulacaoNavioService.cadastrarTripulacao(this.objetoTripulacaoNavio).subscribe( dadosTripulacao => {
+      alert("Salvo com Sucesso!");
+      dadosTripulacao.reset();
+    }), error => {
+      alert("Erro ao cadastrar Tripulação!")
+    }
   }
 }

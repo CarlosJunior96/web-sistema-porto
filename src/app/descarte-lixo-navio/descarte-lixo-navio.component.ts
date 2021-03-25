@@ -4,6 +4,7 @@ import {DescarteLixo} from '../models/descarte-lixo';
 import {Navio} from '../models/navio';
 import {InicioService} from '../services/inicio.service';
 import {Router} from '@angular/router';
+import {DescarteLixoService} from '../services/descarte-lixo.service';
 
 @Component({
   selector: 'app-descarte-lixo-navio',
@@ -41,6 +42,7 @@ export class DescarteLixoNavioComponent implements OnInit {
 
   constructor(
     private inicioService: InicioService,
+    private descarteLixoService: DescarteLixoService,
     private rotas: Router
   ) { }
 
@@ -52,14 +54,18 @@ export class DescarteLixoNavioComponent implements OnInit {
         this.navio = navioBanco;
       })
     }
-
     else {
       this.rotas.navigate([('home')])
     }
   }
 
   criarDescarteLixo(dadosDescarte: any){
-
+    this.objetoDescarteLixo.navioDescarte = this.navio;
+    this.descarteLixoService.criarDescarteLixo(this.objetoDescarteLixo).subscribe( descarteLixoDados => {
+      alert("Salvo com Sucesso!");
+    }), error => {
+      alert("Erro ao cadastrar descarte de Lixo!")
+    }
   }
 
 }
