@@ -1,0 +1,122 @@
+<app-template-menu></app-template-menu>
+<div class="container p-2 font-weight-bold" >
+  <div class="col-md-8 mt-2 p-5 offset-md-2 border rounded bg-white shadow" id="div-inspecao">
+    <div class="mb-5">
+      <h2 class="text-center font-weight-bold font-italic text bg-transparent border-bottom border-dark pb-2">Cadastrar Inspeção</h2>
+    </div>
+    <form method="post" #inspecaoForm="ngForm">
+      <div>
+        <div class="form-group row pt-2">
+          <label class="col-sm-6 col-form-label">Dia da Inspeção: </label>
+          <mat-form-field class="col-sm-6">
+            <mat-label>Data</mat-label>
+            <input matInput [matDatepicker]="diaInspecao" name="dia-inspecao" [(ngModel)]="inspecao.dataInspecao" required readonly>
+            <mat-datepicker-toggle matSuffix [for]="diaInspecao"></mat-datepicker-toggle>
+            <mat-datepicker #diaInspecao></mat-datepicker>
+          </mat-form-field>
+        </div>
+        <div class="form-group row div-datepicker-mt">
+          <label class="col-sm-6 col-form-label">Tipo de Inspeção: </label>
+          <div class="col-sm-6">
+            <mat-select class="form-control" name="tipo-pedido" [(ngModel)]="inspecao.tipoInspecao" placeholder="Selecione" required>
+              <mat-option *ngFor="let tipo of listaInspecao" [value]="tipo.tipo">
+                {{tipo.tipo}}
+              </mat-option>
+            </mat-select>
+          </div>
+        </div>
+        <div class="form-group row p-2">
+          <table class="table">
+            <thead class="thead-light">
+            <tr>
+              <th >#</th>
+              <th >Pêndencia</th>
+              <th >Categoria</th>
+              <th >Prazo</th>
+              <th >Ação Corretiva</th>
+              <th >Status</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr >
+              <td>1</td>
+              <td>Falto dados</td>
+              <td>Impeditivo</td>
+              <td>12/01/2021</td>
+              <td>Multa no valor de ...</td>
+              <td>Concluído</td>
+            </tr>
+            <tr >
+              <td>2</td>
+              <td>Falto dados</td>
+              <td>Impeditivo</td>
+              <td>12/01/2021</td>
+              <td>Multa no valor de ...</td>
+              <td>Concluído</td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="col-lg-12" align="center">
+          <button id="botao-adicionar-pendencia" class="btn btn-success mt-2 align-items-center" (click)="mostrarDiv('div-inserir-pendencia')">Inserir Pendência</button>
+        </div>
+      </div>
+      <button type="submit" class="btn btn-block btn-dark mt-4" [disabled]="inspecaoForm.invalid">
+        Salvar
+      </button>
+
+      <form method="post" #pendenciaItem="ngForm" (ngSubmit)="salvarPendencia(pendenciaItem)">
+        <div id="div-inserir-pendencia" style="display: none" class="col-sm-8 offset-2 border rounded p-4">
+          <h2 class="text-center font-weight-bold text bg-transparent border-bottom border-dark pb-2">Inserir Pendência</h2>
+          <div class="form-group row ">
+            <label class="col-sm-6 col-form-label">Pêndencia: </label>
+            <div class="col-sm-6">
+              <input type="text" class="form-control" placeholder="Informe a Pêndencia" name="pendencia-navio" [(ngModel)]="pendencia.pendencia">
+            </div>
+          </div>
+          <div class="form-group row ">
+            <label class="col-sm-6 col-form-label">Categoria: </label>
+            <div class="col-sm-6">
+              <mat-select class="form-control" name="tipo-pedido" [(ngModel)]="pendencia.categoria" placeholder="Selecione" required>
+                <mat-option *ngFor="let categoria of listaCategorias" [value]="categoria.categoria">
+                  {{categoria.categoria}}
+                </mat-option>
+              </mat-select>
+            </div>
+          </div>
+          <div class="form-group row pt-2">
+            <label class="col-sm-6 col-form-label">Prazo da Inspeção: </label>
+            <mat-form-field class="col-sm-6">
+              <mat-label>Data</mat-label>
+              <input matInput [matDatepicker]="prazoInspecao" name="prazo-inspecao" [(ngModel)]="pendencia.prazo" required readonly>
+              <mat-datepicker-toggle matSuffix [for]="prazoInspecao"></mat-datepicker-toggle>
+              <mat-datepicker #prazoInspecao></mat-datepicker>
+            </mat-form-field>
+          </div>
+          <div class="form-group row ">
+            <label class="col-sm-6 col-form-label">Ação Corretiva: </label>
+            <div class="col-sm-6">
+              <input type="text" class="form-control" placeholder="Informe Ação Corretiva" name="acao-corretiva" [(ngModel)]="pendencia.acaoCorretiva">
+            </div>
+          </div>
+          <div class="form-group row ">
+            <label class="col-sm-6 col-form-label">Status: </label>
+            <div class="col-sm-6">
+              <mat-select class="form-control" name="tipo-pedido" [(ngModel)]="pendencia.status" placeholder="Selecione" required>
+                <mat-option *ngFor="let status of status" [value]="status.situacao">
+                  {{status.situacao}}
+                </mat-option>
+              </mat-select>
+            </div>
+          </div>
+          <div class="col-sm-12" align="center">
+            <button type="submit" class="btn btn-success mt-2" [disabled]="pendenciaItem.invalid">Inserir Pendência</button>
+          </div>
+        </div>
+      </form>
+    </form>
+  </div>
+
+</div>
+
+

@@ -88,6 +88,10 @@ export class UrlsApiPorto {
     return this.urlBaseDescarteLixoNavio + "/"
   }
 
+  public static get urlUploadReciboDescarte(): string{
+    return this.urlBaseDescarteLixoNavio + "/salvar-recibo-descarte"
+  }
+
   /** DESPESAS PORTUÁRIAS NAVIO **/
   public static get urlBaseDespesaPortuariasNavio(): string{
     return this.urlBaseServidor + "/despesas-portuarias-navio"

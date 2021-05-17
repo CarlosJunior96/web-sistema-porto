@@ -37,6 +37,7 @@ export class DescarteLixoNavioComponent implements OnInit {
     {cidade: "Itajaí"}
   ];
   navio: Navio;
+  arquivoUpload: any;
 
   objetoDescarteLixo: DescarteLixo;
 
@@ -61,11 +62,36 @@ export class DescarteLixoNavioComponent implements OnInit {
 
   criarDescarteLixo(dadosDescarte: any){
     this.objetoDescarteLixo.navioDescarte = this.navio;
+    const tamanho = this.arquivoUpload.length;
+
     this.descarteLixoService.criarDescarteLixo(this.objetoDescarteLixo).subscribe( descarteLixoDados => {
-      alert("Salvo com Sucesso!");
+      if (tamanho > 0){
+        for( var i = 0; i < tamanho; i++){
+          let listarArquivos = new FormData();
+          listarArquivos.append("recibo", this.arquivoUpload[i]);
+          this.descarteLixoService.salvarReciboAcidente(listarArquivos).subscribe( informacao => {
+            console.log("Salvo!");
+          })
+        }
+      }
+
+      alert("Salvo com Sucesso!")
+      this.arquivoUpload = []
+      dadosDescarte.reset()
+      this.clear()
+
     }), error => {
       alert("Erro ao cadastrar descarte de Lixo!")
     }
   }
 
+  uploadReciboDescarte(event){
+    if(event.target.files && event.target.files[0]){
+      this.arquivoUpload = event.target.files;
+    }
+  }
+
+  clear(){
+    (<HTMLInputElement>document.getElementById("arquivoRecibo")).value = null
+  }
 }

@@ -37,6 +37,9 @@ import { DescarteLixoNavioComponent } from './descarte-lixo-navio/descarte-lixo-
 import { DespesaPortuariaNavioComponent } from './despesa-portuaria-navio/despesa-portuaria-navio.component';
 import { AcidenteNavioComponent } from './acidente-navio/acidente-navio.component';
 import { TripulacaoNavioComponent } from './tripulacao-navio/tripulacao-navio.component';
+import {AngularFileUploaderModule} from 'angular-file-uploader';
+import { InspecoesNavioComponent } from './inspecoes-navio/inspecoes-navio.component';
+import { HistoricoCadastroComponent } from './historico-cadastro/historico-cadastro.component';
 
 /** VETOR QUE RECEBE AS ROTAS QUE O SISTEMA TERÁ **/
 export const rotasApp: Routes = [
@@ -51,6 +54,8 @@ export const rotasApp: Routes = [
   {path: "despesa-portuaria-navio", component: DespesaPortuariaNavioComponent},
   {path: "cadastrar-acidentes", component: AcidenteNavioComponent},
   {path: "cadastrar-tripulacao", component: TripulacaoNavioComponent},
+  {path: "cadastrar-inspecao", component: InspecoesNavioComponent},
+  {path: "historico-informacoes", component: HistoricoCadastroComponent},
   {path: "home", component: InicioComponent},
   {path: "", component: InicioComponent}, /** se tiver apenas o url geral será redirecionado para o inicio **/
   {path: "**", component: PaginaNaoEncontradaComponent} /** se não existir nenhum dos endereços informados vai pra essa pagina**/
@@ -72,9 +77,12 @@ export const rotasApp: Routes = [
     DescarteLixoNavioComponent,
     DespesaPortuariaNavioComponent,
     AcidenteNavioComponent,
-    TripulacaoNavioComponent
+    TripulacaoNavioComponent,
+    InspecoesNavioComponent,
+    HistoricoCadastroComponent
   ],
   imports: [
+    AngularFileUploaderModule,
     HammerModule,
     BrowserAnimationsModule,
     MatNativeDateModule,

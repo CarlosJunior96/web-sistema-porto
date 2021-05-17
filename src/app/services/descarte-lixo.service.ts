@@ -14,4 +14,8 @@ export class DescarteLixoService {
   criarDescarteLixo(descarteLixo: DescarteLixo): Observable<any>{
     return this.http.post(UrlsApiPorto.urlCadastrarDescarteLixo, descarteLixo);
   }
+
+  salvarReciboAcidente(recibo: FormData) : Observable<any>{
+    return this.http.post(UrlsApiPorto.urlUploadReciboDescarte, recibo);
+  }
 }

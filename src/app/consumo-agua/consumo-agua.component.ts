@@ -32,6 +32,7 @@ export class ConsumoAguaComponent implements OnInit {
     if (sessionStorage.getItem("imo")){
       this.inicioService.procurarNavioImo(sessionStorage.getItem("imo")).subscribe( navioBanco => {
         this.navio = navioBanco;
+        console.log("Testando!!!");
       })
     }
 

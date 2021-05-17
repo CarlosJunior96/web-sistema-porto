@@ -69,8 +69,11 @@ export class AcidenteNavioComponent implements OnInit {
           })
         }
       }
-      alert("Salvo com Sucesso!");
-      dadosAcidente.reset();
+      alert("Salvo com Sucesso!")
+      this.arquivoUpload = []
+      dadosAcidente.reset()
+      this.clear()
+      console.log(this.arquivoUpload);
     }), error => {
       alert("Erro ao Cadastrar Acidentes!")
     }
@@ -81,5 +84,10 @@ export class AcidenteNavioComponent implements OnInit {
     if(event.target.files && event.target.files[0]){
       this.arquivoUpload = event.target.files;
     }
+  }
+
+
+  clear(){
+    (<HTMLInputElement>document.getElementById("arquivoRecibo")).value = null
   }
 }

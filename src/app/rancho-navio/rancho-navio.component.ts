@@ -1,5 +1,4 @@
-import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
-import {FormControl, FormControlName, FormGroup, Validators} from '@angular/forms';
+import {Component, OnInit, ViewEncapsulation} from '@angular/core';
 import {Rancho} from '../models/rancho';
 import {InicioService} from '../services/inicio.service';
 import {Navio} from '../models/navio';
@@ -9,11 +8,10 @@ import {RanchoService} from '../services/rancho.service';
 @Component({
   selector: 'app-rancho-navio',
   templateUrl: './rancho-navio.component.html',
-  styleUrls: ['./rancho-navio.component.css']
+  styleUrls: ['./rancho-navio.component.css'],
+  encapsulation: ViewEncapsulation.None
 })
 export class RanchoNavioComponent implements OnInit {
-
-  @ViewChild('inputfile') resetarArquivos:ElementRef;
 
   objetoRancho: Rancho;
   srcResult: any;
@@ -62,13 +60,15 @@ export class RanchoNavioComponent implements OnInit {
           let listaArquivos = new FormData();
           listaArquivos.append("recibo", this.arquivoUpload[i]);
           this.ranchoService.salvarRecibo(listaArquivos).subscribe( informacao => {
-              console.log("Salvo");
             }
           )
         }
       }
       alert("Salvo com Sucesso!")
+      this.arquivoUpload = []
       dadosRancho.reset()
+      this.clear()
+      console.log(this.arquivoUpload);
     }), error => {
       alert("Erro ao Salvar Rancho!")
     }
@@ -99,8 +99,7 @@ export class RanchoNavioComponent implements OnInit {
     this.objetoRancho.valorTotal = total;
   }
 
-  limparArquivos(){
-    this.resetarArquivos.nativeElement.value = null
+  clear(){
+    (<HTMLInputElement>document.getElementById("arquivoRecibo")).value = null
   }
-
 }

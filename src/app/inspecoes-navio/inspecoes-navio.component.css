@@ -1,0 +1,11 @@
+#div-inserir-pendencia{
+  z-index: 1;
+  position: absolute;
+  padding: 10px;
+  top: 5%;
+  left: 3%;
+  right: 3%;
+  width: 700px;
+  border: 5px solid #005b9d;
+  background: #FFF;
+}
