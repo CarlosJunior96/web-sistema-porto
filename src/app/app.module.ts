@@ -40,6 +40,7 @@ import { TripulacaoNavioComponent } from './tripulacao-navio/tripulacao-navio.co
 import {AngularFileUploaderModule} from 'angular-file-uploader';
 import { InspecoesNavioComponent } from './inspecoes-navio/inspecoes-navio.component';
 import { HistoricoCadastroComponent } from './historico-cadastro/historico-cadastro.component';
+import {NgxMaskModule} from 'ngx-mask';
 
 /** VETOR QUE RECEBE AS ROTAS QUE O SISTEMA TERÁ **/
 export const rotasApp: Routes = [
@@ -97,7 +98,9 @@ export const rotasApp: Routes = [
     HttpClientModule,
     ReactiveFormsModule,
     MaterialFileInputModule,
-    RouterModule.forRoot(rotasApp, {enableTracing: true})  /** importando o modulo de rotas, passando o vetor de rotas como parametro e ativando o registro de eventos **/
+    RouterModule.forRoot(rotasApp, {enableTracing: true}),
+    NgxMaskModule,
+    /** importando o modulo de rotas, passando o vetor de rotas como parametro e ativando o registro de eventos **/
   ],
   providers: [
     {provide: MAT_DATE_LOCALE, useValue: "pt-br"}

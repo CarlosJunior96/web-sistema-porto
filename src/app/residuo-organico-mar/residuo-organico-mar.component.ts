@@ -36,6 +36,34 @@ export class ResiduoOrganicoMarComponent implements OnInit {
     }
   }
 
+  mascaraLongitude(){
+    let longitude = (<HTMLInputElement>document.getElementById("longitude-residuo")).value
+    let longitudeFormatada;
+
+    if (longitude.length === 10){
+      const parte1 = longitude.slice(0,3) + "°";
+      const parte2 = longitude.slice(3,5) + ".";
+      const parte3 = longitude.slice(5,9) + "'";
+      const parte4 = " " + longitude.slice(9,10).toUpperCase();
+      longitudeFormatada = parte1 + parte2 + parte3 + parte4;
+    }
+    (<HTMLInputElement>document.getElementById("longitude-residuo")).value = longitudeFormatada;
+  }
+
+  mascaraLatitude(){
+    let latitude = (<HTMLInputElement>document.getElementById("latitude-residuo")).value
+    let latitudeFormatada;
+
+    if (latitude.length === 10){
+      const parte1 = latitude.slice(0,3) + "°";
+      const parte2 = latitude.slice(3,5) + ".";
+      const parte3 = latitude.slice(5,9) + "'";
+      const parte4 = " " + latitude.slice(9,10).toUpperCase();
+      latitudeFormatada = parte1 + parte2 + parte3 + parte4;
+    }
+    (<HTMLInputElement>document.getElementById("latitude-residuo")).value = latitudeFormatada;
+  }
+
   criarResiduoOrganico(dadosResiduo: any){
 
     /**

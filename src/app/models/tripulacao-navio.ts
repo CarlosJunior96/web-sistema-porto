@@ -2,6 +2,8 @@ import {Navio} from './navio';
 
 export class TripulacaoNavio {
   id: number;
+  nome: string;
+  matricula: string;
   funcao: string;
   turma: string;
   salario: number;
