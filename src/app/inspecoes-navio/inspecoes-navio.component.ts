@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {InspecoesNavio} from '../models/inspecoes-navio';
 import {Pendencias} from '../models/pendencias';
+import {log} from 'util';
 
 @Component({
   selector: 'app-inspecoes-navio',
@@ -12,6 +13,7 @@ export class InspecoesNavioComponent implements OnInit {
   inspecao: InspecoesNavio;
   pendencia: Pendencias;
   listaPendencia: Array<Pendencias>;
+  condicaoFecharDiv: any;
 
   listaInspecao: any = [
     {tipo: "BAD"},
@@ -24,13 +26,11 @@ export class InspecoesNavioComponent implements OnInit {
     {tipo: "IBAMA"},
     {tipo: "CLASSE"}
   ]
-
   listaCategorias: any = [
     {categoria: "IMPEDITIVO"},
     {categoria: "NÃO IMPEDITIVO"},
     {categoria: "AS"}
   ]
-
   status: any = [
     {situacao: "CONCLUÍDO"},
     {situacao: "EM ABERTO"}
@@ -42,6 +42,7 @@ export class InspecoesNavioComponent implements OnInit {
     this.inspecao = new InspecoesNavio();
     this.pendencia = new Pendencias();
     this.listaPendencia = [];
+    this.condicaoFecharDiv = false;
   }
 
   uploadRelatorioInspecao(event){
@@ -57,7 +58,8 @@ export class InspecoesNavioComponent implements OnInit {
   }
 
   adicionarPendencia(){
-
+    this.listaPendencia.push(this.pendencia);
+    this.pendencia = new Pendencias();
   }
 
   adicionarAcaoCorretiva(){
@@ -67,19 +69,26 @@ export class InspecoesNavioComponent implements OnInit {
     (<HTMLInputElement>document.getElementById("lista-acao-corretiva")).innerHTML = listaAcaoCorretiva;
     (<HTMLInputElement>document.getElementById("acao-corretiva")).value = ""
   }
-
   mostrarDiv(idDiv){
     var idDivPendencia = (<HTMLInputElement>document.getElementById(idDiv)).style.display;
-    if (idDivPendencia == "none"){
+
+    if (idDivPendencia === "none"){
       (<HTMLInputElement>document.getElementById(idDiv)).style.display = "block";
+      (<HTMLInputElement>document.getElementById("enviar-arquivos-classe")).className += " desativar-div";
       (<HTMLInputElement>document.getElementById("botao-adicionar-pendencia")).style.display = "none";
     }
   }
-
   salvarPendencia(formPendencia: any){
     (<HTMLInputElement>document.getElementById("div-inserir-pendencia")).style.display = "none";
     (<HTMLInputElement>document.getElementById("botao-adicionar-pendencia")).style.display = "block";
     console.info(this.listaPendencia);
     formPendencia.reset()
   }
+
+  fecharPendencia(){
+    var classeFechar = (<HTMLInputElement>document.getElementById("enviar-arquivos-classe")).className;
+    classeFechar = classeFechar.replace(" desativar-div", "");
+    (<HTMLInputElement>document.getElementById("enviar-arquivos-classe")).className = classeFechar;
+  }
+
 }

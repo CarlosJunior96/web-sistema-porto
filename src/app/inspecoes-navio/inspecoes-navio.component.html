@@ -1,5 +1,5 @@
 <app-template-menu></app-template-menu>
-<div class="container p-2 font-weight-bold" >
+<div class="container p-2 font-weight-bold">
   <div class="col-md-8 mt-2 p-5 offset-md-2 border rounded bg-white shadow" id="div-inspecao">
     <div class="mb-5">
       <h2 class="text-center font-weight-bold font-italic text bg-transparent border-bottom border-dark pb-2">Cadastrar Inspeção</h2>
@@ -29,7 +29,6 @@
           <table class="table">
             <thead class="thead-light">
             <tr>
-              <th >#</th>
               <th >Pêndencia</th>
               <th >Categoria</th>
               <th >Prazo</th>
@@ -38,35 +37,54 @@
             </tr>
             </thead>
             <tbody>
-            <tr >
-              <td>1</td>
-              <td>Falto dados</td>
-              <td>Impeditivo</td>
-              <td>12/01/2021</td>
-              <td>Multa no valor de ...</td>
-              <td>Concluído</td>
-            </tr>
-            <tr >
-              <td>2</td>
-              <td>Falto dados</td>
-              <td>Impeditivo</td>
-              <td>12/01/2021</td>
-              <td>Multa no valor de ...</td>
-              <td>Concluído</td>
+            <tr *ngFor="let pendencias of listaPendencia">
+              <td>{{pendencias.pendencia}}</td>
+              <td>{{pendencias.categoria}}</td>
+              <td>{{pendencias.prazo.toLocaleDateString()}}</td>
+              <td>{{pendencias.acaoCorretiva}}</td>
+              <td>{{pendencias.status}}</td>
             </tr>
             </tbody>
           </table>
         </div>
-        <div class="col-lg-12" align="center">
+        <div class="col-lg-12 mb-4" align="center">
           <button id="botao-adicionar-pendencia" class="btn btn-success mt-2 align-items-center" (click)="mostrarDiv('div-inserir-pendencia')">Inserir Pendência</button>
         </div>
-      </div>
-      <button type="submit" class="btn btn-block btn-dark mt-4" [disabled]="inspecaoForm.invalid">
-        Salvar
-      </button>
+        <div id="enviar-arquivos-classe" class="teste">
+          <div class="form-group row">
+            <div class="col-sm-12">
+              <div class="custom-file">
+                <input type="file" class="custom-file-input" id="arquivo-acao-corretiva" name="file-acao-corretiva">
+                <label class="custom-file-label">Enviar Arquivo Ação Corretiva</label>
+              </div>
+            </div>
+          </div>
+          <div class="form-group row">
+            <div class="col-sm-12">
+              <div class="custom-file">
+                <input type="file" class="custom-file-input" id="arquivo-relatorio-inspecao" name="file-inspecao">
+                <label class="custom-file-label">Enviar Arquivo de Relatório da Inspeção</label>
+              </div>
+            </div>
+          </div>
+          <div class="form-group row">
+            <div class="col-sm-12">
+              <div class="custom-file">
+                <input type="file" class="custom-file-input" id="arquivo-plano-acao" name="file-acao">
+                <label class="custom-file-label">Enviar Arquivo Plano de Ação</label>
+              </div>
+            </div>
+          </div>
+        </div>
 
+      </div>
+      <div id="div-inserir-pendencia" style="display: none" class="col-sm-8 offset-2 border rounded p-4">
       <form method="post" #pendenciaItem="ngForm" (ngSubmit)="salvarPendencia(pendenciaItem)">
-        <div id="div-inserir-pendencia" style="display: none" class="col-sm-8 offset-2 border rounded p-4">
+          <div class="botao-fechar">
+            <button class="btn btn-sm" (click)="fecharPendencia()">
+              <mat-icon>close</mat-icon>
+            </button>
+          </div>
           <h2 class="text-center font-weight-bold text bg-transparent border-bottom border-dark pb-2">Inserir Pendência</h2>
           <div class="form-group row ">
             <label class="col-sm-6 col-form-label">Pêndencia: </label>
@@ -102,7 +120,7 @@
           <div class="form-group row ">
             <label class="col-sm-6 col-form-label">Status: </label>
             <div class="col-sm-6">
-              <mat-select class="form-control" name="tipo-pedido" [(ngModel)]="pendencia.status" placeholder="Selecione" required>
+              <mat-select class="form-control" name="tipo-pedido" [(ngModel)]="pendencia.status" placeholder="Selecione" required="true">
                 <mat-option *ngFor="let status of status" [value]="status.situacao">
                   {{status.situacao}}
                 </mat-option>
@@ -110,10 +128,13 @@
             </div>
           </div>
           <div class="col-sm-12" align="center">
-            <button type="submit" class="btn btn-success mt-2" [disabled]="pendenciaItem.invalid">Inserir Pendência</button>
+            <button type="submit" class="btn btn-success mt-2" [disabled]="pendenciaItem.invalid" (click)="adicionarPendencia()">Inserir Pendência</button>
           </div>
-        </div>
       </form>
+      </div>
+      <button type="submit" class="btn btn-block btn-dark mt-4" [disabled]="inspecaoForm.invalid">
+        Salvar
+      </button>
     </form>
   </div>
 
