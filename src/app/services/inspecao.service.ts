@@ -20,4 +20,17 @@ export class InspecaoService {
     console.info(lista);
     return this.http.post(UrlsApiPorto.urlSalvarListaPendencias, lista);
   }
+
+  salvarArquivoAcaoCorretiva(acaoCorretiva: FormData) : Observable<any>{
+    return this.http.post(UrlsApiPorto.urlUploadAcaoCorretiva, acaoCorretiva);
+  }
+
+  salvarArquivoRelatorioInspecao(relatorioInspecao: FormData) : Observable<any>{
+    return this.http.post(UrlsApiPorto.urlUploadRelatorioInspecao, relatorioInspecao);
+  }
+
+  salvarArquivoPlanoAcao(planoAcao: FormData) : Observable<any>{
+    return this.http.post(UrlsApiPorto.urlUploadPlanoAcao, planoAcao);
+  }
+
 }

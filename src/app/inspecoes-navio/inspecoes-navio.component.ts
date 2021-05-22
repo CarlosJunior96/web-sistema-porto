@@ -55,6 +55,10 @@ export class InspecoesNavioComponent implements OnInit {
 
   ngOnInit(): void {
 
+    this.fileInspecao = [];
+    this.filePlanoAcao = [];
+    this.fileAcaoCorretiva = [];
+
     this.inspecao = new InspecoesNavio();
     this.pendencia = new Pendencias();
     this.listaPendencia = new Array<Pendencias>();
@@ -75,6 +79,7 @@ export class InspecoesNavioComponent implements OnInit {
   }
 
   salvarInspecao(dadosInspecao: any){
+
     this.inspecaoService.cadastrarInspecao(this.inspecao).subscribe( dados => {
       /** salvando as pendencias **/
       if (this.listaPendencia.length > 0){
@@ -83,13 +88,41 @@ export class InspecoesNavioComponent implements OnInit {
         for(let aux of this.listaPendencia){
           aux.inspecaoNavio = this.objetoInspecao;
         }
-        console.info(this.listaPendencia);
         this.inspecaoService.salvarListaPendencias(this.listaPendencia).subscribe( dadosLista => {
           console.info("Deu certo!!!");
         }, error => {
           alert("Erro ao salvar Lista de Pêndencias");
         })
       }
+
+      if (this.fileAcaoCorretiva.length > 0){
+        for (var i = 0; i < this.fileAcaoCorretiva.length; i++){
+          let listaArquivos = new FormData();
+          listaArquivos.append("acao-corretiva", this.fileAcaoCorretiva[i]);
+          this.inspecaoService.salvarArquivoAcaoCorretiva(listaArquivos).subscribe( informacao => {
+          }
+          )
+        }
+      }
+      if (this.fileInspecao.length > 0){
+        for (var i = 0; i < this.fileInspecao.length; i++){
+          let listaArquivosInspecao = new FormData();
+          listaArquivosInspecao.append("relatorio-inspecao", this.fileInspecao[i]);
+          this.inspecaoService.salvarArquivoRelatorioInspecao(listaArquivosInspecao).subscribe( informacao => {
+            }
+          )
+        }
+      }
+      if (this.filePlanoAcao.length > 0){
+        for (var i = 0; i < this.filePlanoAcao.length; i++){
+          let listaArquivosAcao = new FormData();
+          listaArquivosAcao.append("plano-acao", this.filePlanoAcao[i]);
+          this.inspecaoService.salvarArquivoPlanoAcao(listaArquivosAcao).subscribe( informacao => {
+            }
+          )
+        }
+      }
+
 
       alert("Salvo com Sucesso!")
       this.listaPendencia = [];

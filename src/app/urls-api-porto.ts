@@ -132,6 +132,21 @@ export class UrlsApiPorto {
     return this.urlBaseInspecaoNavio + "/"
   }
 
+  /** salvar arquivos de acao corretiva **/
+  public static get urlUploadAcaoCorretiva(): string{
+    return this.urlBaseInspecaoNavio + "/upload-acao-corretiva"
+  }
+
+  /** salvar arquivos de relatorio inspecao **/
+  public static get urlUploadRelatorioInspecao(): string{
+    return this.urlBaseInspecaoNavio + "/upload-relatorio-inspecao"
+  }
+
+  /** salvar arquivos de plano de acao **/
+  public static get urlUploadPlanoAcao(): string{
+    return this.urlBaseInspecaoNavio + "/upload-plano-acao"
+  }
+
   /** SALVAR LISTA DE PENDENCIAS **/
   public static get urlSalvarListaPendencias(): string{
     return this.urlBaseInspecaoNavio + "/pendencias/"

@@ -33,6 +33,7 @@ export class RanchoNavioComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.arquivoUpload = [];
     this.nfAlimentos = 0
     this.nfOutros  = 0
     this.objetoRancho = new Rancho();
@@ -51,12 +52,9 @@ export class RanchoNavioComponent implements OnInit {
 
   criarRanchoNavio(dadosRancho: any){
     this.objetoRancho.navioRancho = this.navio;
-    const tamanho = this.arquivoUpload.length
-
-
     this.ranchoService.criarRanchoNavio(this.objetoRancho).subscribe( objetoSalvo => {
-      if (tamanho > 0){
-        for (var i = 0; i < tamanho; i++){
+      if (this.arquivoUpload.length > 0){
+        for (var i = 0; i < this.arquivoUpload.length; i++){
           let listaArquivos = new FormData();
           listaArquivos.append("recibo", this.arquivoUpload[i]);
           this.ranchoService.salvarRecibo(listaArquivos).subscribe( informacao => {
