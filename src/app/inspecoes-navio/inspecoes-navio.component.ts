@@ -2,6 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import {InspecoesNavio} from '../models/inspecoes-navio';
 import {Pendencias} from '../models/pendencias';
 import {log} from 'util';
+import {AguaNavio} from '../models/agua-navio';
+import {InicioService} from '../services/inicio.service';
+import {Router} from '@angular/router';
+import {InspecaoService} from '../services/inspecao.service';
 
 @Component({
   selector: 'app-inspecoes-navio',
@@ -19,6 +23,8 @@ export class InspecoesNavioComponent implements OnInit {
   pendencia: Pendencias;
   listaPendencia: Array<Pendencias>;
   condicaoFecharDiv: any;
+  inicio: InicioService;
+  objetoInspecao: InspecoesNavio;
 
   listaInspecao: any = [
     {tipo: "BAD"},
@@ -41,20 +47,58 @@ export class InspecoesNavioComponent implements OnInit {
     {situacao: "EM ABERTO"}
   ]
 
-  constructor() { }
+  constructor(
+    private inicioService: InicioService,
+    private rotas: Router,
+    private inspecaoService: InspecaoService
+  ) { }
 
   ngOnInit(): void {
+
     this.inspecao = new InspecoesNavio();
     this.pendencia = new Pendencias();
-    this.listaPendencia = [];
+    this.listaPendencia = new Array<Pendencias>();
+    this.objetoInspecao = new InspecoesNavio();
     this.condicaoFecharDiv = false;
+
+    if (sessionStorage.getItem("imo")){
+      this.inicioService.procurarNavioImo(sessionStorage.getItem("imo")).subscribe( navioBanco => {
+        this.inspecao.navioInspecao = navioBanco;
+      })
+    }
+
+    else {
+      this.rotas.navigate([('home')])
+    }
+
 
   }
 
   salvarInspecao(dadosInspecao: any){
-    console.info(this.inspecao);
-    dadosInspecao.reset()
-    this.listaPendencia = [];
+    this.inspecaoService.cadastrarInspecao(this.inspecao).subscribe( dados => {
+      /** salvando as pendencias **/
+      if (this.listaPendencia.length > 0){
+        this.objetoInspecao = dados;
+        /* vinculando a inspecao a cada item da pendecia */
+        for(let aux of this.listaPendencia){
+          aux.inspecaoNavio = this.objetoInspecao;
+        }
+        console.info(this.listaPendencia);
+        this.inspecaoService.salvarListaPendencias(this.listaPendencia).subscribe( dadosLista => {
+          console.info("Deu certo!!!");
+        }, error => {
+          alert("Erro ao salvar Lista de Pêndencias");
+        })
+      }
+
+      alert("Salvo com Sucesso!")
+      this.listaPendencia = [];
+    }, error => {
+      alert("Erro ao salvar inspeção!")
+    })
+
+    dadosInspecao.reset();
+
   }
 
   uploadRelatorioInspecao(event){
@@ -79,9 +123,7 @@ export class InspecoesNavioComponent implements OnInit {
     this.listaPendencia.push(this.pendencia);
     this.pendencia = new Pendencias();
   }
-  salvarValores(tipo: any){
-    console.info(tipo);
-  }
+
   adicionarAcaoCorretiva(){
     var acaoCorretiva = (<HTMLInputElement>document.getElementById("acao-corretiva")).value;
     var listaAcaoCorretiva = (<HTMLInputElement>document.getElementById("lista-acao-corretiva")).innerHTML;

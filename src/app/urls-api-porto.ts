@@ -122,4 +122,19 @@ export class UrlsApiPorto {
   public static get urlCadastrarTripulacao(): string{
     return this.urlCadastrarTripulacao + "/"
   }
+
+  /** SALVAR INSPECAO NAVIO **/
+  public static get urlBaseInspecaoNavio(): string{
+    return this.urlBaseServidor + "/inspecao-navio"
+  }
+
+  public static get urlCriarInspecaoNavio(): string{
+    return this.urlBaseInspecaoNavio + "/"
+  }
+
+  /** SALVAR LISTA DE PENDENCIAS **/
+  public static get urlSalvarListaPendencias(): string{
+    return this.urlBaseInspecaoNavio + "/pendencias/"
+  }
+
 }

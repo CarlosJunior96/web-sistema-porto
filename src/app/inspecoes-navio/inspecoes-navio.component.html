@@ -5,84 +5,82 @@
       <h2 class="text-center font-weight-bold font-italic text bg-transparent border-bottom border-dark pb-2">Cadastrar Inspeção</h2>
     </div>
     <form method="post" #inspecaoForm="ngForm" (ngSubmit)="salvarInspecao(inspecaoForm)">
-      <div>
-        <div class="form-group row pt-2">
-          <label class="col-sm-6 col-form-label">Dia da Inspeção: </label>
-          <mat-form-field class="col-sm-6">
-            <mat-label>Data</mat-label>
-            <input matInput [matDatepicker]="diaInspecao" name="dia-inspecao" id="data-da-inspecao" [(ngModel)]="inspecao.dataInspecao" required readonly>
-            <mat-datepicker-toggle matSuffix [for]="diaInspecao"></mat-datepicker-toggle>
-            <mat-datepicker #diaInspecao></mat-datepicker>
-          </mat-form-field>
-        </div>
-        <div class="form-group row div-datepicker-mt">
-          <label class="col-sm-6 col-form-label">Tipo de Inspeção: </label>
-          <div class="col-sm-6">
-            <mat-select class="form-control" name="tipo-pedido" [(ngModel)]="inspecao.tipoInspecao" placeholder="Selecione" required>
-              <mat-option *ngFor="let tipo of listaInspecao" [value]="tipo.tipo" id="tipo-inspecao-id">
-                {{tipo.tipo}}
-              </mat-option>
-            </mat-select>
-          </div>
-        </div>
-        <div class="form-group row p-2">
-          <table class="table">
-            <thead class="thead-light">
-            <tr>
-              <th>#</th>
-              <th >Pêndencia</th>
-              <th >Categoria</th>
-              <th >Prazo</th>
-              <th >Ação Corretiva</th>
-              <th >Status</th>
-              <th> Deletar</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr *ngFor="let pendencias of listaPendencia">
-              <td>{{listaPendencia.indexOf(pendencias) + 1}}</td>
-              <td>{{pendencias.pendencia}}</td>
-              <td>{{pendencias.categoria}}</td>
-              <td>{{pendencias.prazo.toLocaleDateString()}}</td>
-              <td>{{pendencias.acaoCorretiva}}</td>
-              <td>{{pendencias.status}}</td>
-              <td><button type="button" style="margin-top: -8px" class="btn btn-sm" (click)="excluirPendencia(listaPendencia.indexOf(pendencias))">
-                <mat-icon style="color: red; display: inline-block">delete</mat-icon>
-              </button></td>
-            </tr>
-            </tbody>
-          </table>
-        </div>
-        <div class="col-lg-12 mb-4" align="center">
-          <button type="button" id="botao-adicionar-pendencia" class="btn btn-success mt-2 align-items-center" (click)="mostrarDiv('div-inserir-pendencia')">Inserir Pendência</button>
-        </div>
-        <div id="enviar-arquivos-classe">
-          <div class="form-group row">
-            <div class="col-sm-12">
-              <div class="custom-file">
-                <input type="file" class="custom-file-input" id="arquivo-acao-corretiva" name="file-acao-corretiva" (change)="uploadArquivoAcaoCorretiva($event)" multiple>
-                <label class="custom-file-label">Enviar Arquivo Ação Corretiva</label>
-              </div>
-            </div>
-          </div>
-          <div class="form-group row">
-            <div class="col-sm-12">
-              <div class="custom-file">
-                <input type="file" class="custom-file-input" id="arquivo-relatorio-inspecao" name="file-inspecao" (change)="uploadRelatorioInspecao($event)" multiple>
-                <label class="custom-file-label">Enviar Arquivo de Relatório da Inspeção</label>
-              </div>
-            </div>
-          </div>
-          <div class="form-group row">
-            <div class="col-sm-12">
-              <div class="custom-file">
-                <input type="file" class="custom-file-input" id="arquivo-plano-acao" name="file-acao" (change)="uploadPlanoDeAcao($event)" multiple>
-                <label class="custom-file-label">Enviar Arquivo Plano de Ação</label>
-              </div>
-            </div>
-          </div>
-        </div>
 
+      <div class="form-group row pt-2">
+        <label class="col-sm-6 col-form-label">Dia da Inspeção: </label>
+        <mat-form-field class="col-sm-6">
+          <mat-label>Data</mat-label>
+          <input matInput [matDatepicker]="diaInspecao" name="dia-inspecao" id="data-da-inspecao" [(ngModel)]="inspecao.dataInspecao" required readonly>
+          <mat-datepicker-toggle matSuffix [for]="diaInspecao"></mat-datepicker-toggle>
+          <mat-datepicker #diaInspecao></mat-datepicker>
+        </mat-form-field>
+      </div>
+      <div class="form-group row div-datepicker-mt">
+        <label class="col-sm-6 col-form-label">Tipo de Inspeção: </label>
+        <div class="col-sm-6">
+          <mat-select class="form-control" name="tipo-pedido" [(ngModel)]="inspecao.tipoInspecao" placeholder="Selecione" required>
+            <mat-option *ngFor="let tipo of listaInspecao" [value]="tipo.tipo" id="tipo-inspecao-id">
+              {{tipo.tipo}}
+            </mat-option>
+          </mat-select>
+        </div>
+      </div>
+      <div class="form-group row p-2">
+        <table class="table">
+          <thead class="thead-light">
+          <tr>
+            <th>#</th>
+            <th >Pêndencia</th>
+            <th >Categoria</th>
+            <th >Prazo</th>
+            <th >Ação Corretiva</th>
+            <th >Status</th>
+            <th> Deletar</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let pendencias of listaPendencia">
+            <td>{{listaPendencia.indexOf(pendencias) + 1}}</td>
+            <td>{{pendencias.pendencia}}</td>
+            <td>{{pendencias.categoria}}</td>
+            <td>{{pendencias.prazo.toLocaleDateString()}}</td>
+            <td>{{pendencias.acaoCorretiva}}</td>
+            <td>{{pendencias.status}}</td>
+            <td><button type="button" style="margin-top: -8px" class="btn btn-sm" (click)="excluirPendencia(listaPendencia.indexOf(pendencias))">
+              <mat-icon style="color: red; display: inline-block">delete</mat-icon>
+            </button></td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="col-lg-12 mb-4" align="center">
+        <button type="button" id="botao-adicionar-pendencia" class="btn btn-success mt-2 align-items-center" (click)="mostrarDiv('div-inserir-pendencia')">Inserir Pendência</button>
+      </div>
+      <div id="enviar-arquivos-classe">
+        <div class="form-group row">
+          <div class="col-sm-12">
+            <div class="custom-file">
+              <input type="file" class="custom-file-input" id="arquivo-acao-corretiva" name="file-acao-corretiva" (change)="uploadArquivoAcaoCorretiva($event)" multiple>
+              <label class="custom-file-label">Enviar Arquivo Ação Corretiva</label>
+            </div>
+          </div>
+        </div>
+        <div class="form-group row">
+          <div class="col-sm-12">
+            <div class="custom-file">
+              <input type="file" class="custom-file-input" id="arquivo-relatorio-inspecao" name="file-inspecao" (change)="uploadRelatorioInspecao($event)" multiple>
+              <label class="custom-file-label">Enviar Arquivo de Relatório da Inspeção</label>
+            </div>
+          </div>
+        </div>
+        <div class="form-group row">
+          <div class="col-sm-12">
+            <div class="custom-file">
+              <input type="file" class="custom-file-input" id="arquivo-plano-acao" name="file-acao" (change)="uploadPlanoDeAcao($event)" multiple>
+              <label class="custom-file-label">Enviar Arquivo Plano de Ação</label>
+            </div>
+          </div>
+        </div>
       </div>
       <div id="div-inserir-pendencia" style="display: none" class="col-sm-8 offset-2 border rounded p-4">
       <form method="post" #pendenciaItem="ngForm" (ngSubmit)="salvarPendencia(pendenciaItem)">
