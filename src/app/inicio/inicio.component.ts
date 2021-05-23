@@ -11,14 +11,6 @@ import {Navio} from '../models/navio';
 })
 export class InicioComponent implements OnInit {
 
-  /**listaNavios: any = [
-    {nome: "Navio A", imo: "123456"},
-    {nome: "Navio B", imo: "567897"},
-    {nome: "Navio C", imo: "121547"},
-    {nome: "Navio D", imo: "154789"},
-    {nome: "Navio D", imo: "154789"},
-    {nome: "Navio D", imo: "154789"}
-  ]**/
   listaNavios: Array<Navio>
   imoNavio: string;
   navio: Navio;
@@ -36,7 +28,6 @@ export class InicioComponent implements OnInit {
   receberListaNavios(){
     this.inicioService.listarNavios().subscribe( lista => {
       this.listaNavios = lista
-      console.info(this.listaNavios);
     })
   }
 

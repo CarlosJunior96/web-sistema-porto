@@ -41,6 +41,7 @@ import {AngularFileUploaderModule} from 'angular-file-uploader';
 import { InspecoesNavioComponent } from './inspecoes-navio/inspecoes-navio.component';
 import { HistoricoCadastroComponent } from './historico-cadastro/historico-cadastro.component';
 import {NgxMaskModule} from 'ngx-mask';
+import { DowntimeNavioComponent } from './downtime-navio/downtime-navio.component';
 
 /** VETOR QUE RECEBE AS ROTAS QUE O SISTEMA TERÁ **/
 export const rotasApp: Routes = [
@@ -57,6 +58,7 @@ export const rotasApp: Routes = [
   {path: "cadastrar-tripulacao", component: TripulacaoNavioComponent},
   {path: "cadastrar-inspecao", component: InspecoesNavioComponent},
   {path: "historico-informacoes", component: HistoricoCadastroComponent},
+  {path: "cadastrar-downtime", component: DowntimeNavioComponent},
   {path: "home", component: InicioComponent},
   {path: "", component: InicioComponent}, /** se tiver apenas o url geral será redirecionado para o inicio **/
   {path: "**", component: PaginaNaoEncontradaComponent} /** se não existir nenhum dos endereços informados vai pra essa pagina**/
@@ -80,7 +82,8 @@ export const rotasApp: Routes = [
     AcidenteNavioComponent,
     TripulacaoNavioComponent,
     InspecoesNavioComponent,
-    HistoricoCadastroComponent
+    HistoricoCadastroComponent,
+    DowntimeNavioComponent
   ],
   imports: [
     AngularFileUploaderModule,

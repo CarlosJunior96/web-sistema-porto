@@ -27,7 +27,7 @@ export class TripulacaoNavioComponent implements OnInit {
 
     if (sessionStorage.getItem("imo")){
       this.inicioService.procurarNavioImo(sessionStorage.getItem("imo")).subscribe( navioBanco => {
-        this.navio = navioBanco;
+        this.objetoTripulacaoNavio.navioTripulacao = navioBanco;
       })
     }
 
@@ -37,12 +37,11 @@ export class TripulacaoNavioComponent implements OnInit {
   }
 
   cadastrarTripulacao(dadosTripulacao: any){
-    this.objetoTripulacaoNavio.navioTripulacao = this.navio;
-    this.tripulacaoNavioService.cadastrarTripulacao(this.objetoTripulacaoNavio).subscribe( dadosTripulacao => {
+    this.tripulacaoNavioService.cadastrarTripulacao(this.objetoTripulacaoNavio).subscribe( dados => {
       alert("Salvo com Sucesso!");
       dadosTripulacao.reset();
     }), error => {
-      alert("Erro ao cadastrar Tripulação!")
+      alert("Erro ao salvar Tripulação!!!");
     }
   }
 }

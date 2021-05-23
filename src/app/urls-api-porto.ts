@@ -120,7 +120,7 @@ export class UrlsApiPorto {
   }
 
   public static get urlCadastrarTripulacao(): string{
-    return this.urlCadastrarTripulacao + "/"
+    return this.urlBaseTripulacaoNavio + "/"
   }
 
   /** SALVAR INSPECAO NAVIO **/
@@ -165,6 +165,16 @@ export class UrlsApiPorto {
   /** SALVAR LISTA DE PENDENCIAS **/
   public static get urlSalvarListaPendencias(): string{
     return this.urlBaseInspecaoNavio + "/pendencias/"
+  }
+
+  /** URL BASE DOWNTIME **/
+  public static get urlBaseDowntime(): string{
+    return this.urlBaseServidor + "/downtime-navio"
+  }
+
+  /** CRIAR DOWNTIME **/
+  public static get urlCriarDowntime(): string{
+    return this.urlBaseDowntime + "/"
   }
 
 }

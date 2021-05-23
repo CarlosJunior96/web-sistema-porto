@@ -1,0 +1,57 @@
+<app-template-menu></app-template-menu>
+<div class="container p-2 font-weight-bold">
+  <div class="col-md-8 mt-2 p-5 offset-md-2 border rounded bg-white shadow">
+    <div class="mb-5">
+      <h2 class="text-center font-weight-bold font-italic text bg-transparent border-bottom border-dark pb-2">Cadastrar Informações de Downtime</h2>
+    </div>
+    <form method="post" #downtimeForm="ngForm" (ngSubmit)="criarDowntime(downtimeForm)">
+      <div class="form-group row pt-2">
+        <label class="col-sm-7 col-form-label">Data Inicio: </label>
+        <mat-form-field class="col-sm-5">
+          <mat-label>Data</mat-label>
+          <input matInput [matDatepicker]="picker" name="data" [(ngModel)]="downtime.dataInicio" required readonly>
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+      </div>
+      <div class="form-group">
+        <div class="md-form md-outline">
+          <div class="row">
+            <label class="col-sm-7">Hora de Início: </label>
+            <div class="col-sm-5">
+              <input type="time" id="hora-inicio-dowmtime" name="hora-inicio" [(ngModel)]="downtime.horaInicio" class="form-control" required>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="form-group row pt-2">
+        <label class="col-sm-7 col-form-label">Data Termino: </label>
+        <mat-form-field class="col-sm-5">
+          <mat-label>Data</mat-label>
+          <input matInput [matDatepicker]="picker2" name="data" [(ngModel)]="downtime.dataTermino" required readonly>
+          <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+          <mat-datepicker #picker2></mat-datepicker>
+        </mat-form-field>
+      </div>
+      <div class="form-group">
+        <div class="md-form md-outline">
+          <div class="row">
+            <label class="col-sm-7">Hora de Término: </label>
+            <div class="col-sm-5">
+              <input type="time" id="hora-termino-dowmtime" name="hora-termino" [(ngModel)]="downtime.horaTermino" class="form-control" required>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label class="col-sm-4 col-form-label">Descrição do Defeito: </label>
+        <div class="col-sm-8 input-group">
+          <input type="text" class="form-control" placeholder="Informe o defeito." name="defeito-downtime"  [(ngModel)]="downtime.descricaoDefeito" required>
+        </div>
+      </div>
+      <button type="submit" class="btn btn-block btn-dark mt-4" [disabled]="downtimeForm.invalid">
+        Salvar
+      </button>
+    </form>
+  </div>
+</div>
