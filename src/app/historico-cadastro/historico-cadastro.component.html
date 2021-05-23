@@ -3,6 +3,7 @@
   <div class="col-md-8 mt-2 p-5 offset-md-2 border rounded bg-white shadow">
   <div id="cadastro-agua">
     <h2>Último Registro - Cadastro de Água</h2>
+    <span></span>
     <table class="table">
         <thead class="thead-light">
         <tr>
@@ -13,35 +14,14 @@
         </tr>
         </thead>
         <tbody>
-        <tr >
-          <td>12/01/2021</td>
-          <td>10 Lts</td>
-          <td>0</td>
-          <td>5 Lts</td>
-        </tr>
+          <tr>
+            <td>{{aguaNavioHistorico.diaDoConsumo.toLocaleDateString()}}</td>
+            <td>{{aguaNavioHistorico.consumoNoDia}}</td>
+            <td>{{aguaNavioHistorico.aguaRecebidaNoDia}}</td>
+            <td>{{aguaNavioHistorico.aguaFornecidaNoDia}}</td>
+          </tr>
         </tbody>
       </table>
-  </div>
-  <div id="cadastro-oleo-lubrificante">
-    <h2>Último Registro - Cadastro de Óleo Lubrificante</h2>
-    <table class="table">
-      <thead class="thead-light">
-      <tr>
-        <th >Dia</th>
-        <th >Consumo de Óleo</th>
-        <th >Óleo Recebido</th>
-        <th >Óleo Fornecido</th>
-      </tr>
-      </thead>
-      <tbody>
-      <tr >
-        <td>12/01/2021</td>
-        <td>20 Lts</td>
-        <td>5 Lts</td>
-        <td>12 Lts</td>
-      </tr>
-      </tbody>
-    </table>
   </div>
   </div>
 </div>

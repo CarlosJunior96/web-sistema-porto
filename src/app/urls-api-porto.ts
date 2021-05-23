@@ -176,5 +176,12 @@ export class UrlsApiPorto {
   public static get urlCriarDowntime(): string{
     return this.urlBaseDowntime + "/"
   }
+  /** ULRS HISTORICOS **/
+  public static get urlHistoricoBase(): string{
+    return this.urlBaseServidor + "/historico"
+  }
 
+  public static get urlHistoricoConsumoAgua(): string{
+    return this.urlHistoricoBase + "/consumo-agua"
+  }
 }
