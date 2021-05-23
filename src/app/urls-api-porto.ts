@@ -147,6 +147,21 @@ export class UrlsApiPorto {
     return this.urlBaseInspecaoNavio + "/upload-plano-acao"
   }
 
+  /** salvar arquivos de consumo de agua **/
+  public static get urlUploadConsumoAgua(): string{
+    return this.urlBaseAguaNavio + "/salvar-arquivo-agua"
+  }
+
+  /** salvar arquivos de oleo lubrificante **/
+  public static get urlUploadOleoLubrificante(): string{
+    return this.urlBaseConsumoOleoLubrificanteNavio + "/salvar-arquivo-oleo-lubrificante"
+  }
+
+  /** salvar arquivos de combustivel **/
+  public static get urlUploadCombustivel(): string{
+    return this.urlBaseConsumoCombustivelNavio + "/salvar-arquivo-combustivel"
+  }
+
   /** SALVAR LISTA DE PENDENCIAS **/
   public static get urlSalvarListaPendencias(): string{
     return this.urlBaseInspecaoNavio + "/pendencias/"

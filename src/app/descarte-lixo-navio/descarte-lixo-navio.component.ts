@@ -49,6 +49,7 @@ export class DescarteLixoNavioComponent implements OnInit {
 
   ngOnInit(): void {
     this.objetoDescarteLixo = new DescarteLixo();
+    this.arquivoUpload = [];
 
     if (sessionStorage.getItem("imo")){
       this.inicioService.procurarNavioImo(sessionStorage.getItem("imo")).subscribe( navioBanco => {
@@ -63,22 +64,22 @@ export class DescarteLixoNavioComponent implements OnInit {
   criarDescarteLixo(dadosDescarte: any){
     this.objetoDescarteLixo.navioDescarte = this.navio;
     const tamanho = this.arquivoUpload.length;
-
     this.descarteLixoService.criarDescarteLixo(this.objetoDescarteLixo).subscribe( descarteLixoDados => {
+    alert("Salvo com Sucesso!")
       if (tamanho > 0){
         for( var i = 0; i < tamanho; i++){
           let listarArquivos = new FormData();
           listarArquivos.append("recibo", this.arquivoUpload[i]);
           this.descarteLixoService.salvarReciboAcidente(listarArquivos).subscribe( informacao => {
-            console.log("Salvo!");
-          })
+
+          }), error => {
+            alert("Erro ao salvar arquivo!!!");
+          }
         }
       }
 
-      alert("Salvo com Sucesso!")
-      this.arquivoUpload = []
       dadosDescarte.reset()
-      this.clear()
+      this.excluirArquivoDescarte()
 
     }), error => {
       alert("Erro ao cadastrar descarte de Lixo!")
@@ -88,10 +89,28 @@ export class DescarteLixoNavioComponent implements OnInit {
   uploadReciboDescarte(event){
     if(event.target.files && event.target.files[0]){
       this.arquivoUpload = event.target.files;
+
+      var elemento = (<HTMLInputElement>document.getElementById("label-file-lixo"))
+      elemento.innerHTML = "";
+      this.arquivoUpload = event.target.files
+      let i = 1;
+
+      for (let aux of this.arquivoUpload){
+        if(i < this.arquivoUpload.length ){
+          elemento.innerHTML += aux.name + ", "
+        }
+
+        if(i === this.arquivoUpload.length){
+          elemento.innerHTML += aux.name
+        }
+        i++;
+      }
     }
   }
 
-  clear(){
-    (<HTMLInputElement>document.getElementById("arquivoRecibo")).value = null
+  excluirArquivoDescarte(){
+    this.arquivoUpload = []
+    var elemento = (<HTMLInputElement>document.getElementById("label-file-lixo"))
+    elemento.innerHTML = "Enviar Arquivo";
   }
 }

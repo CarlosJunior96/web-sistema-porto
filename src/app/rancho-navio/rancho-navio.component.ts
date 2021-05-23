@@ -53,20 +53,20 @@ export class RanchoNavioComponent implements OnInit {
   criarRanchoNavio(dadosRancho: any){
     this.objetoRancho.navioRancho = this.navio;
     this.ranchoService.criarRanchoNavio(this.objetoRancho).subscribe( objetoSalvo => {
+
+      alert("Salvo com Sucesso!")
       if (this.arquivoUpload.length > 0){
         for (var i = 0; i < this.arquivoUpload.length; i++){
           let listaArquivos = new FormData();
           listaArquivos.append("recibo", this.arquivoUpload[i]);
           this.ranchoService.salvarRecibo(listaArquivos).subscribe( informacao => {
-            }
-          )
+          }), error => {
+            alert("Erro ao salvar arquivo!!!")
+          }
         }
       }
-      alert("Salvo com Sucesso!")
-      this.arquivoUpload = []
       dadosRancho.reset()
-      this.clear()
-      console.log(this.arquivoUpload);
+      this.excluirArquivoRancho()
     }), error => {
       alert("Erro ao Salvar Rancho!")
     }
@@ -75,8 +75,31 @@ export class RanchoNavioComponent implements OnInit {
 
   uploadRecibo(event){
     if(event.target.files && event.target.files[0]){
-        this.arquivoUpload = event.target.files
+      this.arquivoUpload = event.target.files
+
+      var elemento = (<HTMLInputElement>document.getElementById("label-file-rancho"))
+      elemento.innerHTML = "";
+      this.arquivoUpload = event.target.files
+      let i = 1;
+
+      for (let aux of this.arquivoUpload){
+
+        if(i < this.arquivoUpload.length ){
+          elemento.innerHTML += aux.name + ", "
+        }
+
+        if(i === this.arquivoUpload.length){
+          elemento.innerHTML += aux.name
+        }
+        i++;
       }
+    }
+  }
+
+  excluirArquivoRancho(){
+    this.arquivoUpload = []
+    var elemento = (<HTMLInputElement>document.getElementById("label-file-rancho"))
+    elemento.innerHTML = "Enviar Arquivo";
   }
 
   eventoNFAlimentos(event){
@@ -97,7 +120,5 @@ export class RanchoNavioComponent implements OnInit {
     this.objetoRancho.valorTotal = total;
   }
 
-  clear(){
-    (<HTMLInputElement>document.getElementById("arquivoRecibo")).value = null
-  }
+
 }

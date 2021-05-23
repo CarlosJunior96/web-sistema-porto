@@ -61,27 +61,18 @@ export class ResiduoOrganicoMarComponent implements OnInit {
       const parte4 = " " + latitude.slice(9,10).toUpperCase();
       latitudeFormatada = parte1 + parte2 + parte3 + parte4;
     }
-    (<HTMLInputElement>document.getElementById("latitude-residuo")).value = latitudeFormatada;
+
+    if (latitudeFormatada != undefined){
+      (<HTMLInputElement>document.getElementById("latitude-residuo")).value = latitudeFormatada;
+    }
+
   }
 
   criarResiduoOrganico(dadosResiduo: any){
-
-    /**
-    this.inicioService.procurarNavioImo(this.imo).subscribe( navioImo => {
-      this.residuoOrganicoNavio.navioResiduo = navioImo;
-
       this.residuoOrganicoService.criarResiduoOrganicoNavio(this.residuoOrganicoNavio).subscribe( residuoOrganicoDados => {
         let residuoOrganico = residuoOrganicoDados;
-        console.log(residuoOrganico);
       }, error => {
         console.log("Erro ao cadastrar residuo orgânico.", error);
       })
-
-
-    }, error => {
-      console.log("Erro ao cadastrar resíduo orgânico.");
-    })
-  }
-**/
   }
 }

@@ -131,25 +131,93 @@ export class InspecoesNavioComponent implements OnInit {
     })
 
     dadosInspecao.reset();
+    this.excluirAcaoCorretiva()
+    this.excluirPlanoAcao()
+    this.excluirArquivosInspecao()
+  }
+
+  mudarNome(){
 
   }
 
   uploadRelatorioInspecao(event){
     if(event.target.files && event.target.files[0]){
+
+      var elemento = (<HTMLInputElement>document.getElementById("label-file-inspecao"))
+      elemento.innerHTML = "";
       this.fileInspecao = event.target.files
+      let i = 1;
+      for (let aux of this.fileInspecao){
+
+        if(i < this.fileInspecao.length ){
+          elemento.innerHTML += aux.name + ", "
+        }
+
+        if(i === this.fileInspecao.length){
+          elemento.innerHTML += aux.name
+        }
+        i++;
+      }
     }
+  }
+  excluirArquivosInspecao(){
+    this.fileInspecao = [];
+    var elemento = (<HTMLInputElement>document.getElementById("label-file-inspecao"))
+    elemento.innerHTML = "Enviar Arquivo de Relatório da Inspeção"
   }
 
   uploadPlanoDeAcao(event){
     if(event.target.files && event.target.files[0]){
       this.filePlanoAcao = event.target.files
+
+      var elemento = (<HTMLInputElement>document.getElementById("label-file-plano-acao"))
+      elemento.innerHTML = "";
+      this.filePlanoAcao = event.target.files
+      let i = 1;
+      for (let aux of this.filePlanoAcao){
+
+        if(i < this.filePlanoAcao.length ){
+          elemento.innerHTML += aux.name + ", "
+        }
+
+        if(i === this.filePlanoAcao.length){
+          elemento.innerHTML += aux.name
+        }
+        i++;
+      }
     }
+  }
+  excluirPlanoAcao(){
+    this.filePlanoAcao = []
+    var elemento = (<HTMLInputElement>document.getElementById("label-file-plano-acao"))
+    elemento.innerHTML = "Enviar Arquivo Plano de Ação";
   }
 
   uploadArquivoAcaoCorretiva(event){
     if(event.target.files && event.target.files[0]){
-      this.fileAcaoCorretiva = event.target.files
+
     }
+      this.fileAcaoCorretiva = event.target.files
+      var elemento = (<HTMLInputElement>document.getElementById("acao-corretiva-label"))
+      elemento.innerHTML = "";
+      this.fileAcaoCorretiva = event.target.files
+      let i = 1;
+      for (let aux of this.fileAcaoCorretiva){
+
+        if(i < this.fileAcaoCorretiva.length ){
+          elemento.innerHTML += aux.name + ", "
+        }
+
+        if(i === this.fileAcaoCorretiva.length){
+          elemento.innerHTML += aux.name
+        }
+        i++;
+    }
+  }
+  excluirAcaoCorretiva(){
+    this.fileAcaoCorretiva = []
+    var elemento = (<HTMLInputElement>document.getElementById("acao-corretiva-label"))
+    elemento.innerHTML = "Enviar Arquivo Ação Corretiva";
   }
 
   adicionarPendencia(){

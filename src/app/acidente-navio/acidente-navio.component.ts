@@ -45,6 +45,7 @@ export class AcidenteNavioComponent implements OnInit {
 
   ngOnInit(): void {
     this.objetoAcidente = new AcidenteNavio();
+    this.arquivoUpload = [];
 
     if (sessionStorage.getItem("imo")) {
       this.inicioService.procurarNavioImo(sessionStorage.getItem("imo")).subscribe(navioBanco => {
@@ -57,37 +58,53 @@ export class AcidenteNavioComponent implements OnInit {
 
   cadastrarAcidente(dadosAcidente: any) {
     this.objetoAcidente.navioAcidente = this.navio;
-    const tamanho = this.arquivoUpload.length;
-
-    this.acidenteService.cadastrarAcidenteNavio(this.objetoAcidente).subscribe(dadosAcidente => {
-      if (tamanho > 0){
-        for( var i = 0; i < tamanho; i++){
+    this.acidenteService.cadastrarAcidenteNavio(this.objetoAcidente).subscribe(dados => {
+      alert("Salvo com Sucesso!")
+      if (this.arquivoUpload.length > 0){
+        for( var i = 0; i < this.arquivoUpload.length; i++){
           let listarArquivos = new FormData();
           listarArquivos.append("acidente", this.arquivoUpload[i]);
           this.acidenteService.salvarArquivoAcidente(listarArquivos).subscribe( informacao => {
-            console.log("Salvo!");
-          })
+
+          }), error => {
+            alert("Erro ao salvar arquivo!!!")
+          }
         }
       }
-      alert("Salvo com Sucesso!")
-      this.arquivoUpload = []
       dadosAcidente.reset()
-      this.clear()
-      console.log(this.arquivoUpload);
-    }), error => {
+      this.excluirArquivoAcidente()
+    }, error => {
       alert("Erro ao Cadastrar Acidentes!")
-    }
+    })
 
   }
 
   uploadArquivoAcidente(event){
     if(event.target.files && event.target.files[0]){
       this.arquivoUpload = event.target.files;
+
+      var elemento = (<HTMLInputElement>document.getElementById("label-file-acidente"))
+      elemento.innerHTML = "";
+      this.arquivoUpload = event.target.files
+      let i = 1;
+      for (let aux of this.arquivoUpload){
+
+        if(i < this.arquivoUpload.length ){
+          elemento.innerHTML += aux.name + ", "
+        }
+
+        if(i === this.arquivoUpload.length){
+          elemento.innerHTML += aux.name
+        }
+        i++;
+      }
     }
   }
 
-
-  clear(){
-    (<HTMLInputElement>document.getElementById("arquivoRecibo")).value = null
+  excluirArquivoAcidente(){
+    this.arquivoUpload = []
+    var elemento = (<HTMLInputElement>document.getElementById("label-file-acidente"))
+    elemento.innerHTML = "Enviar Arquivo";
   }
+
 }

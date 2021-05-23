@@ -57,30 +57,49 @@
         <button type="button" id="botao-adicionar-pendencia" class="btn btn-success mt-2 align-items-center" (click)="mostrarDiv('div-inserir-pendencia')">Inserir Pendência</button>
       </div>
       <div id="enviar-arquivos-classe">
+
         <div class="form-group row">
           <div class="col-sm-12">
-            <div class="custom-file">
-              <input type="file" class="custom-file-input" id="arquivo-acao-corretiva" name="file-acao-corretiva" (change)="uploadArquivoAcaoCorretiva($event)" multiple>
-              <label class="custom-file-label">Enviar Arquivo Ação Corretiva</label>
+            <div class="input-group">
+              <div class="custom-file">
+                <input type="file" class="custom-file-input" id="arquivo-acao-corretiva" name="file-acao-corretiva" (change)="uploadArquivoAcaoCorretiva($event)" multiple>
+                <label class="custom-file-label" id="acao-corretiva-label">Enviar Arquivo Ação Corretiva</label>
+              </div>
+              <div class="input-group-append">
+                <button type="button" class="btn btn-sm btn-danger btn-block" (click)="excluirAcaoCorretiva()">Excluir</button>
+              </div>
             </div>
           </div>
         </div>
+
         <div class="form-group row">
           <div class="col-sm-12">
-            <div class="custom-file">
-              <input type="file" class="custom-file-input" id="arquivo-relatorio-inspecao" name="file-inspecao" (change)="uploadRelatorioInspecao($event)" multiple>
-              <label class="custom-file-label">Enviar Arquivo de Relatório da Inspeção</label>
+            <div class="input-group">
+              <div class="custom-file">
+                <input type="file" class="custom-file-input" id="arquivo-relatorio-inspecao" name="file-inspecao" (change)="uploadRelatorioInspecao($event)" multiple>
+                <label class="custom-file-label" id="label-file-inspecao">Enviar Arquivo de Relatório da Inspeção</label>
+              </div>
+              <div class="input-group-append">
+                <button type="button" class="btn btn-sm btn-danger btn-block" (click)="excluirArquivosInspecao()">Excluir</button>
+              </div>
             </div>
           </div>
         </div>
+
         <div class="form-group row">
           <div class="col-sm-12">
-            <div class="custom-file">
-              <input type="file" class="custom-file-input" id="arquivo-plano-acao" name="file-acao" (change)="uploadPlanoDeAcao($event)" multiple>
-              <label class="custom-file-label">Enviar Arquivo Plano de Ação</label>
+            <div class="input-group">
+              <div class="custom-file">
+                <input type="file" class="custom-file-input" id="arquivo-plano-acao" name="file-acao" (change)="uploadPlanoDeAcao($event)" multiple >
+                <label class="custom-file-label" id="label-file-plano-acao">Enviar Arquivo Plano de Ação</label>
+              </div>
+              <div class="input-group-append">
+                <button type="button" class="btn btn-sm btn-danger btn-block" (click)="excluirPlanoAcao()">Excluir</button>
+              </div>
             </div>
           </div>
         </div>
+
       </div>
       <div id="div-inserir-pendencia" style="display: none" class="col-sm-8 offset-2 border rounded p-4">
       <form method="post" #pendenciaItem="ngForm" (ngSubmit)="salvarPendencia(pendenciaItem)">

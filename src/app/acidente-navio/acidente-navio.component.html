@@ -46,8 +46,14 @@
       </div>
       <div class="form-group row">
         <div class="col-sm-12">
-          <div>
-            <input type="file" id="arquivoRecibo" name="file-acidente" (change)="uploadArquivoAcidente($event)" placeholder="Enviar Recibo" multiple>
+          <div class="input-group">
+            <div class="custom-file">
+              <input type="file" class="custom-file-input" id="arquivoAcidente" name="file-acidente" (change)="uploadArquivoAcidente($event)" multiple>
+              <label class="custom-file-label" id="label-file-acidente">Enviar Arquivo</label>
+            </div>
+            <div class="input-group-append">
+              <button type="button" class="btn btn-sm btn-danger btn-block" (click)="excluirArquivoAcidente()">Excluir</button>
+            </div>
           </div>
         </div>
       </div>
