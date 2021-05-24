@@ -5,7 +5,7 @@ export class ResiduoOrganicoNavio {
   diaDescarteResiduo: Date;
   latitude: string;
   longitude: string;
-  quantidadeDescarte: number;
+  quantidade: number;
   navioResiduo: Navio;
   imoNavio: number;
 }

@@ -13,4 +13,24 @@ export class HistoricoDadosService {
   historicoAguaConsumo(idNavio: any) : Observable<any>{
     return this.http.get(UrlsApiPorto.urlHistoricoConsumoAgua + "/" + idNavio);
   }
+
+  historicoCombustivel(idNavio: any): Observable<any>{
+    return this.http.get(UrlsApiPorto.urlHistoricoCombustivel + idNavio)
+  }
+
+  historicoOleoLubrificante(idNavio: any): Observable<any>{
+    return this.http.get(UrlsApiPorto.urlHistoricoOleo + idNavio)
+  }
+
+  historicoResiduoOrganico(idNavio: any): Observable<any>{
+    return this.http.get(UrlsApiPorto.urlHistoricoResiduo + idNavio)
+  }
+
+  historicoRancho(idNavio: any): Observable<any>{
+    return this.http.get(UrlsApiPorto.urlHistoricoRancho + idNavio)
+  }
+
+  historicoDescarte(idNavio: any): Observable<any>{
+    return this.http.get(UrlsApiPorto.urlHistoricoDescarteLixo + idNavio)
+  }
 }

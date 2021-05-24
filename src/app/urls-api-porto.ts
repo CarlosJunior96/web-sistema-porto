@@ -184,4 +184,24 @@ export class UrlsApiPorto {
   public static get urlHistoricoConsumoAgua(): string{
     return this.urlHistoricoBase + "/consumo-agua"
   }
+
+  public static get urlHistoricoCombustivel(): string{
+    return this.urlHistoricoBase + "/consumo-combustivel/"
+  }
+
+  public static get urlHistoricoOleo(): string{
+    return this.urlHistoricoBase + "/consumo-oleo-lubrificante/"
+  }
+
+  public static get urlHistoricoResiduo(): string{
+    return this.urlHistoricoBase + "/residuo-organico/"
+  }
+
+  public static get urlHistoricoRancho(): string{
+    return this.urlHistoricoBase + "/rancho/"
+  }
+
+  public static get urlHistoricoDescarteLixo(): string{
+    return this.urlHistoricoBase + "/descarte-lixo/"
+  }
 }

@@ -4,7 +4,7 @@
   <div id="cadastro-agua">
     <h2>Último Registro - Cadastro de Água</h2>
     <span></span>
-    <table class="table">
+    <table class="table table-sm">
         <thead class="thead-light">
         <tr>
           <th >Dia</th>
@@ -23,5 +23,143 @@
         </tbody>
       </table>
   </div>
+  </div>
+</div>
+
+<div class="container p-2 font-weight-bold" >
+  <div class="col-md-8 mt-2 p-5 offset-md-2 border rounded bg-white shadow">
+    <div id="cadastro-combustivel">
+      <h2>Último Registro - Cadastro de Água</h2>
+      <span></span>
+      <table class="table table-sm">
+        <thead class="thead-light">
+        <tr>
+          <th >Dia</th>
+          <th >Tipo Combustível</th>
+          <th >Consumo Combustível</th>
+          <th >Combustivel Recebido</th>
+          <th >Combustivel Fornecido</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <td>{{combustivelNavioHistorico.diaDoConsumo.toLocaleDateString()}}</td>
+          <td>{{combustivelNavioHistorico.tipo}}</td>
+          <td>{{combustivelNavioHistorico.consumoNoDia}}</td>
+          <td>{{combustivelNavioHistorico.combustivelRecebidoDia}}</td>
+          <td>{{combustivelNavioHistorico.combustivelFornecidoDia}}</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<div class="container p-2 font-weight-bold" >
+  <div class="col-md-8 mt-2 p-5 offset-md-2 border rounded bg-white shadow">
+    <div id="cadastro-oleo">
+      <h2>Último Registro - Cadastro de Óleo Lubrificante</h2>
+      <span></span>
+      <table class="table table-sm">
+        <thead class="thead-light">
+        <tr>
+          <th >Dia</th>
+          <th >Consumo de Óleo</th>
+          <th >Óleo Recebido</th>
+          <th >Óleo Fornecido</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <td>{{oleoLubrificanteHistorico.diaDoConsumo.toLocaleDateString()}}</td>
+          <td>{{oleoLubrificanteHistorico.consumoNoDia}}</td>
+          <td>{{oleoLubrificanteHistorico.oleoRecebidoDia}}</td>
+          <td>{{oleoLubrificanteHistorico.oleoFornecidoDia}}</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<div class="container p-2 font-weight-bold" >
+  <div class="col-md-8 mt-2 p-5 offset-md-2 border rounded bg-white shadow">
+    <div id="cadastro-residuo-organico">
+      <h2>Último Registro - Cadastro de Resíduo Orgânico</h2>
+      <span></span>
+      <table class="table table-sm">
+        <thead class="thead-light">
+        <tr>
+          <th >Dia</th>
+          <th >Resíduo Orgânico</th>
+          <th >Latitude</th>
+          <th >Longitude</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <td>{{residuoOrganicoHistorico.diaDescarteResiduo.toLocaleDateString()}}</td>
+          <td>{{residuoOrganicoHistorico.quantidade}}</td>
+          <td>{{residuoOrganicoHistorico.latitude}}</td>
+          <td>{{residuoOrganicoHistorico.longitude}}</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+<div class="container p-2 font-weight-bold" >
+  <div class="col-md-8 mt-2 p-5 offset-md-2 border rounded bg-white shadow">
+    <div id="cadastro-rancho">
+      <h2>Último Registro - Cadastro Rancho</h2>
+      <table class="table table-sm">
+        <thead class="thead-light">
+        <tr>
+          <th >Dia Recebimento</th>
+          <th >Tipo Pedido</th>
+          <th >Valor NF Alimentos</th>
+          <th >Valor NF Outros</th>
+          <th>Valor Total</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <td>{{ranchoHistorico.diaRecebimento.toLocaleDateString()}}</td>
+          <td>{{ranchoHistorico.tipoPedido}}</td>
+          <td>{{ranchoHistorico.nfAlimentos}}</td>
+          <td>{{ranchoHistorico.nfOutros}}</td>
+          <td>{{ranchoHistorico.valorTotal}}</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<div class="container p-2 font-weight-bold" >
+  <div class="col-md-8 mt-2 p-5 offset-md-2 border rounded bg-white shadow">
+    <div id="cadastro-descarte-lixo">
+      <h2>Último Registro - Descarte Lixo</h2>
+      <table class="table table-sm">
+        <thead class="thead-light">
+        <tr>
+          <th >Dia Descarte</th>
+          <th >Catoria</th>
+          <th >Volume</th>
+          <th >Porto</th>
+          <th>Empresa Coletora</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <td>{{historicoDescarteLixoNavio.diaDescarte.toLocaleDateString()}}</td>
+          <td>{{historicoDescarteLixoNavio.categoria}}</td>
+          <td>{{historicoDescarteLixoNavio.volume}}</td>
+          <td>{{historicoDescarteLixoNavio.local}}</td>
+          <td>{{historicoDescarteLixoNavio.empresaColetora}}</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
 </div>

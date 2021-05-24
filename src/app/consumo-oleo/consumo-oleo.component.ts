@@ -28,6 +28,7 @@ export class ConsumoOleoComponent implements OnInit {
 
   ngOnInit(): void {
     this.oleoLubrificanteNavio = new OleoLubrificanteNavio();
+    this.fileOleo = [];
     if (sessionStorage.getItem("imo")){
       this.inicioService.procurarNavioImo(sessionStorage.getItem("imo")).subscribe( navioBanco => {
         this.navio = navioBanco;

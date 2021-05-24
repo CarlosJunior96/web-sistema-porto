@@ -27,7 +27,7 @@ export class ResiduoOrganicoMarComponent implements OnInit {
 
     if (sessionStorage.getItem("imo")){
       this.inicioService.procurarNavioImo(sessionStorage.getItem("imo")).subscribe( navioBanco => {
-        this.navio = navioBanco;
+        this.residuoOrganicoNavio.navioResiduo = navioBanco;
       })
     }
 
@@ -47,7 +47,12 @@ export class ResiduoOrganicoMarComponent implements OnInit {
       const parte4 = " " + longitude.slice(9,10).toUpperCase();
       longitudeFormatada = parte1 + parte2 + parte3 + parte4;
     }
-    (<HTMLInputElement>document.getElementById("longitude-residuo")).value = longitudeFormatada;
+
+    if (longitudeFormatada != undefined){
+      //(<HTMLInputElement>document.getElementById("longitude-residuo")).value = longitudeFormatada;
+      this.residuoOrganicoNavio.longitude = longitudeFormatada;
+    }
+
   }
 
   mascaraLatitude(){
@@ -63,7 +68,7 @@ export class ResiduoOrganicoMarComponent implements OnInit {
     }
 
     if (latitudeFormatada != undefined){
-      (<HTMLInputElement>document.getElementById("latitude-residuo")).value = latitudeFormatada;
+      this.residuoOrganicoNavio.latitude = latitudeFormatada //(<HTMLInputElement>document.getElementById("latitude-residuo")).value = latitudeFormatada;
     }
 
   }
@@ -71,6 +76,9 @@ export class ResiduoOrganicoMarComponent implements OnInit {
   criarResiduoOrganico(dadosResiduo: any){
       this.residuoOrganicoService.criarResiduoOrganicoNavio(this.residuoOrganicoNavio).subscribe( residuoOrganicoDados => {
         let residuoOrganico = residuoOrganicoDados;
+        alert("Salvo com Sucesso!")
+
+        dadosResiduo.reset()
       }, error => {
         console.log("Erro ao cadastrar residuo orgânico.", error);
       })
