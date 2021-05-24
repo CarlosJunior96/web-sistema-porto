@@ -9,4 +9,9 @@ export class CombustivelNavio {
   combustivelRecebidoDia: number;
   combustivelFornecidoDia: number;
   navioCombustivel: Navio;
+
+  constructor() {
+    this.combustivelRecebidoDia = 0;
+    this.combustivelFornecidoDia = 0;
+  }
 }

@@ -83,4 +83,12 @@ export class ResiduoOrganicoMarComponent implements OnInit {
         console.log("Erro ao cadastrar residuo orgânico.", error);
       })
   }
+
+  formatarNumero(){
+    let valor = Number((<HTMLInputElement>document.activeElement).value);
+    let contador = (<HTMLInputElement>document.activeElement).selectionStart;
+    (<HTMLInputElement>document.activeElement).value = valor.toFixed(2);
+    (<HTMLInputElement>document.activeElement).selectionStart = contador;
+    (<HTMLInputElement>document.activeElement).selectionEnd = contador;
+  }
 }

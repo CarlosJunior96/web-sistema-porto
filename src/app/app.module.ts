@@ -109,5 +109,10 @@ export const rotasApp: Routes = [
     {provide: MAT_DATE_LOCALE, useValue: "pt-br"}
   ],
   bootstrap: [AppComponent]
+
+
 })
-export class AppModule { }
+
+export class AppModule {
+
+}

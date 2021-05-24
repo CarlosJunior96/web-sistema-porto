@@ -6,4 +6,7 @@ export class DespesaNavio {
   tipoServico: string;
   valor: number;
   navioDespesas: Navio;
+
+  constructor() {
+  }
 }

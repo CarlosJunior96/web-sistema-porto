@@ -18,7 +18,7 @@
           <label class="col-sm-4 col-form-label">Consumo de óleo: </label>
           <div class="col-sm-8">
             <div class="input-group">
-              <input type="text" class="form-control" placeholder="Informe o consumo de óleo." name="qtd-consumo" [(ngModel)]="oleoLubrificanteNavio.consumoNoDia" required>
+              <input type="text" class="form-control" placeholder="0" name="qtd-consumo" [(ngModel)]="oleoLubrificanteNavio.consumoNoDia" (input)="formatarNumero()" required>
               <div class="input-group-append">
                 <span class="input-group-text bg">Lts</span>
               </div>
@@ -29,7 +29,7 @@
           <label class="col-sm-4 col-form-label">Óleo Recebido: </label>
           <div class="col-sm-8">
             <div class="input-group">
-              <input type="text" class="form-control" placeholder="Quantidade de óleo recebido." name="qtd-recebida" [(ngModel)]="oleoLubrificanteNavio.oleoRecebidoDia">
+              <input type="text" class="form-control" placeholder="Quantidade de óleo recebido." name="qtd-recebida" [(ngModel)]="oleoLubrificanteNavio.oleoRecebidoDia" (input)="formatarNumero()">
               <div class="input-group-append">
                 <span class="input-group-text bg">Lts</span>
               </div>
@@ -40,7 +40,7 @@
           <label class="col-sm-4 col-form-label">Óleo Fornecido:</label>
           <div class="col-sm-8 ">
             <div class="input-group">
-              <input type="text" class="form-control" placeholder="Quantidade de óleo fornecido." name="oleo-fornecido" [(ngModel)]="oleoLubrificanteNavio.oleoFornecidoDia">
+              <input type="text" class="form-control" placeholder="Quantidade de óleo fornecido." name="oleo-fornecido" [(ngModel)]="oleoLubrificanteNavio.oleoFornecidoDia" (input)="formatarNumero()">
               <div class="input-group-append">
                 <span class="input-group-text bg">Lts</span>
               </div>

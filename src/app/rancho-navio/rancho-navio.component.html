@@ -32,7 +32,7 @@
               <div class="input-group-prepend">
                 <span class="input-group-text bg">R$</span>
               </div>
-              <input type="text" class="form-control" placeholder="0,00" name="nf-alimentos" [(ngModel)]="objetoRancho.nfAlimentos" (change)="eventoNFAlimentos($event); total()">
+              <input type="text" class="form-control" placeholder="0" name="nf-alimentos" [(ngModel)]="objetoRancho.nfAlimentos" (change)="eventoNFAlimentos($event); total()" (input)="formatarNumero()">
             </div>
           </div>
         </div>
@@ -43,7 +43,7 @@
               <div class="input-group-prepend">
                 <span class="input-group-text bg">R$</span>
               </div>
-              <input type="text" class="form-control" placeholder="0,00" name="nf-outros" [(ngModel)]="objetoRancho.nfOutros" (change)="eventoNFOutros($event); total()">
+              <input type="text" class="form-control" placeholder="0" name="nf-outros" [(ngModel)]="objetoRancho.nfOutros" (change)="eventoNFOutros($event); total()" (input)="formatarNumero()">
             </div>
           </div>
         </div>
@@ -54,7 +54,7 @@
               <div class="input-group-prepend">
                 <span class="input-group-text bg">R$</span>
               </div>
-              <input type="text" id="totalnf" class="form-control" placeholder="0,00" name="valor-total" [(ngModel)]="objetoRancho.valorTotal" readonly>
+              <input type="text" id="totalnf" class="form-control" placeholder="0" name="valor-total" [(ngModel)]="objetoRancho.valorTotal"  disabled="">
             </div>
           </div>
         </div>

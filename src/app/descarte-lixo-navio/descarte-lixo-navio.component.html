@@ -29,7 +29,7 @@
         <label class="col-sm-4 col-form-label">Volume: </label>
         <div class="col-sm-8 ">
           <div class="input-group">
-            <input type="text" class="form-control" placeholder="Informe o Volume." name="volume" [(ngModel)]="objetoDescarteLixo.volume" required>
+            <input type="text" class="form-control" placeholder="0" name="volume" [(ngModel)]="objetoDescarteLixo.volume" (input)="formatarNumero()" required>
             <div class="input-group-append">
               <span class="input-group-text bg">m3</span>
             </div>

@@ -33,7 +33,7 @@
             <div class="input-group-prepend">
               <span class="input-group-text bg">R$</span>
             </div>
-            <input type="text" class="form-control" placeholder="0,00" name="valor" [(ngModel)]="objetoDespesa.valor" required>
+            <input type="text" class="form-control" placeholder="0,00" name="valor" [(ngModel)]="objetoDespesa.valor" (input)="formatarNumero()" required>
           </div>
         </div>
       </div>

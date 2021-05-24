@@ -204,4 +204,25 @@ export class UrlsApiPorto {
   public static get urlHistoricoDescarteLixo(): string{
     return this.urlHistoricoBase + "/descarte-lixo/"
   }
+
+  public static get urlHistoricoDespesaPortuaria(): string{
+    return this.urlHistoricoBase + "/despesa-navio/"
+  }
+
+  public static get urlHistoricoAcidente(): string{
+    return this.urlHistoricoBase + "/acidente-navio/"
+  }
+
+  public static get urlTripulacao(): string{
+    return this.urlHistoricoBase + "/tripulacao-navio/"
+  }
+
+  public static get urlDowntime(): string{
+    return this.urlHistoricoBase + "/downtime-navio/"
+  }
+
+  public static get urlHistoricoInspecao(): string{
+    return this.urlHistoricoBase + "/inspecao-navio/"
+  }
+
 }

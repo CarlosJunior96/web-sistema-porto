@@ -60,7 +60,7 @@ export class ConsumoAguaComponent implements OnInit {
           }
         }
       }
-      dadosConsumoAgua.reset();
+      this.aguaNavio = new AguaNavio();
       this.excluirArquivoAgua();
     }, error => {
       alert("Erro ao cadastrar consumo de água!");
@@ -94,4 +94,13 @@ export class ConsumoAguaComponent implements OnInit {
     var elemento = (<HTMLInputElement>document.getElementById("label-file-agua"))
     elemento.innerHTML = "Enviar Arquivo";
   }
+
+  formatarNumero(){
+    let valor = Number((<HTMLInputElement>document.activeElement).value);
+    let contador = (<HTMLInputElement>document.activeElement).selectionStart;
+    (<HTMLInputElement>document.activeElement).value = valor.toFixed(2);
+    (<HTMLInputElement>document.activeElement).selectionStart = contador;
+    (<HTMLInputElement>document.activeElement).selectionEnd = contador;
+  }
+
 }

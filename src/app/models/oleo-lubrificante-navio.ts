@@ -9,4 +9,8 @@ export class OleoLubrificanteNavio {
   imoNavio: number;
   navioOleo: Navio;
 
+  constructor() {
+    this.oleoRecebidoDia = 0;
+    this.oleoFornecidoDia = 0;
+  }
 }

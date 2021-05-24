@@ -8,4 +8,9 @@ export class AguaNavio {
   aguaFornecidaNoDia: number;
   navioAgua: Navio;
   imoNavio: number;
+
+  constructor() {
+    this.aguaFornecidaNoDia = 0.00;
+    this.aguaRecebidaNoDia = 0.00;
+  }
 }

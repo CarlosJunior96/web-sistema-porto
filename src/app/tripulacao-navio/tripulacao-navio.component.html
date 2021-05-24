@@ -36,7 +36,7 @@
             <div class="input-group-prepend">
               <span class="input-group-text bg">R$</span>
             </div>
-            <input type="text" class="form-control" placeholder="0,00" name="salario" [(ngModel)]="objetoTripulacaoNavio.salario" required>
+            <input type="text" class="form-control" placeholder="0" name="salario" [(ngModel)]="objetoTripulacaoNavio.salario" (input)="formatarNumero()" required>
           </div>
         </div>
       </div>
@@ -47,7 +47,7 @@
             <div class="input-group-prepend">
               <span class="input-group-text bg">R$</span>
             </div>
-            <input type="text" class="form-control" placeholder="0,00" name="encargos" [(ngModel)]="objetoTripulacaoNavio.encargos">
+            <input type="text" class="form-control" placeholder="0" name="encargos" [(ngModel)]="objetoTripulacaoNavio.encargos" (input)="formatarNumero()" >
           </div>
         </div>
       </div>
@@ -58,7 +58,7 @@
             <div class="input-group-prepend">
               <span class="input-group-text bg">R$</span>
             </div>
-            <input type="text" class="form-control" placeholder="0,00" name="custo-mensal" [(ngModel)]="objetoTripulacaoNavio.custoMensal" required>
+            <input type="text" class="form-control" placeholder="0" name="custo-mensal" [(ngModel)]="objetoTripulacaoNavio.custoMensal" (input)="formatarNumero()"  required>
           </div>
         </div>
       </div>

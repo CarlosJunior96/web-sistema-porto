@@ -113,4 +113,12 @@ export class DescarteLixoNavioComponent implements OnInit {
     var elemento = (<HTMLInputElement>document.getElementById("label-file-lixo"))
     elemento.innerHTML = "Enviar Arquivo";
   }
+
+  formatarNumero(){
+    let valor = Number((<HTMLInputElement>document.activeElement).value);
+    let contador = (<HTMLInputElement>document.activeElement).selectionStart;
+    (<HTMLInputElement>document.activeElement).value = valor.toFixed(2);
+    (<HTMLInputElement>document.activeElement).selectionStart = contador;
+    (<HTMLInputElement>document.activeElement).selectionEnd = contador;
+  }
 }

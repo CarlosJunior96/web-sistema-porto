@@ -27,7 +27,7 @@
       <div class="form-group row">
         <label class="col-sm-6 col-form-label">Consumo de Combustível: </label>
         <div class="col-sm-6 input-group">
-          <input type="text" class="form-control" placeholder="Qtd. consumo de combustível." name="consumo-combustivel" [(ngModel)]="consumoCombustivelNavio.consumoNoDia" required>
+          <input type="text" class="form-control" placeholder="0" name="consumo-combustivel" [(ngModel)]="consumoCombustivelNavio.consumoNoDia" (input)="formatarNumero()" required>
           <div class="input-group-append">
             <span class="input-group-text bg">m3</span>
           </div>
@@ -36,7 +36,7 @@
       <div class="form-group row">
         <label class="col-sm-6 col-form-label">Combustivel Recebido: </label>
         <div class="col-sm-6 input-group">
-          <input type="text" class="form-control" placeholder="Qtd. combustível recebido." name="qtd-recebido" [(ngModel)]="consumoCombustivelNavio.combustivelRecebidoDia">
+          <input type="text" class="form-control" placeholder="Qtd. combustível recebido." name="qtd-recebido" [(ngModel)]="consumoCombustivelNavio.combustivelRecebidoDia" (input)="formatarNumero()">
           <div class="input-group-append">
             <span class="input-group-text bg">m3</span>
           </div>
@@ -45,7 +45,7 @@
       <div class="form-group row">
         <label class="col-sm-6 col-form-label">Combustível Fornecido:</label>
         <div class="col-sm-6 input-group">
-          <input type="text" class="form-control" placeholder="Qtd. combustível fornecido." name="qtd-fornecido" [(ngModel)]="consumoCombustivelNavio.combustivelFornecidoDia">
+          <input type="text" class="form-control" placeholder="Qtd. combustível fornecido." name="qtd-fornecido" [(ngModel)]="consumoCombustivelNavio.combustivelFornecidoDia" (input)="formatarNumero()">
           <div class="input-group-append">
             <span class="input-group-text bg">m3</span>
           </div>

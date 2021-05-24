@@ -18,7 +18,7 @@
           <label class="col-sm-4 col-form-label">Consumo de Água: </label>
           <div class="col-sm-8">
             <div class="input-group">
-              <input type="text" class="form-control" placeholder="Informe o consumo de água." name="consumo-dia" [(ngModel)]="aguaNavio.consumoNoDia" required>
+              <input type="text" class="form-control" placeholder="0" name="consumo-dia" [(ngModel)]="aguaNavio.consumoNoDia" (input)="formatarNumero()" required>
               <div class="input-group-append">
                 <span class="input-group-text bg">m3</span>
               </div>
@@ -29,7 +29,7 @@
           <label class="col-sm-4 col-form-label">Água Recebida: </label>
           <div class="col-sm-8">
             <div class="input-group">
-              <input type="text" class="form-control" placeholder="Quantidade de água recebida." name="agua-recbida" [(ngModel)]="aguaNavio.aguaRecebidaNoDia">
+              <input type="text" class="form-control" placeholder="Quantidade de água recebida." name="agua-recbida" [(ngModel)]="aguaNavio.aguaRecebidaNoDia" (input)="formatarNumero()">
               <div class="input-group-append">
                 <span class="input-group-text bg">m3</span>
               </div>
@@ -40,7 +40,7 @@
           <label class="col-sm-4 col-form-label">Água Fornecida:</label>
           <div class="col-sm-8">
             <div class="input-group">
-              <input type="text" class="form-control" placeholder="Quantidade de água fornecida." name="agua-fornecida" [(ngModel)]="aguaNavio.aguaFornecidaNoDia">
+              <input type="text" class="form-control" placeholder="Quantidade de água fornecida." name="agua-fornecida" [(ngModel)]="aguaNavio.aguaFornecidaNoDia" (input)="formatarNumero()">
               <div class="input-group-append">
                 <span class="input-group-text bg">m3</span>
               </div>

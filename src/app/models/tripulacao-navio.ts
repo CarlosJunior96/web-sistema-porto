@@ -10,4 +10,8 @@ export class TripulacaoNavio {
   encargos: number;
   custoMensal: number;
   navioTripulacao: Navio;
+
+  constructor() {
+    this.encargos = 0
+  }
 }

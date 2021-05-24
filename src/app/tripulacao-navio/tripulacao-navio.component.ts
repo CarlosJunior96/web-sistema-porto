@@ -44,4 +44,12 @@ export class TripulacaoNavioComponent implements OnInit {
       alert("Erro ao salvar Tripulação!!!");
     }
   }
+
+  formatarNumero(){
+    let valor = Number((<HTMLInputElement>document.activeElement).value);
+    let contador = (<HTMLInputElement>document.activeElement).selectionStart;
+    (<HTMLInputElement>document.activeElement).value = valor.toFixed(2);
+    (<HTMLInputElement>document.activeElement).selectionStart = contador;
+    (<HTMLInputElement>document.activeElement).selectionEnd = contador;
+  }
 }

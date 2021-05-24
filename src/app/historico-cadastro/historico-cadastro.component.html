@@ -124,7 +124,7 @@
         </thead>
         <tbody>
         <tr>
-          <td>{{ranchoHistorico.diaRecebimento.toLocaleDateString()}}</td>
+          <td>{{(ranchoHistorico.diaRecebimento).toLocaleDateString()}}</td>
           <td>{{ranchoHistorico.tipoPedido}}</td>
           <td>{{ranchoHistorico.nfAlimentos}}</td>
           <td>{{ranchoHistorico.nfOutros}}</td>
@@ -157,6 +157,138 @@
           <td>{{historicoDescarteLixoNavio.volume}}</td>
           <td>{{historicoDescarteLixoNavio.local}}</td>
           <td>{{historicoDescarteLixoNavio.empresaColetora}}</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<div class="container p-2 font-weight-bold" >
+  <div class="col-md-8 mt-2 p-5 offset-md-2 border rounded bg-white shadow">
+    <div id="cadastro-historico-despesa">
+      <h2>Último Registro - Despesa Portuária</h2>
+      <table class="table table-sm">
+        <thead class="thead-light">
+        <tr>
+          <th >Dia Despesa</th>
+          <th >Tipo Serviço</th>
+          <th >Valor</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <td>{{despesaHistorico.diaDespesa.toLocaleDateString()}}</td>
+          <td>{{despesaHistorico.tipoServico}}</td>
+          <td>{{despesaHistorico.valor}}</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<div class="container p-2 font-weight-bold" >
+  <div class="col-md-8 mt-2 p-5 offset-md-2 border rounded bg-white shadow">
+    <div id="cadastro-historico-acidente">
+      <h2>Último Registro - Acidente</h2>
+      <table class="table table-sm">
+        <thead class="thead-light">
+        <tr>
+          <th >Dia do Acidente</th>
+          <th >Tipo de Evento</th>
+          <th >Afastamento</th>
+          <th>Downtime</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <td>{{acidenteHistorico.diaAcidente.toLocaleDateString()}}</td>
+          <td>{{acidenteHistorico.tipoEvento}}</td>
+          <td>{{acidenteHistorico.afastamento}}</td>
+          <td>{{acidenteHistorico.downtime}}</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<div class="container p-2 font-weight-bold" >
+  <div class="col-md-8 mt-2 p-5 offset-md-2 border rounded bg-white shadow">
+    <div id="cadastro-historico-tripulacao">
+      <h2>Último Registro - Tripulação</h2>
+      <table class="table table-sm">
+        <thead class="thead-light">
+        <tr>
+          <th >Nome</th>
+          <th >Matrícula</th>
+          <th >Função</th>
+          <th>Turma</th>
+          <th>Salário</th>
+          <th>Encargos</th>
+          <th>Custo Mensal Total</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <td>{{tripulacaoNavio.nome}}</td>
+          <td>{{tripulacaoNavio.matricula}}</td>
+          <td>{{tripulacaoNavio.funcao}}</td>
+          <td>{{tripulacaoNavio.turma}}</td>
+          <td>{{tripulacaoNavio.salario}}</td>
+          <td>{{tripulacaoNavio.encargos}}</td>
+          <td>{{tripulacaoNavio.custoMensal}}</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<div class="container p-2 font-weight-bold" >
+  <div class="col-md-8 mt-2 p-5 offset-md-2 border rounded bg-white shadow">
+    <div id="cadastro-historico-downtime">
+      <h2>Último Registro - Downtime</h2>
+      <table class="table table-sm">
+        <thead class="thead-light">
+        <tr>
+          <th >Data Início</th>
+          <th >Hora Início</th>
+          <th >Data Término</th>
+          <th>Hora Término</th>
+          <th>Descrição</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <td>{{(downtimeHistoricoNavio.dataInicio).toLocaleDateString()}}</td>
+          <td>{{downtimeHistoricoNavio.horaInicio}}</td>
+          <td>{{(downtimeHistoricoNavio.dataTermino).toLocaleDateString()}}</td>
+          <td>{{downtimeHistoricoNavio.horaTermino}}</td>
+          <td>{{downtimeHistoricoNavio.descricaoDefeito}}</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<div class="container p-2 font-weight-bold" >
+  <div class="col-md-8 mt-2 p-5 offset-md-2 border rounded bg-white shadow">
+    <div id="cadastro-historico-inspecao">
+      <h2>Último Registro - Inspeção</h2>
+      <table class="table table-sm">
+        <thead class="thead-light">
+        <tr>
+          <th >Data Inspeção</th>
+          <th >Tipo de Inspeção</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <td>{{(inspecaoNavioHistorico.dataInspecao).toLocaleDateString()}}</td>
+          <td>{{inspecaoNavioHistorico.tipoInspecao}}</td>
         </tr>
         </tbody>
       </table>

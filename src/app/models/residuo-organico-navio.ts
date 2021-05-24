@@ -8,4 +8,10 @@ export class ResiduoOrganicoNavio {
   quantidade: number;
   navioResiduo: Navio;
   imoNavio: number;
+
+  constructor() {
+    this.longitude = "";
+    this.latitude = "";
+  }
+
 }

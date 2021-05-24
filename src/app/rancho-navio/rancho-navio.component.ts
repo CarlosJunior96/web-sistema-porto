@@ -52,6 +52,7 @@ export class RanchoNavioComponent implements OnInit {
 
   criarRanchoNavio(dadosRancho: any){
     this.objetoRancho.navioRancho = this.navio;
+    this.objetoRancho.valorTotal = this.total();
     this.ranchoService.criarRanchoNavio(this.objetoRancho).subscribe( objetoSalvo => {
 
       alert("Salvo com Sucesso!")
@@ -115,9 +116,20 @@ export class RanchoNavioComponent implements OnInit {
   }
 
   total(){
-    var total = Number(this.nfOutros) + Number (this.nfAlimentos);
-    (<HTMLInputElement>document.getElementById("totalnf")).value = String(total)
-    this.objetoRancho.valorTotal = total;
+    var total = (Number(this.nfOutros) + Number (this.nfAlimentos));
+    var aux = total.toFixed(2);
+    console.info(this.objetoRancho.valorTotal);
+    (<HTMLInputElement>document.getElementById("totalnf")).value = aux;
+
+    return total;
+  }
+
+  formatarNumero(){
+    let valor = Number((<HTMLInputElement>document.activeElement).value);
+    let contador = (<HTMLInputElement>document.activeElement).selectionStart;
+    (<HTMLInputElement>document.activeElement).value = valor.toFixed(2);
+    (<HTMLInputElement>document.activeElement).selectionStart = contador;
+    (<HTMLInputElement>document.activeElement).selectionEnd = contador;
   }
 
 
