@@ -1,14 +1,33 @@
 <div class="d-flex" id="wrapper">
   <app-template-admin></app-template-admin>
   <div class="container-fluid">
-    <div class="col-sm-6 offset-3">
+    <div class="col-sm-8 offset-2">
+      <h2 class="text-center pb-2">Estoque Combustível</h2>
+      <table class="table table-sm table-striped">
+        <thead class="thead-light">
+        <tr>
+          <th scope="col">Navio</th>
+          <th scope="col">Data</th>
+          <th style="width: 20%">Estoque de Combustível</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <td class="pt-3">{{navio.nome}}</td>
+          <td class="pt-3">{{estoqueCombustivel.dataEstoque.toLocaleDateString()}}</td>
+          <td class="pt-3">{{estoqueCombustivel.estoqueCombustivel + " Litros"}}</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="col-sm-8 offset-2">
       <h2 class="text-center pb-2">Estoque de Água</h2>
       <table class="table table-sm table-striped">
         <thead class="thead-light">
         <tr>
           <th scope="col">Navio</th>
           <th scope="col">Data</th>
-          <th scope="col">Estoque Água</th>
+          <th style="width: 20%">Estoque de Água</th>
         </tr>
         </thead>
         <tbody>
@@ -16,6 +35,25 @@
           <td class="pt-3">{{navio.nome}}</td>
           <td class="pt-3">{{estoqueAgua.dataEstoque.toLocaleDateString()}}</td>
           <td class="pt-3">{{estoqueAgua.estoqueAgua + " Litros"}}</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="col-sm-8 offset-2">
+      <h2 class="text-center pb-2">Estoque de Óleo</h2>
+      <table class="table table-sm table-striped">
+        <thead class="thead-light">
+        <tr>
+          <th scope="col">Navio</th>
+          <th scope="col">Data</th>
+          <th style="width: 20%">Estoque de Óleo</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <td class="pt-3">{{navio.nome}}</td>
+          <td class="pt-3">{{estoqueOleo.dataEstoque.toLocaleDateString()}}</td>
+          <td class="pt-3">{{estoqueOleo.estoqueOleo + " Litros"}}</td>
         </tr>
         </tbody>
       </table>

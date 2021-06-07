@@ -70,6 +70,14 @@ export class UrlsApiPorto {
     return this.urlBaseNavios + "/lista-estoque-agua/";
   }
 
+  public static get urlGetListaEstoqueCombustivel(): string{
+    return this.urlBaseNavios + "/lista-estoque-combustivel/";
+  }
+
+  public static get urlGetListaEstoqueOleo(): string{
+    return this.urlBaseNavios + "/lista-estoque-oleo/";
+  }
+
 
   public static get urlCadastrarEstoqueCombustivelNavio(): string{
     return this.urlBaseNavios + "/estoque-combustivel";

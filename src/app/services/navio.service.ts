@@ -26,4 +26,12 @@ export class NavioService {
   listaEstoqueAgua(idNavio: any): Observable<any>{
     return this.http.get(UrlsApiPorto.urlGetListaEstoqueAgua + idNavio);
   }
+
+  listaEstoqueCombustivel(idNavio: any): Observable<any>{
+    return this.http.get(UrlsApiPorto.urlGetListaEstoqueCombustivel + idNavio);
+  }
+
+  listaEstoqueOleo(idNavio: any): Observable<any>{
+    return this.http.get(UrlsApiPorto.urlGetListaEstoqueOleo + idNavio);
+  }
 }
