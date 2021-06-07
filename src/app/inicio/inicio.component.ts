@@ -11,7 +11,7 @@ import {Navio} from '../models/navio';
 })
 export class InicioComponent implements OnInit {
 
-  listaNavios: Array<Navio>
+  listaNavios: Array<Navio>;
   imoNavio: string;
   navio: Navio;
   constructor(
@@ -20,7 +20,7 @@ export class InicioComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.imoNavio = "0";
+    this.imoNavio = "";
     this.navio = new Navio();
     this.receberListaNavios();
   }

@@ -1,0 +1,28 @@
+<div class="d-flex" id="wrapper">
+  <app-template-admin></app-template-admin>
+  <div class="container-fluid">
+    <div class="col-sm-6 offset-3">
+      <h2 class="text-center pb-4">Estoque de Água, Óleo Lubrificante e Combustível</h2>
+      <table class="table table-sm table-striped">
+        <thead class="thead-light">
+        <tr>
+          <th scope="col">Navio</th>
+          <th scope="col">IMO</th>
+          <th scope="col"></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let navio of listaNavios">
+          <td class="pt-3">{{navio.nome}}</td>
+          <td class="pt-3">{{navio.imo}}</td>
+          <td style="width: 25%" >
+            <button type="button" class="btn btn-sm btn-info" (click)="verEstoqueNavio(navio)">
+              Ver Estoque
+            </button>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

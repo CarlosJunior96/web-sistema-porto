@@ -6,9 +6,9 @@
       </div>
     </div>
     <div class="row col-md-8 offset-md-2 mt-5">
-      <div class="col-md-2 mb-4 p-4" *ngFor="let htNavio of listaNavios">
+      <div class="mb-4 p-4" *ngFor="let htNavio of listaNavios">
         <button class="btn btn-light btn-outline-secondary rounded shadow-lg" (click)="selecionarNavio(htNavio.imo)">
-          <div>
+          <div >
             <p class="text-dark font-weight-bolder">{{htNavio.nome}}</p>
             <p class="text-dark font-weight-bolder">IMO: {{htNavio.imo}}</p>
           </div>

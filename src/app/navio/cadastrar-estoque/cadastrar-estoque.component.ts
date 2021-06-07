@@ -34,32 +34,43 @@ export class CadastrarEstoqueComponent implements OnInit {
       this.estoqueAgua = new EstoqueAgua();
       this.estoqueOleo = new EstoqueOleo();
       this.estoqueCombustivel = new EstoqueCombustivel();
-
-      this.estoqueNavioForm = new FormGroup( {
-        estoqueAgua: new FormControl(""),
-        dataAgua: new FormControl(""),
-        estoqueOleo: new FormControl(""),
-        dataOleo: new FormControl(""),
-        estoqueCombustivel: new FormControl(""),
-        dataCombustivel: new FormControl("")
-      })
     }
   }
 
   criarEstoqueNavio(){
-    let dadosEstoque = this.estoqueNavioForm.value
+    this.inicioService.procurarNavioImo(sessionStorage.getItem("navioImo")).subscribe( navioDados => {
+      this.estoqueAgua.navioEstoque = navioDados;
+      this.estoqueCombustivel.navioEstoqueCombustivel = navioDados;
+      this.estoqueOleo.navioEstoqueOleo = navioDados;
 
-    /** atribuindo dados ao obj estoque oleo navio **/
-    this.estoqueOleo.dataEstoque = dadosEstoque.dataOleo
-    this.estoqueOleo.estoqueOleo = dadosEstoque.estoqueOleo
+      this.estoqueNavioService.cadastrarEstoqueAguaNavio(this.estoqueAgua).subscribe( dadosAgua => {
+        let estoqueAguaSalvo = dadosAgua;
+      }, error => {
+        alert("Erro ao salvar estoque de agua do navio " + error.info);
+      })
 
-    /** atribuindo dados ao obj estoque agua navio **/
-    this.estoqueAgua.dataEstoque = dadosEstoque.dataAgua
-    this.estoqueAgua.estoqueAgua = dadosEstoque.estoqueAgua
+      this.estoqueNavioService.cadastrarEstoqueCombustivelNavio(this.estoqueCombustivel).subscribe( dadosCombustivel => {
+        let combustivelSalvo = dadosCombustivel;
+      }, error => {
+        alert("Erro ao salvar estoque de combustível" + error.info);
+      })
 
-    /** atribuindo dados ao obj estoque combustivel navio **/
-    this.estoqueCombustivel.dataEstoque = dadosEstoque.dataCombustivel
-    this.estoqueCombustivel.estoqueCombustivel = dadosEstoque.estoqueCombustivel
+      this.estoqueNavioService.cadastrarEstoqueOleoNavio(this.estoqueOleo).subscribe( dadosOleo => {
+        let oleoSalvo = dadosOleo;
+      }, error => {
+        alert("Erro ao salvar estoque de óleo" + error.info);
+      })
+
+      alert("Salvo com Sucesso!")
+      this.rotas.navigate([("navio-admin")])
+
+    }, error => {
+      alert("Erro ao salvar estoque" + error.info)
+    })
+  }
+
+  /**
+  criarEstoqueNavio(){
 
     this.inicioService.procurarNavioImo(sessionStorage.getItem("navioImo")).subscribe( navioDados => {
 
@@ -91,6 +102,15 @@ export class CadastrarEstoqueComponent implements OnInit {
       alert("Erro ao salvar estoque" + error.info)
     })
 
+  }
+  **/
+
+  formatarNumero(){
+    let valor = Number((<HTMLInputElement>document.activeElement).value);
+    let contador = (<HTMLInputElement>document.activeElement).selectionStart;
+    (<HTMLInputElement>document.activeElement).value = valor.toFixed(2);
+    (<HTMLInputElement>document.activeElement).selectionStart = contador;
+    (<HTMLInputElement>document.activeElement).selectionEnd = contador;
   }
 
 }

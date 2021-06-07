@@ -14,4 +14,16 @@ export class NavioService {
   cadastrarNavio(navio: Navio): Observable<any>{
     return this.http.post(UrlsApiPorto.urlCadastrarNavio, navio);
   }
+
+  atualizarNavio(idNavio: any, navio: Navio): Observable<any>{
+    return this.http.put(UrlsApiPorto.urlAtualizarNavio + idNavio, navio);
+  }
+
+  excluirNavio(idNavio: any): Observable<any>{
+    return this.http.delete(UrlsApiPorto.urlExcluirNavio + idNavio);
+  }
+
+  listaEstoqueAgua(idNavio: any): Observable<any>{
+    return this.http.get(UrlsApiPorto.urlGetListaEstoqueAgua + idNavio);
+  }
 }

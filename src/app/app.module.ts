@@ -8,10 +8,10 @@ import { FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { RouterModule, Routes} from '@angular/router';
 
 import { AppComponent } from './app.component';
-import { ConsumoAguaComponent } from './consumo-agua/consumo-agua.component';
-import { ConsumoOleoComponent } from './consumo-oleo/consumo-oleo.component';
-import { ConsumoCombustivelComponent } from './consumo-combustivel/consumo-combustivel.component';
-import { ResiduoOrganicoMarComponent } from './residuo-organico-mar/residuo-organico-mar.component';
+import { ConsumoAguaComponent } from './sistema-cliente/consumo-agua/consumo-agua.component';
+import { ConsumoOleoComponent } from './sistema-cliente/consumo-oleo/consumo-oleo.component';
+import { ConsumoCombustivelComponent } from './sistema-cliente/consumo-combustivel/consumo-combustivel.component';
+import { ResiduoOrganicoMarComponent } from './sistema-cliente/residuo-organico-mar/residuo-organico-mar.component';
 import { InicioComponent } from './inicio/inicio.component';
 import { PaginaNaoEncontradaComponent } from './pagina-nao-encontrada/pagina-nao-encontrada.component';
 import {HttpClientModule} from '@angular/common/http';
@@ -32,16 +32,20 @@ import {HammerModule} from '@angular/platform-browser';
 import {MaterialFileInputModule} from 'ngx-material-file-input';
 
 import { CadastrarEstoqueComponent } from './navio/cadastrar-estoque/cadastrar-estoque.component';
-import { RanchoNavioComponent } from './rancho-navio/rancho-navio.component';
-import { DescarteLixoNavioComponent } from './descarte-lixo-navio/descarte-lixo-navio.component';
-import { DespesaPortuariaNavioComponent } from './despesa-portuaria-navio/despesa-portuaria-navio.component';
-import { AcidenteNavioComponent } from './acidente-navio/acidente-navio.component';
-import { TripulacaoNavioComponent } from './tripulacao-navio/tripulacao-navio.component';
+import { RanchoNavioComponent } from './sistema-cliente/rancho-navio/rancho-navio.component';
+import { DescarteLixoNavioComponent } from './sistema-cliente/descarte-lixo-navio/descarte-lixo-navio.component';
+import { DespesaPortuariaNavioComponent } from './sistema-cliente/despesa-portuaria-navio/despesa-portuaria-navio.component';
+import { AcidenteNavioComponent } from './sistema-cliente/acidente-navio/acidente-navio.component';
+import { TripulacaoNavioComponent } from './sistema-cliente/tripulacao-navio/tripulacao-navio.component';
 import {AngularFileUploaderModule} from 'angular-file-uploader';
-import { InspecoesNavioComponent } from './inspecoes-navio/inspecoes-navio.component';
-import { HistoricoCadastroComponent } from './historico-cadastro/historico-cadastro.component';
+import { InspecoesNavioComponent } from './sistema-cliente/inspecoes-navio/inspecoes-navio.component';
+import { HistoricoCadastroComponent } from './sistema-cliente/historico-cadastro/historico-cadastro.component';
 import {NgxMaskModule} from 'ngx-mask';
-import { DowntimeNavioComponent } from './downtime-navio/downtime-navio.component';
+import { DowntimeNavioComponent } from './sistema-cliente/downtime-navio/downtime-navio.component';
+import { TemplateAdminComponent } from './sistema-admin/template-admin/template-admin.component';
+import { NavioAdminComponent } from './sistema-admin/navio-admin/navio-admin.component';
+import { EstoqueNavioAdminComponent } from './sistema-admin/estoque-navio-admin/estoque-navio-admin.component';
+import { ListaEstoqueNavioComponent } from './sistema-admin/estoque-navio-admin/lista-estoque-navio/lista-estoque-navio.component';
 
 /** VETOR QUE RECEBE AS ROTAS QUE O SISTEMA TERÁ **/
 export const rotasApp: Routes = [
@@ -60,6 +64,10 @@ export const rotasApp: Routes = [
   {path: "historico-informacoes", component: HistoricoCadastroComponent},
   {path: "cadastrar-downtime", component: DowntimeNavioComponent},
   {path: "home", component: InicioComponent},
+  {path: "estoque-navio-admin", component: EstoqueNavioAdminComponent},
+  {path: "lista-estoque-navio", component: ListaEstoqueNavioComponent},
+  {path: "navio-admin", component: NavioAdminComponent},
+
   {path: "", component: InicioComponent}, /** se tiver apenas o url geral será redirecionado para o inicio **/
   {path: "**", component: PaginaNaoEncontradaComponent} /** se não existir nenhum dos endereços informados vai pra essa pagina**/
 ]
@@ -83,7 +91,11 @@ export const rotasApp: Routes = [
     TripulacaoNavioComponent,
     InspecoesNavioComponent,
     HistoricoCadastroComponent,
-    DowntimeNavioComponent
+    DowntimeNavioComponent,
+    TemplateAdminComponent,
+    NavioAdminComponent,
+    EstoqueNavioAdminComponent,
+    ListaEstoqueNavioComponent
   ],
   imports: [
     AngularFileUploaderModule,

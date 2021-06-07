@@ -1,0 +1,24 @@
+<div class="d-flex" id="wrapper">
+  <app-template-admin></app-template-admin>
+  <div class="container-fluid">
+    <div class="col-sm-6 offset-3">
+      <h2 class="text-center pb-2">Estoque de Água</h2>
+      <table class="table table-sm table-striped">
+        <thead class="thead-light">
+        <tr>
+          <th scope="col">Navio</th>
+          <th scope="col">Data</th>
+          <th scope="col">Estoque Água</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <td class="pt-3">{{navio.nome}}</td>
+          <td class="pt-3">{{estoqueAgua.dataEstoque.toLocaleDateString()}}</td>
+          <td class="pt-3">{{estoqueAgua.estoqueAgua + " Litros"}}</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

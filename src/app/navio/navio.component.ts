@@ -3,6 +3,7 @@ import {Navio} from '../models/navio';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {Router} from '@angular/router';
 import {NavioService} from '../services/navio.service';
+import {InicioService} from '../services/inicio.service';
 
 @Component({
   selector: 'app-navio',
@@ -15,58 +16,50 @@ export class NavioComponent implements OnInit {
   navioReceberForm: FormGroup;
 
   constructor(
+    private inicioService: InicioService,
     private rotas: Router,
     private navioService: NavioService
   ) { }
 
   ngOnInit(): void {
-    this.navio= new Navio();
-    this.navioReceberForm = new FormGroup({
-      nomeNavio: new FormControl(""),
-      tonelagemNavio: new FormControl(""),
-      classeDp: new FormControl(""),
-      dataInformar: new FormControl(""),
-      propulsaoNavio: new FormControl(""),
-      comprimentoNavio: new FormControl(""),
-      bocaNavio: new FormControl(""),
-      caladoNavio: new FormControl(""),
-      areaLivreConves: new FormControl(""),
-      bollardPull: new FormControl(""),
-      imoNavio: new FormControl(""),
-      callSign: new FormControl(""),
-      anoConstrucao: new FormControl(""),
-      docagemNavio: new FormControl("")
+    this.navio = new Navio();
 
-    })
+    if (sessionStorage.getItem("imo")){
+     this.inicioService.procurarNavioImo(sessionStorage.getItem("imo")).subscribe( navioDados => {
+       this.navio = navioDados;
+       this.navio.anoConstrucao = new Date (this.navio.anoConstrucao);
+       this.navio.proximaDocagem = new Date(this.navio.proximaDocagem);
+
+       sessionStorage.setItem("imo", null);
+     })
+    }
   }
 
-  criarNavio(){
-    let formNavio = this.navioReceberForm.value;
-    this.atribuirFormModelNavio(formNavio);
-    this.navioService.cadastrarNavio(this.navio).subscribe(dados =>{
-      let navioImo = dados.imo;
-      sessionStorage.setItem("navioImo", navioImo)
-      this.rotas.navigate([("estoque-navio-cadastrar")])
-    }, error => {
-      alert("Error ao cadastrar Navio." + error.info)
-    })
+  criarNavio(navioForm: any){
 
+    if (this.navio.id != null){
+      this.navioService.atualizarNavio(this.navio.id, this.navio).subscribe();
+      alert("Salvo com Sucesso!");
+      this.rotas.navigate([("navio-admin")])
+    }
+
+    else {
+      this.navioService.cadastrarNavio(this.navio).subscribe( navioDados => {
+        let navioImo = navioDados.imo;
+        sessionStorage.setItem("navioImo", navioImo);
+        this.rotas.navigate([("estoque-navio-cadastrar")])
+      }, error => {
+        alert("Erro ao vincular Navio.")
+      } )
+    }
   }
 
-  atribuirFormModelNavio(formNavio){
-    this.navio.nome = formNavio.nomeNavio;
-    this.navio.tonelagem = formNavio.tonelagemNavio;
-    this.navio.classeDp = formNavio.classeDp;
-    this.navio.areaLivreConves = formNavio.areaLivreConves;
-    this.navio.propulsao = formNavio.propulsaoNavio;
-    this.navio.comprimento = formNavio.comprimentoNavio;
-    this.navio.boca = formNavio.bocaNavio;
-    this.navio.anoConstrucao = new Date(formNavio.anoConstrucao);
-    this.navio.proximaDocagem = new Date(formNavio.docagemNavio);
-    this.navio.calado = formNavio.caladoNavio;
-    this.navio.callSign = formNavio.callSign;
-    this.navio.bollardPull = formNavio.bollardPull;
-    this.navio.imo = formNavio.imoNavio;
+  formatarNumero(){
+    let valor = Number((<HTMLInputElement>document.activeElement).value);
+    let contador = (<HTMLInputElement>document.activeElement).selectionStart;
+    (<HTMLInputElement>document.activeElement).value = valor.toFixed(2);
+    (<HTMLInputElement>document.activeElement).selectionStart = contador;
+    (<HTMLInputElement>document.activeElement).selectionEnd = contador;
   }
 
 }

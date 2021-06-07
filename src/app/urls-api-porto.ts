@@ -16,6 +16,14 @@ export class UrlsApiPorto {
     return this.urlBaseNavios + "/";
   }
 
+  public static get urlAtualizarNavio(): string{
+    return this.urlBaseNavios + "/";
+  }
+
+  public static get urlExcluirNavio(): string{
+    return this.urlBaseNavios + "/";
+  }
+
   public static get urlFindNavioIMO(): string{
     return this.urlBaseNavios + "/imo/";
   }
@@ -57,6 +65,11 @@ export class UrlsApiPorto {
   public static get urlCadastrarEstoqueAguaNavio(): string{
     return this.urlBaseNavios + "/estoque-agua";
   }
+
+  public static get urlGetListaEstoqueAgua(): string{
+    return this.urlBaseNavios + "/lista-estoque-agua/";
+  }
+
 
   public static get urlCadastrarEstoqueCombustivelNavio(): string{
     return this.urlBaseNavios + "/estoque-combustivel";

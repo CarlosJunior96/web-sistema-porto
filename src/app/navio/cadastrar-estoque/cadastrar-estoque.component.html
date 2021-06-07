@@ -1,92 +1,98 @@
-<div class="container p-2 font-weight-bold">
-  <div class="col-md-10 mt-2 p-5 offset-1 border rounded bg-white shadow">
-    <div class="mb-5">
-      <h2 class="text-center font-weight-bold font-italic text bg-transparent border-bottom border-dark pb-2">Cadastrar Estoque do Navio</h2>
-    </div>
-    <form (ngSubmit)="criarEstoqueNavio()" [formGroup]="estoqueNavioForm">
-      <div class="form-group row pt-2">
-        <div class="col-md-8">
-          <div class="form-group row">
-            <label class="col-sm-4 col-form-label">Estoque de água: </label>
-            <div class="col-sm-8">
-              <div class="input-group">
-                <input type="text" class="form-control" placeholder="Qtd. atual de água." formControlName="estoqueAgua">
-                <div class="input-group-append">
-                  <span class="input-group-text bg">Lts</span>
+<div class="d-flex" id="wrapper">
+  <app-template-admin></app-template-admin>
+  <div class="container-fluid">
+    <div class="container p-2 font-weight-bold">
+      <div class="col-md-10 mt-2 p-5 offset-1 border rounded bg-white shadow">
+        <div class="mb-5">
+          <h2 class="text-center font-weight-bold font-italic text bg-transparent border-bottom border-dark pb-2">Cadastrar Estoque do Navio</h2>
+        </div>
+        <form method="post" #estoqueForm="ngForm" (ngSubmit)="criarEstoqueNavio()">
+          <div class="form-group row pt-2">
+            <div class="col-md-8">
+              <div class="form-group row">
+                <label class="col-sm-4 col-form-label">Estoque de água: </label>
+                <div class="col-sm-8">
+                  <div class="input-group">
+                    <input type="text" class="form-control" placeholder="0.00" name="estoque-agua" [(ngModel)]="estoqueAgua.estoqueAgua" (input)="formatarNumero()" required>
+                    <div class="input-group-append">
+                      <span class="input-group-text bg">Lts</span>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-        </div>
-        <div class="col-md-4">
-            <div class="form-group row">
-              <label class="col-sm-4 col-form-label">Dia: </label>
+            <div class="col-md-4">
+              <div class="form-group row">
+                <label class="col-sm-4 col-form-label">Dia: </label>
                 <mat-form-field class="col-sm-8" style="top: -15px">
                   <mat-label>Data</mat-label>
-                  <input matInput [matDatepicker]="dataAgua" formControlName="dataAgua" readonly>
+                  <input matInput [matDatepicker]="dataAgua" name="data-estoque-agua" [(ngModel)]="estoqueAgua.dataEstoque" required readonly>
                   <mat-datepicker-toggle matSuffix [for]="dataAgua"></mat-datepicker-toggle>
                   <mat-datepicker #dataAgua></mat-datepicker>
                 </mat-form-field>
-            </div>
-          </div>
-      </div>
-      <div class="form-group row">
-        <div class="col-md-8">
-          <div class="form-group row">
-            <label class="col-sm-4 col-form-label">Estoque de óleo: </label>
-            <div class="col-sm-8">
-              <div class="input-group">
-                <input type="text" class="form-control" placeholder="Qtd. de óleo atual." formControlName="estoqueOleo">
-                <div class="input-group-append">
-                  <span class="input-group-text bg">Lts</span>
-                </div>
               </div>
             </div>
           </div>
-        </div>
-        <div class="col-md-4">
           <div class="form-group row">
-              <label class="col-sm-4 col-form-label">Dia: </label>
-              <mat-form-field class="col-sm-8" style="top: -15px">
-                <mat-label>Data</mat-label>
-                <input matInput [matDatepicker]="dataOleo" formControlName="dataOleo" readonly>
-                <mat-datepicker-toggle matSuffix [for]="dataOleo"></mat-datepicker-toggle>
-                <mat-datepicker #dataOleo></mat-datepicker>
-              </mat-form-field>
-          </div>
-        </div>
-      </div>
-      <div class="form-group row">
-        <div class="col-md-8">
-          <div class="form-group row">
-            <label class="col-sm-4 col-form-label">Estoque Combustível: </label>
-            <div class="col-sm-8">
-              <div class="input-group">
-                <input type="text" class="form-control" placeholder="Qtd. de óleo atual." formControlName="estoqueCombustivel">
-                <div class="input-group-append">
-                  <span class="input-group-text bg">Lts</span>
+            <div class="col-md-8">
+              <div class="form-group row">
+                <label class="col-sm-4 col-form-label">Estoque de óleo: </label>
+                <div class="col-sm-8">
+                  <div class="input-group">
+                    <input type="text" class="form-control" placeholder="0.00" name="estoque-oleo" [(ngModel)]="estoqueOleo.estoqueOleo" (input)="formatarNumero()" required>
+                    <div class="input-group-append">
+                      <span class="input-group-text bg">Lts</span>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
+            <div class="col-md-4">
+              <div class="form-group row">
+                <label class="col-sm-4 col-form-label">Dia: </label>
+                <mat-form-field class="col-sm-8" style="top: -15px">
+                  <mat-label>Data</mat-label>
+                  <input matInput [matDatepicker]="dataOleo" name="data-estoque-oleo" [(ngModel)]="estoqueOleo.dataEstoque" required>
+                  <mat-datepicker-toggle matSuffix [for]="dataOleo"></mat-datepicker-toggle>
+                  <mat-datepicker #dataOleo></mat-datepicker>
+                </mat-form-field>
+              </div>
+            </div>
           </div>
-        </div>
-        <div class="col-md-4">
           <div class="form-group row">
-            <label class="col-sm-4 col-form-label">Dia: </label>
-            <mat-form-field class="col-sm-8" style="top: -15px">
-              <mat-label>Data</mat-label>
-              <input matInput [matDatepicker]="dataCombustivel" formControlName="dataCombustivel" readonly>
-              <mat-datepicker-toggle matSuffix [for]="dataCombustivel"></mat-datepicker-toggle>
-              <mat-datepicker #dataCombustivel></mat-datepicker>
-            </mat-form-field>
+            <div class="col-md-8">
+              <div class="form-group row">
+                <label class="col-sm-4 col-form-label">Estoque Combustível: </label>
+                <div class="col-sm-8">
+                  <div class="input-group">
+                    <input type="text" class="form-control" placeholder="0.00" name="estoque-combustivel" [(ngModel)]="estoqueCombustivel.estoqueCombustivel" (input)="formatarNumero()" required>
+                    <div class="input-group-append">
+                      <span class="input-group-text bg">Lts</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="form-group row">
+                <label class="col-sm-4 col-form-label">Dia: </label>
+                <mat-form-field class="col-sm-8" style="top: -15px">
+                  <mat-label>Data</mat-label>
+                  <input matInput [matDatepicker]="dataCombustivel" name="data-estoque-combustivel" [(ngModel)]="estoqueCombustivel.dataEstoque" required readonly>
+                  <mat-datepicker-toggle matSuffix [for]="dataCombustivel"></mat-datepicker-toggle>
+                  <mat-datepicker #dataCombustivel></mat-datepicker>
+                </mat-form-field>
+              </div>
+            </div>
           </div>
-        </div>
+          <button type="submit" class="btn btn-block btn-dark mt-4" [disabled]="estoqueForm.invalid">
+            Salvar
+          </button>
+        </form>
       </div>
-
-      <button type="submit" class="btn btn-block btn-dark mt-4">
-        Salvar
-      </button>
-    </form>
+    </div>
   </div>
 </div>
+
+
 

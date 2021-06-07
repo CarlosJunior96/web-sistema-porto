@@ -1,0 +1,61 @@
+<div class="d-flex" id="wrapper">
+  <app-template-admin></app-template-admin>
+  <div class="container-fluid">
+      <div style="margin-left: 92%;" class="mt-4">
+        <button class="btn btn-success" (click)="criarNavio()">
+          Criar Navio
+        </button>
+      </div>
+      <h2 class="text-center pb-4">Navios Cadastrados</h2>
+      <table class="table table-sm table-striped">
+        <thead class="thead-light">
+        <tr>
+          <th scope="col">Nome</th>
+          <th scope="col">Ano Construção</th>
+          <th scope="col">Boca</th>
+          <th scope="col">Bollard Pull</th>
+          <th scope="col">Calado</th>
+          <th scope="col">Call Sign</th>
+          <th scope="col">Classe DP</th>
+          <th scope="col">Comprimento</th>
+          <th scope="col">IMO</th>
+          <th scope="col">Propulsão</th>
+          <th scope="col">Próxima Docagem</th>
+          <th scope="col">Tonelagem</th>
+          <th scope="col"></th>
+          <th scope="col"></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let navio of listaNavios">
+          <td class="pt-3">{{navio.nome}}</td>
+          <td class="pt-3">{{navio.anoConstrucao.toLocaleDateString()}}</td>
+          <td class="pt-3">{{navio.boca}}</td>
+          <td class="pt-3">{{navio.bollardPull}}</td>
+          <td class="pt-3">{{navio.calado}}</td>
+          <td class="pt-3">{{navio.callSign}}</td>
+          <td class="pt-3">{{navio.classeDp}}</td>
+          <td class="pt-3">{{navio.comprimento}}</td>
+          <td class="pt-3">{{navio.imo}}</td>
+          <td class="pt-3">{{navio.propulsao}}</td>
+          <td class="pt-3">{{navio.proximaDocagem.toLocaleDateString()}}</td>
+          <td class="pt-3">{{navio.tonelagem}}</td>
+          <td>
+            <button type="button" class="btn btn-sm" style="margin-top: 2px" (click)="editarNavio(navio)">
+              <mat-icon style="color: #0a53be">
+                mode_edit_outline
+              </mat-icon>
+            </button>
+          </td>
+          <td>
+            <button type="button" class="btn btn-sm" style="margin-top: 2px" (click)="excluirNavio(navio)">
+              <mat-icon style="color: red">
+                delete_outline
+              </mat-icon>
+            </button>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+  </div>
+</div>
